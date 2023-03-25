@@ -1,0 +1,12 @@
+--How Does a Web Service Work?
+A web service enables communication among various applications by using open standards such as HTML, XML, WSDL, and SOAP. A web service takes the help of −
+XML to tag the data
+SOAP to transfer a message
+WSDL to describe the availability of service.
+
+--Components of Web Services
+The basic web services platform is XML + HTTP. All the standard web services work using the following components −
+
+SOAP (Simple Object Access Protocol)
+UDDI (Universal Description, Discovery and Integration)
+WSDL (Web Services Description Language)

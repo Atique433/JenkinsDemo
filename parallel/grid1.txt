@@ -1,0 +1,78 @@
+# *DesiredCapabilites is used to set the type of browser and OS that we will automate.
+  *RemoteWebDriver is used to set which node (or machine) that our test will run against.
+
+#Selenium Grid - Selenium Grid uses a hub-node concept where you only run the test on a single machine called a hub,
+                 but the execution will be done by different machines called nodes. 
+
+#The hub and nodes communicate with each other using a JSON wire protocol.
+
+#connect to HUB-
+  java -jar selenium-server-standalone-2.41.0.jar -role hub
+  java -jar selenium-server-4.7.2.jar hub
+
+#Connect to node 
+  java -jar selenium-server-4.7.2.jar node
+
+#command to connect to diffrent machine
+->java -Dwebdriver.chrome.driver="C:\Users\Atique_Rahman\Desktop\selenium\chromedriver_win32\chromedriver.exe" -jar selenium-server-4.7.2.jar node --hub http://192.168.1.16:4444/grid/register --port 5566
+
+->java -Dwebdriver.gecko.driver="C:\\Users\\Atique_Rahman\\Desktop\\Selenium_gecko\\geckodriver-v0.32.0-win32\\geckodriver.exe" -jar selenium-server-4.7.2.jar node --hub http://192.168.1.11:4444/grid/register --port 4546
+
+#Status can be checked by using the web interface--localhost:4444/grid/console
+
+#For Instance, if you want to use only IE/firefox/chrome you can start the node by using below command:
+
+  IE     - java -jar selenium-server-standalone-2.41.0.jar -role webdriver -hub
+           http://localhost:4444/grid/register -port 5556 -browser browserName=iexplore
+
+  FireFox- java -jar selenium-server-standalone-2.41.0.jar -role webdriver -hub
+           http://localhost:4444/grid/register -port 5556 -browser browserName=firefox
+
+  Chrome - java -jar selenium-server-standalone-2.41.0.jar -role webdriver -hub
+           http://localhost:4444/grid/register -port 5556 -browser browserName=chrome
+
+Q) Benefits of grid/ when to use it?
+
+- 1.What if you want to execute your test cases for different Operating Systems?
+  2.How to run your test cases in the different version of the same browser?
+  3.How to run your test cases in multiple browsers?
+  4.Why should a scenario wait for the execution of other test cases even if it does not depend upon any test cases?
+
+Q) challenges/problem in selenium grid?
+-> Not being able to connect to the grid
+   Nodes going offline unexpectedly
+   Browsers not launching correctly
+   Tests taking too long to run
+   Tests failing for no apparent reason
+
+Q) diffrence between MaxInstances and MaxSession
+
+-  1. MaxInstances: It is the no. of browser instances (of the same versions) that can run on the remote machine. Check the below commands.
+       -browser browserName=firefox,version=59,maxInstances=3,platform=WINDOWS
+       -browser browserName=InternetExplorer,version=11,maxInstances=3,platform=WINDOWS
+
+    It means we can run three instances of both Firefox and IE at the same time. So, a total of six different browsers (FF & IE) could run in parallel.
+
+   2. MaxSession: It dictates how many browsers (independent of the type & version) can run concurrently on the remote machine. It supersedes
+                  the “MaxInstances” setting.
+       In the previous example: If the value of “maxSession” is one, then no more than a single browser would run. While its value is two,
+       then any of these combinations (2FF, 2IE, 1FF+1IE) can run at a time.
+
+
+Q) Can you explain what a Jenkins pipeline is in the context of Selenium Grid?
+-> A Jenkins pipeline is a set of tasks that can be run in order to automate the testing and deployment of applications.
+   In the context of Selenium Grid, a Jenkins pipeline can be used to automatically run Selenium tests on a grid of machines
+   in order to speed up the testing process.
+
+Q) Selenium grid configuration using JSON File:
+-  JSON stands for Javascript Object Notation. It is a standard format used for interchange of data between browser and the web server.
+   Selenium has an in-built JSON config file that can be used to set up selenium grid.
+
+Q)In how many ways we can run tests in
+Q)testNG paralell vs grid?
+
+# syntax:
+  DesiredCapabilities dc = new DesiredCapabilities();
+  dc.setBrowser("chrome");
+  dc.setPlatform(platform.WIN10);
+  RemoteWebdriver driver = new RemoteWebdriver(new URL (host),dc);

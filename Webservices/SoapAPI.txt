@@ -1,0 +1,164 @@
+Q) What is Web Service?
+-  Web Service is a standard software system used for communication between two devices (client and server) over the network.
+   Web services provide a common platform for various applications written in different languages to communicate with each other over the network.
+
+  There are mainly two types of web services.
+   1.SOAP web services.
+   2.RESTful web services.
+
+Q) What is SOAP?
+-> SOAP is an acronym for Simple Object Access Protocol. It is an XML-based messaging protocol for exchanging information among computers.
+   SOAP is an application of the XML specification.
+   # Points to Note
+  *SOAP is a communication protocol designed to communicate via Internet.
+  *SOAP can extend HTTP for XML messaging.
+  *SOAP provides data transport for Web services.
+  *SOAP can exchange complete documents or call a remote procedure.
+  *SOAP can be used for broadcasting a message.
+  *SOAP is platform- and language-independent.
+  *SOAP is the XML way of defining what information is sent and how.
+  *SOAP enables client applications to easily connect to remote services and invoke remote methods.
+
+# Other frameworks including CORBA, DCOM, and Java RMI provide similar functionality to SOAP, but SOAP messages are written entirely in XML.
+
+Q) What are the elements of SOAP message structure?
+-  It is an ordinary XML document that contains the elements as a SOAP message
+
+   Envelope: It defines the start and end of the message
+   Header: It is an optional element. Contains information about the message being sent
+   Body: It contains the XML data comprising the message being sent
+   Fault: It provides the information about errors occurred while processing the message
+
+Q) Mention what is the difference between JSON and SOAP?
+-  JSON is standard to represent human readable data. SOAP is a protocol requirement for transmitting information and calling web-services using XML.
+
+Q) Mention what is the difference between SOAP web service and RESTful web service?
+-  SOAP: In SOAP, communication between the client and web service happens using XML message. It specifies the communication rules like what are all
+         the tags that should be used in XML and their meaning
+-  RestFul: It uses architecture which use HTTP or similar protocols by restricting the interface to use standard operations like GET, PUT, POST,
+            DELETE for HTTP.
+
+Q) Mention what is the transport method in SOAP?
+-  Application layer and transport layers of a network are used by SOAP.
+   HTTP and SMTP are the valid application layer protocol used as transport for SOAP.
+   HTTP is more preferable as it works well with current internet infrastructure especially with firewalls. The SOAP requests can be sent via an HTTP GET
+   method while the specification includes details on HTTP POST only.
+
+Q) Mention what is the end point in web services?
+-  IP address of the server where the web services are running is the end point in web services.
+
+Q) Mention what is the message format used in SOAP?
+
+-   POST/InStock HTTP/1.1
+    Host: localhost (www.xyz.org)
+    Content Type: application/soap+xml; charset=utf-8
+    Content length: 300
+    SOAPAction:http://www.guru99.org/2003/05/soap-envelop>
+    <?xml version= “1.0”?>
+    <soap:Envelop xmlns:soap= http://www.guru99.org/2003/05/soap-envelop>
+    <soap:Header>
+    </soap:Header>
+    <soap:Body>
+    <m:CareerName>Guru99</m:CareerName>
+    </soap:Body>
+    </soap:Envelope>
+
+Q) How do users utilize the facilities provided by SOAP?
+
+-  PutAddress(): It is used to enter an address in the webpage and has an address instance on the SOAP call.
+   PutListing(): It is used to allow the insertion of a complete XML document into the web page.
+   GetAddress(): It is used to get a query name and gets the result that best matches a query.
+   GetAllListing(): It is used to return the full list in an XML format.
+
+Q) What are the syntax rules for a SOAP message?
+
+-  Must use encoded XML
+   Envelope namespace must be used
+   Encoding namespace must be used
+   Must not consist of a DTD reference
+   Must not have XML processing instruction
+
+Q) What are the advantages of SOAP web services?
+
+  WS Security          - SOAP defines its security known as WS Security.
+  Language Independent - Its web services can be written in any programming language
+  Platform Independent - Its web services can be executed on any platform.
+
+Q) What is WSDL?
+-  The WSDL stands for Web Services Description Language. It is an XML document containing information about web services such as method name,
+   method parameter. The Client needs a data dictionary which contains information about all the web services with methods names and parameters
+   list to invoke them for the web services. The Web Service Description Language bridge up this gap, by providing all necessary information to the client.
+
+Q) What is the difference between SOAP and REST web services?
+
+->	           SOAP	                                              REST
+                  -------                                           --------
+1)   SOAP is a protocol.	                          REST is an architectural style.
+2)   SOAP stands for Simple Object Access Protocol.	  REST stands for Representational State Transfer.
+3)   SOAP can't use REST because it is a protocol.	  REST can use SOAP web services because it is a concept and can use any protocol like HTTP, SOAP.
+4)   SOAP permits XML data format only.	                  REST permits different data format such as Plain text, HTML, XML, JSON.
+
+# W3C- governing body for all web standards.
+
+# 1.Marshalling   - The client would format the information regarding the procedure call and any arguments into a SOAP message and sends it to the
+                    server as part of an HTTP request. This process of encapsulating the data into a SOAP message was known as Marshalling.
+  2.Demarshalling - The server would then unwrap the message sent by the client, see what the client requested for and then send the appropriate
+                    response back to the client as a SOAP message. The practice of unwrapping a request sent by the client is known as Demarshalling
+
+# SOAP - Message Structure:
+  ------------------------
+ 1. SOAP:Envelope - The SOAP envelope indicates the start and the end of the message so that the receiver knows when an entire message has been received.
+                    The SOAP envelope solves the problem of knowing when you are done receiving a message and are ready to process it.
+                    The SOAP envelope is therefore basically a packaging mechanism. 
+      **Points to Note**
+         Every SOAP message has a root Envelope element
+         Envelope is a mandatory part of SOAP message.
+         Every Envelope element must contain exactly one Body element.
+         If an Envelope contains a Header element, it must contain no more than one, and it must appear as the first child of the Envelope, before the Body.
+         The envelope changes when SOAP versions change.
+         The SOAP envelope is specified using the ENV namespace prefix and the Envelope element.
+
+ 2. SOAP:Header - The header element can be used to contain information such as authentication information or the definition of complex data types.
+      **Points to Note**
+         It is an optional part of a SOAP message.
+         Header elements can occur multiple times.
+         Headers are intended to add new features and functionality.
+         The SOAP header contains header entries defined in a namespace. 
+ 
+      :-A SOAP Header can have the following two attributes −
+        1.Actor attribute:By setting the Actor attribute, the client can specify the recipient of the SOAP header.
+        2.MustUnderstand attribute:It indicates whether a Header element is optional or mandatory.By setting to true/false
+
+ 3. SOAP:Body - The SOAP body is a mandatory element that contains the application-defined XML data being exchanged in the SOAP message.
+
+ 4. SOAP:Fault - If an error occurs during processing, the response to a SOAP message is a SOAP fault element in the body of the message,
+                 and the fault is returned to the sender of the SOAP message.
+               - The SOAP fault mechanism returns specific information about the error, including a predefined code, a description,
+                 and the address of the SOAP processor that generated the fault.
+      **Points to Note**
+        A SOAP message can carry only one fault block.
+        Fault is an optional part of a SOAP message.
+        For HTTP binding, a successful response is linked to the 200 to 299 range of status codes.
+        SOAP Fault is linked to the 500 to 599 range of status codes.
+
+# SOAP - Encoding :-
+  ------------------
+      -SOAP includes a built-in set of rules for encoding data types. It enables the SOAP message to indicate specific data types,
+       such as integers, floats, doubles, or arrays.
+      -SOAP data types are divided into two broad categories − scalar types and compound types.
+      -Scalar types contain exactly one value such as a last name, price, or product description.
+      -Compound types contain multiple values such as a purchase order or a list of stock quotes.
+      -Compound types are further subdivided into arrays and structs.
+      -The encoding style for a SOAP message is set via the SOAP-ENV:encodingStyle attribute.
+
+# SOAP - Transport :-
+  -------------------
+    SOAP is not tied to any transport protocol. SOAP can be transported via SMTP, FTP, IBM's MQSeries, or Microsoft Message Queuing (MSMQ).
+    SOAP specification includes details on HTTP only. HTTP remains the most popular SOAP transport protocol.
+
+  **SOAP via HTTP-
+    Quite logically, SOAP requests are sent via an HTTP request and SOAP responses are returned within the content of the HTTP response.
+    Both HTTP requests and responses are required to set their content type to text/xml
+
+
+   

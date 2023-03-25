@@ -1,0 +1,68 @@
+# Xpath engines are different in each browser, hence make them inconsistent. IE does not have a native xpath engine, therefore selenium
+  injects its own xpath engine for compatibility of its API. Hence we lose the advantage of using native browser features that WebDriver
+  inherently promotes.
+
+# Locating Strategies-:
+ -Contains in xpath syntax: //<HTML tag>[contains(@attribute_name,'attribute_value')]  or //*[contains(@attribute_name,'attribute_value')]  
+ -Using And: //<HTML tag>[@attribute_name1='attribute_value1' and @attribute_name2='attribute_value2]
+ -Using or:  //<HTML tag>[@attribute_name1='attribute_value1' or @attribute_name2='attribute_value2]  
+ -Using starts-with(): //<HTML tag>[starts-with(@attribute_name,'attribute_value')]  
+
+
+# javascript has access to dom where as java dont have access.
+
+# The major difference between the following and following siblings is that the following sibling takes all the sibling nodes
+  after the context but will also share the same parent,and same goes with preceding and preciding-sibling.
+     //div[@class=’Mammal’]/following-sibling::div
+
+# isSelected() : Checks whether a checkbox is selected or not.
+  isDisplayed(): Checks whether a checkbox displays on the web page or not.
+  isEnabled()  : Checks whether a checkbox is enabled or not
+
+Q) Diffrence between isDisplayed() and isSelected()?
+- 1.isDisplayed()
+    The isDisplayed method in Selenium verifies if a certain element is present and displayed. If the element is displayed,
+    then the value returned is true. If not, then the value returned is false.
+    Syntax:boolean eleSelected= driver.findElement(By.xpath("xpath")).isDisplayed();
+
+  2.isSelected()
+    This method is often used on radio buttons, checkboxes or options in a menu. It is used to determine is an element is selected.
+    If the specified element is selected, the value returned is true. If not, the value returned is false.
+
+    Syntax:boolean elePresent = driver.findElement(By.xpath("xpath")).isSelected();
+
+ *isDisplayed resolves to whether the element is visible or not, but throws an exception if it is not in the DOM.
+ *isPresent resolves to whether it is there in the DOM or not, regardless of whether it is actually visible or not. It doesn't throw an exception.
+ 
+Q)JavascriptExecutor Provides Two Methods:
+
+   ExecuteScript - This method executes the test script in the context of the currently selected window or frame. The script in the method runs as
+                   an anonymous function. If the script has a return statement, the following values are returned: WebElement,Long,boolean,list,String.
+
+   ExecuteAsyncScript -This method executes the asynchronous piece of JavaScript on the current window or frame. An asynchronous script will be executed
+                       while the rest of the page continues parsing, which enhances responsiveness and application performance.
+                        1.executeAsyncScript renders your webpage faster
+                        2.Using executeAsyncScript, our script runs by the browser side and not by the server side
+
+Q) which is better among css and xpath in selenium?
+
+- 1.CSS selectors tend to perform better, faster, and more reliably than XPath in most browsers. They are much shorter and easier to read
+    and understand. However, there are some situations where you need to use XPath instead of CSS, like when searching for a parent element
+    or searching for an element by its text.
+  2.Xpath expression is represented by [//tagname[@attribute = 'value']. The css expression is repression is represented by [tagname[attribute = 'value'].
+  3.There are two types of xpath – absolute and relative. But css has no such types.
+
+
+
+act.KeysDown(Keys.CONTROL);
+act.sendKeys("c");
+act.KeysUp(Keys.CONTROL);
+act.build().perform();
+
+act.sendKeys(Keys.TAB);
+act.build().perform();
+
+act.KeysDown(Keys.CONTROL);
+act.sendKeys("V");
+act.KeysUp(Keys.CONTROL);
+act.build().perform();

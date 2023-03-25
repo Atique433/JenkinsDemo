@@ -1,0 +1,234 @@
+Q) Difference between dependies and plugin? 
+-> dependies - responsible to download third party library(in form of jars files)
+-> plugin - contains diff type of configuration on which our projects will run. eg maven surefire, maven compiler plugins
+
+Q) What is build profiles?
+-> A Build profile is a set of configuration values, which can be used to set or override default values of Maven build.
+   Using a build profile, you can customize build for different environments such as Production v/s Development environments.
+   *Profiles are specified in pom.xml file using its activeProfiles/profiles elements.
+
+Q) What are the different types of profile? Where is each defined?
+-> Per Project - Defined in the POM itself (pom.xml).
+   Per User    - Defined in the (%USER_HOME%/.m2/settings.xml).
+   Global      - Defined in the (${maven.home}/conf/settings.xml).
+
+Q) Profile Activation?
+-> A Maven Build Profile can be activated in various ways.
+
+   1.Explicitly using command console input.
+   2.Through maven settings.
+     
+   <activeProfiles>
+      <activeProfile>test</activeProfile>
+   </activeProfiles>
+
+   3.Based on environment variables (User/System variables).
+   * define this in pom.xml
+
+ <profile>
+    <id>test</id>
+     <activation>
+      <property>
+         <name>env</name>
+         <value>test</value>
+      </property>
+     </activation>
+ </profile>
+
+   4.OS Settings (for example, Windows family).
+
+   <profile>
+    <id>test</id>
+     <activation>
+      <os>
+         <name>Windows XP</name>
+         <family>Windows</family>
+         <arch>x86</arch>
+         <version>5.1.2600</version>
+      </os>
+    </activation>
+   </profile>
+
+   5.Present/missing files.
+
+Q) What are Maven Plugins?
+-> Contains diff type of configuration on which our projects will run. Maven Plugins are generally used to −
+   create jar file
+   create war file
+   compile code files
+   unit testing of code
+   create project documentation
+   create project reports
+   # A plugin generally provides a set of goals, which can be executed using the following syntax −
+      - mvn [plugin-name]:[goal-name] for eg -> mvn compiler:compile
+
+Q) Types og plugin?
+-> 1. Build plugins - They execute during the build process and should be configured in the <build/> element of pom.xml.
+   2. Reporting plugins - They execute during the site generation process and they should be configured in the <reporting/> element of the pom.xml.
+
+   Others types of plugin:-
+   1.	clean      - Cleans up target after the build. Deletes the target directory.
+   2.	compiler   - Compiles Java source files.
+   3.	surefire   - Runs the JUnit unit tests. Creates test reports.
+   4.	jar        - Builds a JAR file from the current project.
+   5.	war        - Builds a WAR file from the current project.
+   6.	javadoc    - Generates Javadoc for the project.
+   7.	antrunRuns - a set of ant tasks from any phase mentioned of the build.
+
+Q) Ant vs Maven?
+-> - Ant is procedural, you need to provide information about what to do     Maven is declarative, everything you define in the pom.xml file.
+     and when to do through code.You need to provide order.	        
+
+   - There is no life cycle in Ant.	                                     There is life cycle in Maven.
+   - It is a tool box.	                                                     It is a framework.
+   - It is mainly a build tool.	                                             It is mainly a project management tool.
+   - The ant scripts are not reusable.	                                     The maven plugins are reusable.
+   - It is less preferred than Maven.	                                     It is more preferred than Ant.
+
+Q) What do you mean by convention over Configuration?
+-> In case of configuration developers need to create the build process manually and has to specify each and every configuration details, but maven
+   uses convention instead of configuration where dev need not create the build process and maven does this job automatically and also for convention
+   user need not specify configuration in details.
+   Once a developer create a project in maven it will automatically create a structures.
+
+Q) Phases of site lifecycle?
+-> pre-site, site, post-site, site-deploy
+
+Q) When does maven use external dependency concept?
+-> when it search for the dependency in all three (local,central,remote) and if maven is dosen't find any dependency in any three then in such case 
+   it make use of external dependency.
+
+Q) what are thing you need to define for each external dependency?
+->  <dependency>
+         <groupId>ldapjdk</groupId>
+         <artifactId>ldapjdk</artifactId>
+         <scope>system</scope>
+         <version>1.0</version>
+         <systemPath>${basedir}\src\lib\ldapjdk.jar</systemPath>
+      </dependency>`
+   
+  - External dependencies (library jar location) can be configured in pom.xml in same way as other dependencies.
+    Specify groupId same as the name of the library.
+    Specify artifactId same as the name of the library.
+    Specify scope as system.
+    Specify system path relative to the project location.
+
+
+Q) What is SNAPSHOT in maven?
+-> SNAPSHOT is a special version that indicates the current development copy.Unlike regular versions, Maven checks for a new SNAPSHOT version in a 
+   remote repository for every build.
+
+Q) Snapshot vs Version
+-> In case of Version, if Maven once downloaded the mentioned version, say data-service:1.0, it will never try to download a newer 1.0 available in
+   repository. To download the updated code, data-service version is be upgraded to 1.1.
+   In case of SNAPSHOT, Maven will automatically fetch the latest SNAPSHOT (data-service:1.0-SNAPSHOT) every time app-ui team build their project.
+
+Q) Super vs effective pom?
+-> The Super POM is Maven's default POM. All POMs inherit from a parent or default (despite explicitly defined or not).
+   Maven use the effective POM (configuration from super pom plus project configuration) to execute relevant goal.
+
+Q) What exactly is MOJO?
+-> Every Maven plain Old Java Object (MOJO) is an executable goal. MOJO allows Maven to add functionalities that it doesn't already have.
+   In Maven, a MOJO is a single unit of the task.
+
+Q) 41. What is the dependency scope? Name all the dependency scope.
+-> Dependency scope typically includes dependencies as per the current stage of the build. The various Dependency scopes are −
+
+   1.compile − This scope indicates that dependency is available in the classpath of the project. It is the default scope.
+   2.provided − This indicates that the dependency is to be provided by JDK or web-Server/Container at runtime.
+   3.runtime − This scope tells that you dont need dependency is for compilation but you need it for for execution.
+   4.test − This scope states that the dependency is only available for the test compilation and execution phases.
+   5.system − This scope indicates that you must provide the system path.
+   6.import − This scope is only used when the dependency is of type pom. This scope tells that the specified POM should be
+              replaced with the dependencies in the POM’s <dependencyManagement> section.
+
+how to invoke the: clean and deploy commond, how to configure it
+filed/tags in profiles
+external repro
+create sample maven project that make use of surefire
+
+
+
+
+**********Build automation****
+## Teams of app-web-ui and app-desktop-ui projects require that their build process should kick off whenever bus-core-api project changes.
+   Using snapshot, ensures that the latest bus-core-api project should be used but to meet the above requirement we need to do something extra.
+
+   We can proceed with the following two ways −
+
+    1-Add a post-build goal in bus-core-api pom to kick-off app-web-ui and app-desktop-ui builds.
+    2-Use a Continuous Integration (CI) Server like Hudson to manage build automation automatically.
+
+    1.
+   <project xmlns = "http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>bus-core-api</groupId>
+   <artifactId>bus-core-api</artifactId>
+   <version>1.0-SNAPSHOT</version>
+   <packaging>jar</packaging>
+   <build>
+      <plugins>
+         <plugin>
+         <artifactId>maven-invoker-plugin</artifactId>
+         <version>1.6</version>
+         <configuration>
+            <debug>true</debug>
+            <pomIncludes>
+               <pomInclude>app-web-ui/pom.xml</pomInclude>
+               <pomInclude>app-desktop-ui/pom.xml</pomInclude>
+            </pomIncludes>
+         </configuration>
+         <executions>
+            <execution>
+               <id>build</id>
+               <goals>
+                  <goal>run</goal>
+               </goals>
+            </execution>
+         </executions>
+         </plugin>
+      </plugins>
+   <build>
+</project>
+
+## Transitive Dependencies Discovery 
+   ---------------------------------
+ *Transitive dependency means to avoid needing to discover and specify the libraries that your own dependencies require, and including them automatically.
+ *It is pretty often a case, when a library, say A, depends upon other library, say B. In case another project C wants to use A,
+  then that project requires to use library B too.
+ *We only need to define direct dependency in each project pom. Maven handles the rest automatically.
+
+  With transitive dependencies, the graph of included libraries can quickly grow to a large extent. Cases can arise when there are
+  duplicate libraries. Maven provides few features to control extent of transitive dependencies.
+
+   1. Dependency mediation - Determines what version of a dependency is to be used when multiple versions of an artifact are encountered.
+                             If two dependency versions are at the same depth in the dependency tree, the first declared dependency will be used.
+   2. Dependency management - Directly specify the versions of artifacts to be used when they are encountered in transitive dependencies.
+                              For an example project C can include B as a dependency in its dependency Management section and directly control which
+                              version of B is to be used when it is ever referenced.
+   3. Dependency scope      - Includes dependencies as per the current stage of the build.
+   4. Excluded dependencies - Any transitive dependency can be excluded using "exclusion" element. As example, A depends upon B and B depends upon C,
+                              then A can mark C as excluded.
+   5. Optional dependencies - Any transitive dependency can be marked as optional using "optional" element. As example, A depends upon B and B depends
+                              upon C. Now B marked C as optional. Then A will not use C.
+
+Q) Use of surefire plug-ins?
+-> The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. It generates reports in two
+   different file formats:
+
+    1.Plain text files (*.txt)
+    2.XML files (*.xml)
+    3. ** use to change jdk version during run time
+
+ Goals->surefire:test runs the unit tests of an application.
+   <plugins>
+	<plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-surefire-plugin</artifactId>
+	  <version>2.22.1</version>
+	</plugin>
+   </plugins>
+			

@@ -1,0 +1,9 @@
+Failed to connect to repository : Error performing git command: C:\Program Files\Git\bin ls-remote -h https://github.com/Atique433/JenkinsDemo HEAD
+
+Atique3232#
+
+#cmd for access run throgh cli
+java -jar jenkins-cli.jar -s http://localhost:8080/ -auth atique_demo:11a9b1a77ca32a9eaaadab2bc60a5cc659 -webSocket build "RunCli"
+
+
+

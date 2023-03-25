@@ -1,0 +1,54 @@
+Q) What is API?
+ Application Programming Interface (API) is a software interface that enables two applications to interact with each other without any user intervention.
+ It is a collection of software functions and procedures. API is defined as a code that helps two different software communicate and exchange data with
+ each other.
+
+Q) State The Core Components of an HTTP Response?
+-  In Postman, every HTTP response contains four key elements.
+
+  Response/Status Code- There are response code issues by a sever for client’s request, as 404 means Page Not Found.
+  HTTP Version- HTTP version name. For example, HTTP v2.2
+  Response Header- It included information for the HTTP response message. For example. The content length, date, status, server type, etc.
+  Response Body – It contains the data which a client requested from the server.\
+
+Q) What is an HTTP request?
+-  An HTTP request is a program that the client makes to a name host located on a server. It works as a communication interface or a request-response
+   protocol between a client and server. The primary use of the HTTP request is to access a resource on the server. To initiate the HTTP request,
+   the client uses components of a URL (Uniform Resource Locator) that also includes the information needed to access the resource.
+
+Q) What is the main difference between Authorization and authentication?
+
+  Authorization is the act of allowing or permitting someone, whereas authentication is proving that something is genuine.
+  Authorization always comes first, while authentication comes after authorization.
+  Authorization is open to anyone with permission, whereas authentication requires you to have a password.
+
+Q) What is the Postman execution order for a collection?
+-  For all the requests in a collection, the scripts will execute in the following given order:
+
+  Step 1) A pre-request script associated with a collection will run before every request.
+  Step 2) A pre-request script associated with a folder will run before every request in a specific folder.
+  Step 3) A test script associated with a collection will run after every request.
+  Step 4) A test script associated with a folder will run after the request in the specific folder.
+
+Q) The various authorization types are:
+
+1. Inherit auth from parent - This is the default auth type. In this, authorization type will be the same as the parent, which means whatever
+   the auth type you selected for that collection (parent); the same auth type will be selected for the request, which is under that collection.
+2. No Auth - If you select this type, Postman will not send any auth data with the request.
+3. API key - This is to send the Key and Value along with the API request.
+4. Bearer Token - This auth type allows the Authorization of requests by using an access key.
+5. Basic Auth -This allows users to send username and password along with the request for API login.
+6. Digest Auth - This is the two-point authentication of your API request. In this auth type user will send a request where the server will reply
+   with a number that can only be used once. Then the user again will send the request along with username, password, and that realm number for
+   Authorization of the request.
+7. OAuth - This auth type is to access third-party API data.
+8. Hawk Authentication - This enables users to use partial cryptographic verification to authenticate their requests. Hawk Auth id, which is your
+   API authentication ID value and Hawk Auth key, which is your API authentication key value, is required for Authorization under this auth type.
+9. AWS Signature - For Amazon Web Services requests, this auth type is used.
+10.NTLM Authentication (Beta) - This is the auth type for windows OS and standalone systems.
+11.Akamai EdgeGrid - Akamai technologies use this auth type for authorizing requests.
+
+Q) What is a binary form in POST methods?
+-  Binary representation is the easiest representation for sending complex data with the request
+   The binary form is designed to help send data in a format that is not possible to be entered manually. These options are used while sending
+   large files like images, CSV files, etc in the POST request

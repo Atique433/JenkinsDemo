@@ -1,0 +1,160 @@
+Q) What is an Idempotent API?
+-  In the context of REST APIs, when making multiple identical requests has the same effect as making a single request – then that REST API
+   is called idempotent.
+
+Q) What is an Idempotent HTTP Method?
+-  An idempotent HTTP method is a method that can be invoked many times without the different outcomes. It should not matter if the method has
+   been called only once, or ten times over. The result should always be the same.
+
+# Idempotency with HTTP Methods:-
+
+  1.POST- POST APIs are used to create a new resource on the server. So when we invoke the same POST request N times, we will have N new 
+          resources on the server. So, POST is not idempotent.
+
+  2.GET, HEAD, OPTIONS and TRACE- This methods NEVER change the resource state on the server. They are purely for retrieving the resource
+                                  representation or metadata at that point in time.
+          So invoking multiple requests will not have any write operation on the server, so GET, HEAD, OPTIONS, and TRACE are idempotent.
+
+  3.PUT- PUT APIs are used to update the resource state. If you invoke a PUT API N times, the very first request will update the resource;
+         the other N-1 requests will just overwrite the same resource state again and again – effectively not changing anything.
+         Hence, PUT is idempotent.
+
+  4.DELETE- When you invoke N similar DELETE requests, the first request will delete the resource and the response will be 200 (OK) or 204 (No Content).
+            Other N-1 requests will return 404 (Not Found).Clearly, the response is different from the first request, but there is no change of state
+            for any resource on the server-side because the original resource is already deleted.So, DELETE is idempotent.
+ 
+Q) Put vs Patch?
+-                            PUT                                                         	      PATCH                                                        
+1. PUT is a method of modifying resource where the client            PATCH is a method of modifying resources where the client sends partial data that
+   sends data that updates the entire resource .                     is to be updated without modifying the entire data.
+2. if record found it will modify else create it.                    If the record is not there is will throw an error.
+3. We send the entire resource when making a PUT request.            Need to send only the resource to modify
+
+Q)             PUT	                                                                             POST
+
+1.This method is idempotent. This means it will produce the same results	 -This method is not idempotent. It produces different results 
+  the same results if executed more than once.                                    every time it is executed.
+2.When we need to modify a single resource that is already part of 	         -POST method is called when a child resource is to be added 
+  resource collection, we call the PUT method.                                    under resources collection.
+3.PUT method syntax : PUT /questions/{question-id}	                         -POST method syntax: POST /questions
+4.Put method makes use of the "UPDATE" query.	                                 -POST method makes use of the "CREATE" query.
+5.PUT /vi/cake/orders/1234 indicates updation of a resource	                 -POST /vi/cake/orders* indicate that we are creating a new resource 
+  identified by "1234".                                                           and return an identifier to describe the resource.
+
+# REST defines 6 architectural constraints/Guiding Principles which make any web service – a true RESTful API.
+
+-1.Uniform interface – The uniform interface constraint defines the interface between clients and servers. It simplifies and decouples
+                       the architecture, which enables each part to evolve independently.
+
+ 2.Client–server - This constraint essentially means that client applications and server applications MUST be able to evolve separately
+                    without any dependency on each other. A client should know only resource URIs, and that’s all.
+
+ 3.Stateless - The server will not store anything about the latest HTTP request the client made. It will treat every request as new.
+                No session, no history.
+
+ 4.Cacheable – Caching refers to storing the server response in the client itself, so that a client need not make a server request for the
+               same resource again and again
+ 
+ 5.Layered system - A layered system provides a hierarchical structure between a client and a server. There can be a lot of intermediaries between 
+                    the client and the server working along with REST API without the client's notice. Our clients think there is a direct connection
+                    to the server. We then take advantage of it to improve our architecture and bring down our distributed system complexity. 
+
+ 6.Code-on-demand - The client can send a request to the server asking for the code and then the server will respond with some code in the form of
+                    a script or some other entity. For example, servers can extend the client functionality by downloading and executing pre-compiled 
+                    code like an applet or a client-side script like JavaScript. 
+
+Q) How do you perform chaining in REST Assured?
+-  In the context of object-oriented programming languages, method chaining is used to invoke multiple method calls. Each method returns an object,
+   which allows multiple calls to be chained into a single line that doesn’t require variables to hold interim results.
+            
+         given()
+           .baseUri(baseUri)
+           .queryParam(parameterName, parameterValues)
+           .accept(contentType).
+           .when()
+           .then();
+
+Q) What is JSONPath?
+-  JSONPath is a query language for JSON, similar to XPath for XML. It allows you to select and extract data from a JSON document.
+   You use a JSONPath expression to traverse the path to an element in the JSON structure.
+
+      Response employeesResponse = RestAssured.given().request(Method.GET, "/all");
+      JsonPath jsonPathObj = employeesResponse.jsonPath();
+
+     //get a list of all employees id:
+     List<String> employeeIds = jsonPathObj.get("company.employee.id");
+     //get the first employee name:
+     String empName = jsonPathObj.get("company.employee[0].name");
+
+Q) How do you log a request and response in case REST Assured fails a validation?
+-  If the test validation fails, log().ifValidationFails() will log everything in a request and response.
+
+Q) What are serialization and deserialization in the context of Java?
+-  Serialization is defined as the process of changing an object's state into a byte stream. On the other hand, deserialization is
+   the process of recreating the Java object in memory using the byte stream. This approach keeps the object alive. A serialized 
+   object can be stored in files, external sources, databases etc and can also be transferred over networks.
+
+ --POJO: Plain Old Java Object We generally use POJOs to create JSON payload and convert JSON response payload to Java objects.
+   Converting a POJO object to a JSON object is Serialization and converting a JSON object to a POJO object is called deserialization.
+   These conversions can be done with help of Java libraries like Jackson, Gson etc. We don’t need to implement the required interfaces for POJO classes.
+
+Q) List the core components of an HTTP request.
+-  An HTTP request consists of five elements:
+
+   1.An action (DELETE, GET, POST). This element shows HTTP methods.
+   2.A Uniform Resource Identifier (URI). This element identifies the resource on the server.
+   3.The HTTP version.
+   4.A request header. This element carries the metadata for the message. The metadata could be a format supported by the client,
+                       message body format, browser or client type, cache settings, etc.
+   5.Request body. This element indicates the resource representation or message content.
+
+Q) What is messaging in RESTful Web services?
+-  RESTful web services use the HTTP protocol as a communication tool between the client and the server
+
+Q) How to validate the response time of the request using rest assured?
+
+-  By using a simple long matcher.
+
+    RestAssured.given().baseUri("http://localhost:4001").contentType(ContentType.JSON).log().all()
+		.when().get("/users").then().time(lessThan(5000L)
+
+Q) What is the difference between path params and query params and how to use them?
+
+-  Path params are used to identify resources on the server while query params are used to sort/filter resources. Query params are
+   key-value-like pairs that appear after the question mark in the URL while path params come before the question mark.
+
+   How to pass Path Param:
+	RestAssured.given()
+	  .pathParam("user", "users/qaautomatonhub")
+
+   How to pass query Param:
+        RestAssured.given()
+                .queryParam("sort","created")
+                .queryParam("direction","desc")
+
+Q) Explain the Request specification and response in Rest Assured.
+
+-  Request Specification and Response both are rest assured interfaces. Request specification allows specifying how the request will look like.
+   The request Specification Interface has methods to define the base URL, base path, headers, body, etc. The response interface extends
+   ResponseBody, and ResponseOptions interfaces and uses to return a response to the request.
+
+# Request Specification - RequestSpecification interface provided by Rest Assured is used to club and extract repetitive actions like setting up
+                          base URL, headers, HTTP verbs etc which may be common for multiple Rest calls.
+
+# Response Specification - ResponseSpecification interface comes handy in situation where similar set of assertions need to be done for several
+                           Rest requests. It achieves this by grouping common assertions into a ResponseSpecBuilder instance and using this instance
+                           for validations in multiple tests.
+
+Q) how do you specify that the response should be of a particular type when sending the request?
+-  Media type (aka MIME type) specifies the format of the data as type/subtype e.g. text/html, text/xml, application/json, image/jpeg etc.
+   In HTTP request, MIME type is specified in the request header using Accept and Content-Type attribute. The Accept header attribute specifies
+   the format of response data which the client expects and the Content-Type header attribute specifies the format of the data in the request body 
+   so that receiver can parse it into appropriate format.
+
+  By default, the Web API framework supports two media types: JSON and XML. When you issue a request with Accept: application/json, then the response
+  message will be JSON and the Content-Type will be set to application/json. Similarly, if you issue a request with Accept: application/xml, then the
+  response message will be XML and the Content-Type will be set to application/xml.
+
+Q) What do you understand by JAX-RS?
+-  As the name itself stands (JAX-RS= Java API for RESTful Web Services) is a Java-based specification defined by JEE for the implementation
+   of RESTful services.

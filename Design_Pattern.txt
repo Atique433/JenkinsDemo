@@ -1,0 +1,144 @@
+SINGLETON    (creational design pattern)https://medium.com/10-minutes-qa-story/run-selenium-tests-in-parallel-with-singletone-driver-21ed058c6fad
+-----------
+defination- Singleton Pattern says that just"define a class that has only one instance and provides a global point of access to it".
+In other words, a class must ensure that only single instance should be created and single object can be used by all other classes.
+
+There are two forms of singleton design pattern----
+
+>Early Instantiation: creation of instance at load time.Its drawback is that class is always initialized whether it is being used or not.
+>Lazy Instantiation: creation of instance when required. class in initialized only when it is required.
+
+usage- Singleton classes are used for logging, driver objects, caching and thread pool, database connections.
+
+Logger : Singleton classes are used in log file generations. Log files are created by the logger class object. Suppose an application where the 
+       logging utility has to produce one log file based on the messages received from the users. If there is multiple client application using this 
+       logging utility class they might create multiple instances of this class and it can potentially cause issues during concurrent access to the 
+       same logger file. We can use the logger utility class as a singleton and provide a global point of reference so that each user can use this  
+       utility and no 2 users access it at the same time.
+
+Advantage- Saves memory because object is not created at each request. Only single instance is reused again and again.
+
+How to create Singleton design pattern?
+To create the singleton class, we need to have static member of class, private constructor and static factory method.
+
+Static member:          It gets memory only once because of static, it contains the instance of the Singleton class.
+Private constructor:    It will prevent to instantiate the Singleton class from outside the class.
+Static factory method:  This provides the global point of access to the Singleton object and returns the instance to the caller.
+
+public class Singleton
+{
+ public static void main(String[] args)
+  {
+    Abc obj1= Abc.getInstance();
+  }
+}
+class Abc
+{
+  static Abc obj1 = new Abc();
+  private Abc()
+  {}
+  public static Abc getInstance()
+  {
+   return obj;
+  }
+}
+
+*********Important points*********
+
+-Singleton classes can have only one instance and that instance should be globally accessible.
+-java.lang.Runtime and java.awt.Desktop are 2 singleton classes provided by JVM.
+-Singleton Design pattern is a type of creational design pattern.
+-Outer classes should be prevented to create instance of singleton class.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+FACTORY
+-------
+defination- It is a creational design pattern which talks about the creation of an object. The factory design pattern says that define an interface 
+           (A java interface or an abstract class) and let the subclasses decide which object to instantiate.
+
+usage- This design pattern has been widely used in JDK, such as 
+    1. getInstance() method of java.util.Calendar, NumberFormat, and ResourceBundle uses factory method design pattern. 
+    2. All the wrapper classes like Integer, Boolean etc, in Java uses this pattern to evaluate the values using valueOf() method. 
+    3. java.nio.charset.Charset.forName(), java.sql.DriverManager#getConnection(), java.net.URL.openConnection(), java.lang.Class.newInstance(), 
+       java.lang.Class.forName() are some of ther example where factory method design pattern has been used.
+
+Implementation: 
+1. Define a factory method inside an interface. 
+2. Let the subclass implements the above factory method and decide which object to create. 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+BUILDER
+----------
+defination- Builder pattern builds a complex object using simple objects and using a step by step approach. (example - os,screensize,5.5,battery)
+           **if we mention PhoneBuilder instead of void we can specify the value/parameter to set at run time 
+
+advantage- It provides clear separation between the construction and representation of an object. 
+           It provides better control over construction process. It supports to change the internal representation of objects.
+
+difference b/w abstractfactory & builder
+The only big difference between the builder pattern and the abstract factory pattern is that builder provides us more control over the object 
+creation process and that’s it. Apart from it, there are no major differences.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+ABSTRACT FACTORY PATTERN
+-------------------------
+Defination- Abstract Factory patterns work around a super-factory which creates other factories. This factory is also called as factory of factories. 
+            This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.
+
+Exmaple - shape &colour interface implementing class for both the interface ,then create abastract class Abstractact factorty which has abstract mwthod,
+ then create shape factory and colour factory which will implement the abstract methods
+
+
+difference- The main difference between a “factory method” and an “abstract factory” is that the factory method is a single method, and an abstract factory 
+            is an object. 
+            The factory method is just a method, it can be overridden in a subclass, whereas the abstract factory is an object that has multiple factory 
+            methods on it.
+            The Factory Method pattern uses inheritance and relies on a subclass to handle the desired object instantiation.
+
+Advantages-   This pattern is particularly useful when the client doesn’t know exactly what type to create. 
+Disadvantage- Difficult to support new kinds of products: Extending abstract factories to produce new kinds of Products isn’t easy. 
+              that’s because the AbstractFactory interface fixes the set of products that can be created. Supporting new kinds of products 
+              requires extending the factory interface, which involves changing the AbstractFactory class and all of its subclasses.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Decorator Design
+-----------------
+defination- Decorator patterns allow a user to add new functionality to an existing object without altering its structure. So,there is no change to the 
+            original class.
+            Decorator design patterns create decorator classes, which wrap the original class and supply additional functionality by keeping the 
+            class methods’ signature unchanged.
+
+usage- Decorator design patterns are most frequently used for applying single responsibility principles since we divide the functionality into 
+       classes with unique areas of concern.
+      >Decorator pattern is used a lot in Java IO classes, like FileReader, BufferedReader, etc.
+
+SRP-As the name suggests, this principle states that each class should have one responsibility, one single purpose. For example, if we have a class that 
+we change a lot, and for different reasons, then this class should be broken down into more classes, each handling a single concern. ...
+
+advantage-  decorator design pattern is useful in providing runtime modification abilities and hence more flexible. 
+            Its easy to maintain and extend when the amount of choices are more.
+disadvantage- it uses plenty of similar kind of objects (decorators).
+
+Procedure:
+
+-Create an interface.
+-Create concrete classes implementing the same interface.
+-Create an abstract decorator class implementing the above same interface.
+-Create a concrete decorator class extending the above abstract decorator class.
+-Now use the concrete decorator class created above to decorate interface objects.
+-Lastly, verify the output
+
+=--------------------------------------------------------------------------------------------------------------------------------------------------------------
+STARTEGY
+--------
+defination- In Strategy pattern, a class behavior or its algorithm can be changed at run time. This type of design pattern comes under behavior pattern.
+
+How do you use a strategy design pattern?
+
+Create an interface. Strategy.java public interface Strategy { public int doOperation(int num1, int num2); }
+Create concrete classes implementing the same interface. ...
+Create Context Class. ...
+Use the Context to see change in behaviour when it changes its Strategy. ...
+Verify the output.
