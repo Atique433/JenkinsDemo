@@ -1,0 +1,149 @@
+# Understand mult layer architecture in OOP?
+  In object-oriented programming (OOP), a multilayer architecture, also known as a layered architecture or n-tier architecture, is a design pattern
+  that organizes a software application into distinct and separate layers or tiers, each responsible for a specific set of functionalities. 
+
+  *The most common type of Layered Architecture is a 3-Layered Architecture.
+   1. Presentation layer - Presentation Layer is our connection to the outside world.
+   2. Application layer - Application Layer is where we develop all the functions our application should provide. 
+   3. Data layer - Data Layer handles the persisting of our data. It communicates with the Database.
+
+# Diff between TDD and BDD?
+-> TDD is known as Test Driven Development.                            BDD is known as Behavior Driven Framework
+   The designing of test cases is the starting point of TDD.           The designing of scenarios is the starting point of BDD
+   TDD requires team members having technical knowledge.               BDD does not require team members with technical knowledge.
+   Focus on Unit Tests	                                               Focus on Understanding Requirements
+   The process starts by writing a test case.	                       The process starts by writing a scenario as per the expected behavior.
+   Some tools which support TDD are: JUnit, TestNG, NUnit, etc.	       Some tools which support BDD are SpecFlow, Cucumber, MSpec, etc.
+   Collaboration is required only between the developers.	       Collaboration is required between all the stakeholders.
+   Might be a better approach for projects which involve API 	       Might be a better approach for projects which are driven by user actions.
+   and third-party tools.                                                For eg: e-commerce website, application system, etc.
+
+1.TDD - Test Data Driven framework is used to drive test cases and suites from an external data feed. The data feed can be data sheets 
+        like xls, xlsx, and csv files.
+      - A Data Driven Framework in Selenium is a technique of separating the “data set” from the actual “test case” (code).
+
+  1. logging integrating report -> will be using log4j, for reports html based report,json based report, in project ReportPortal
+  2. test data ->using Apache poi-> excel file-> xlxs,csv
+  3. diffrent ways to handle date -
+  4. tools selection -> test NG(unit testing framework)-> will give html report, maven
+  5. layer of framework - 
+      package - test layer - tests , commoun (utilities)-> resuable code
+      package - application layer -> pages , utilities (screen shot codes, waits)
+      package - common libraray -> browser
+      package - resource -> driver,logs, excel file, config, scrren shot
+
+ Explanation:-
+  First we will be having test layer->this involves the test cases covering the application under test. All the test logic is present here.
+  then we will be having core/implementataion layer -> here we will be having pages, commoun utilities(waits,logger,browser,exception etc)
+  service layer - here all the logic are grouped, which help in reuasibility, better code maintainnace.
+  then will be having resource/test data layer -> driver,logs, excel file, config files, screen shot, testNg.xml
+
+ Advantages of Data Driven Testing Framework
+  1.Allows testing of the application with multiple sets of data values during regression testing.
+  2.Separates the test case data from the executable test script.
+  3.Generates test data automatically. This is helpful when large volumes of random test data are necessary.
+  4.Allows execution of test cases several times which helps to reduce test cases and scripts.
+
+Dis-Adv
+   Bugs leading to faulty code:
+   Slowness in development    : Creating test cases before code development slows product development.
+   Requires prior experience  : Prior experience with TDD is a must since many teams commit the mistake of not running tests at the Red Stage.
+
+2. Keyword-Driven Testing Framework - Usually considered an extension of the data-driven testing framework, the keyword-driven testing framework
+                                      extracts your test data from an external source and safely maintains the set of codes. 
+
+  Components of a Keyword Driven Framework
+  - Excel Sheet – It is used to store the data for test cases such as keywords
+  - Object Repository – This stores the locator values for web elements
+  - Function Library – It is used to create functions that perform actions
+  - Test Data Sheet – This is an Excel file storing the data values within objects
+  - Test Scripts – These are the scripts to interact with the application under test
+  - Driver Script – This is the driver engine that interacts with all test scripts
+  - Selenium – It is used for environment set up. Other tools can also be used for this purpose
+
+
+  1. logging integrating report -> will be using log4j, for reports html based report,json based report
+  2. test data ->using Apache poi-> excel file-> xlxs,csv
+  3. diffrent ways to handle date -
+  4. tools selection -> test NG(unit testing framework)-> will give html report
+  5. Layers of framework -
+      package exceldata: will contain excel file of keywords (scenario)
+      package utility: class -> constants - define constants like URL, filePath, and excelData.
+      package keywordDriven: class -> Action_Keyword - In this class, create methods for each Action Keyword that has been identified in Excel.
+      package excelUtility : class -> ReadExcelSheet - write code to read data from an Excel sheet. For this, use an Apache POI library which allows 
+                                                   testers to read, create and edit Microsoft Office documents using Java.
+      package executionEngine: class -> ExecutionTest - write code for calling readExcelData() method of ReadExcelSheet class and methods of 
+                                                    ActionKeywords class
+
+	   Advantages 		         	  Disadvantages
+	Code Reusability 			Keyword Management
+	Platform independent Test Scripts	Extensive Planning 
+	Enhanced Productivity 			Expertise required to write test scripts
+	Application abstraction 		Time taken to write test scripts is higher than usual 
+
+3. Behavior Driven Development Framework - BDD is a software development approach that allows the tester/business analyst to create test cases in 
+                                           simple text language (English).
+    The simple language used in the scenarios helps even non-technical team members to understand what is going on in the software project.
+
+   Pros: You can use non-technical, natural language to create test specifications on this behavior-driven testing.
+   Cons: To work with this framework, sufficient technical skills as well as prior experience in Test driven development is required.
+
+  1. logging integrating report -> log4j, reports-> Json Report, html report, extent report
+  2. test data ->.feature file -> Scenario Outline, DataTable        
+  3. diffrent ways to handle date -
+  4. tools selection -> test NG(usage in runner file - "import io.cucumber.testng.CucumberOptions"),Cucumber(is a tool that supports BDD) 
+  Layers of framework -
+   1. Feature File
+   2. Step Definitions - A Steps Definitions file stores the mapping data between each step of a scenario defined in the feature file and the code 
+                         to be executed.(it can use page object model)
+   3. Test Runner File - mostly you will using the options like (plugin, features, dryrun , glue, tags) . 
+
+# Dis-Adv 
+    Requires more involvement from all the stakeholders:
+    BDD tools struggle with parallelization	
+    Writing incorrect Gherkin syntax:
+
+#Api framework->
+will be having 2 layers
+1. webservice layer
+2. test layer
+
+Tools: Postman, Rest Assured
+
+ Logger
+ ----------
+# Logger : Logger is a class in the org.apache.log4j.* package. We have to initialize one Logger object for each Java class. 
+         We use Logger’s methods to generate log statements. Log4j provides the factory method to get Logger objects.
+
+  private static Logger logger = LoggerManager.getLogger(AppClass.class)
+
+ -Log4j component:
+
+ * levels:
+
+ * Methods in Logger class
+	logger.debug()
+        logger.info()
+	logger.warn()
+	logger.fatal() - log very severe error events
+	logger.error()
+
+ * Appender : Appender is used to write the log messages into a file or DB or SMTP.
+        Log4j has different types of appenders.
+	
+	ConsoleAppender          - To write the log messages in console
+        FileAppender             - Appends log events to a file. It supports two more appender classes:
+	                     - DailyRollingFileAppender - widely used appenders that provide support to write logs to file.
+	                     - RollingFileAppender      - appenders that provide support to write logs to file.
+	JDBCAppender
+	SMTPAppender
+
+ *Layout :This is used to define the formatting in which logs will print in a repository.
+
+  We have different types of layouts
+     1. PatternLayout
+     2. SimpleLayout
+     3. XMLLayout
+     4. HTMLLayout
+
+                    

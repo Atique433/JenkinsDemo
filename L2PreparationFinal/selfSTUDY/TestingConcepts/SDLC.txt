@@ -1,0 +1,46 @@
+Q)Diffrence between scrum and Agile?
+- The main difference between Scrum and Agile is that Agile is a style of project management, and Scrum is one of several different methods used
+  to implement that style. 
+
+Q)diffrence between xp and scrum
+when to use
+
+1.XP(Extreme Programming):-
+Extreme programming (XP) is one of the most important software development frameworks of Agile models. It is used to improve software quality and
+responsiveness to customer requirements. The extreme programming model recommends taking the best practices that have worked well in the past in 
+program development projects to extreme levels. "Good practices need to be practiced in extreme programming": Some of the good practices that have 
+been recognized in the extreme programming model and suggested to maximize their use are given below:
+
+Testing : UAT and Unit testing.
+
+-Code Review            : Code review detects and corrects errors efficiently.
+-Testing                : Testing code helps to remove errors and improves its reliability. XP suggests test-driven development (TDD) to continually
+                          write and execute test cases. In the TDD approach test cases are written even before any code is written.
+-Incremental development: Incremental development is very good because customer feedback is gained and based on this development team comes
+                          up with new increments every few days after each iteration.
+-Simplicity             : Simplicity makes it easier to develop good quality code as well as to test and debug it.
+-Design                 : Good quality design is important to develop good quality software. So, everybody should design daily.
+-Integration testing    : It helps to identify bugs at the interfaces of different functionalities. Extreme programming suggests that the developers 
+                          should achieve continuous integration by building and performing integration testing several times a day.
+
+
+2.Spiral Model:- Also known as meta model
+The Spiral Model is a software development life cycle (SDLC) model that provides a systematic and iterative approach to software development.
+It is based on the idea of a spiral, with each iteration of the spiral representing a complete software development cycle, from requirements
+gathering and analysis to design, implementation, testing, and maintenance.
+
+Testing : Risk related testing.
+
+Phase of spiral model:
+
+1.Object identification      - Requirements are gathered from the customers and the objectives are identified
+2.Identify and resolve Risks - During the second quadrant, All the possible solutions are evaluated to select the best possible solution. 
+                               Then the risks associated with that solution are identified and the risks are resolved using the best possible strategy.
+                         
+3.Develop next version of the Product - During the third quadrant, the identified features are developed and verified through testing. 
+                                        At the end of the third quadrant, the next version of the software is available.
+4.Review and plan for the next Phase  - In the fourth quadrant, the Customers evaluate the so far developed version of the software.
+                                        In the end, planning for the next phase is started.
+
+-Advantages      : Risk handling, good for large project, flexible, customer satisfaction.
+-Dis-Advantages  : Complex, expensive, too much risk analysis and time consuming

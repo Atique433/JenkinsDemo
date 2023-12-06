@@ -1,0 +1,357 @@
+Factory patter in action - builder pattern (build method is called)
+test ng listener - page load issue
+If we dont want to store it into variable and use in next line? enviroment
+how to make use of thread local, can we have mutiple thread local- yes
+How to share you project configuration with other person - maven dependency
+For developer we need JDK and for running we only need JRE. 
+How to run test on prallel -> class as parellel, methods as parallel
+---------------------------------------------------------------------------------------------------------------------------------------------
+# when to use singleton and when to use factory pattern?
+# When we use javascipt click?
+  Use JavaScript click when Selenium's click method does not work as expected, especially when dealing with complex or custom UI components that 
+  might not respond correctly to native clicks.
+
+# diffrence between 2 tier and 3 tier archituture in DBMS?
+
+  	Two-Tier Database Architecture								Three-Tier Database Architecture
+ -It is a Client-Server Architecture.							It is a Web-based application.
+ -In two-tier, the application logic is either buried inside the user	                In three-tier, the application logic or process resides in the
+   interface on the client or within the database on the server (or both).                middle-tier, it is separated from the data and the user interface.
+ -Two-tier architecture consists of two layers : Client Tier and Database (Data Tier).	Three-tier architecture consists of three layers : Client Layer, Business Layer and Data Layer.
+ -It is easy to build and maintain.							It is complex to build and maintain.
+ -Two-tier architecture runs slower.							Three-tier architecture runs faster.
+ -It is less secured as client can communicate with database directly.			It is secured as client is not allowed to communicate with database directly.
+
+# How to share you project configuration with other person?
+  To share a Maven project configuration with another person, we can provide them with the project's pom.xml file. The pom.xml file contains all
+  the project configuration details, dependencies, and build settings necessary to reproduce the project.
+
+# SOLID 
+
+ Single Responsibility Principle :
+  The single responsibility principle states that every Java class must perform a single functionality. A class should have only one reason to change, 
+  meaning it should have only one responsibility or job.
+
+ Open-Closed Principle (OCP): 
+  Software entities (classes, modules, functions) should be open for extension but closed for modification. 
+  This principle encourages the use of abstractions, interfaces, and inheritance to allow for adding new features without modifying existing code.
+  In Java, you can apply OCP by using interfaces, abstract classes, and design patterns such as the Strategy pattern, Decorator pattern and Factory pattern. 
+   **Advantage - prevent ourselves from modifying existing code and causing potential new bugs.
+
+ Liskov Substitution Principle:
+  It applies to inheritance in such a way that the derived(child) classes must be completely substitutable for their base(parent) classes. In other words, 
+  if class A is a subtype of class B, then we should be able to replace B with A, without interrupting the behavior of the program.
+
+ Interface Segregation Principle:
+  It simply means that larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be 
+  concerned about the methods that are of interest to them.
+
+ Dependency Inversion Principle (DIP): 
+  The principle states that we must use abstraction (abstract classes and interfaces) instead of concrete implementations. 
+  High-level modules should not depend on low-level modules; both should depend on abstractions.
+
+  **Low-level modules—those containing more specific details—generally change more often than high-level modules—those containing high-level policies.
+  **OOPS, especially polymorphism helps us to resolve issue.
+
+# what is the difference between rest assured and Http client?
+  Rest Assured requires less coding as compared to Apache HTTP Client. The setup of Rest Assured is easy and straightforward. The response is given
+  in JSON or XML format and is easy to parse and validate. It uses inbuilt Hemcrest Matchers for easy extraction of values.
+
+Rest Assured: Rest Assured is specifically designed for testing and validating RESTful APIs. It provides a high-level DSL for API testing.
+HTTP Client: An HTTP client, such as Apache HttpClient or OkHttp, is a general-purpose library that enables you to send HTTP requests and receive responses. 
+
+Rest Assured: Rest Assured operates at a higher level of abstraction, providing a domain-specific language (DSL) that simplifies API testing.
+HTTP Client: An HTTP client library operates at a lower level of abstraction, providing a more granular control over the HTTP communication. 
+             It gives you direct access to HTTP methods, headers, request bodies, and response handling, allowing you to customize the requests and
+             responses to a greater extent.
+
+Rest Assured: Rest Assured provides specific features and assertions for API testing, such as JSON/XML response parsing, schema validation, 
+              content matching, and more. It integrates well with testing frameworks and facilitates writing readable and maintainable API tests.
+HTTP Client: While an HTTP client library may provide some utility methods for response handling and content parsing, it typically does not offer 
+             the same level of built-in testing features and assertions as Rest Assured. You would need to write additional code or use separate libraries 
+             for testing and validation.
+
+# How do you give parameters in TestNG?
+  There are two ways to pass the parameters in TestNG:
+   1.TestNG Parameters
+   2.TestNG DataProviders : By using the @DataProvider annotation, you can supply data from various sources such as arrays, Excel sheets, databases,
+                            or external files to your test methods.
+public class DP
+{
+    @DataProvider (name = "data-provider")
+     public Object[][] dpMethod(){
+	 return new Object[][] {{"First-Value"}, {"Second-Value"}};
+     }
+	
+    @Test (dataProvider = "data-provider")
+    public void myTest (String val) {
+        System.out.println("Passed Parameter Is : " + val);
+    }
+}
+
+# What is the difference between DataProvider and Parameter in TestNG?
+  DataProviders pass the different parameters on a single test in a single execution, whereas 
+  parameters pass the parameters just once per execution in TestNG.
+
+# Multithreading refers to the ability of a processor to execute multiple threads concurrently, where each thread runs a process. 
+  Whereas multiprocessing refers to the ability of a system to run multiple processors in parallel, where each processor can run one or more threads.
+
+# Defect - Deviation from requirement
+  Bug    - Informal name of defects, (A coding error) 
+  Error  - The Problem in code leads to errors.
+  Failure- Many defects lead to the failure
+
+# Design pattern in action class - builder pattern (build method is called)
+  Design pattern in RestAssured - builder pattern
+
+#     SonarLint										SonarQube
+  SonarLint works more like a plugin 						SonarQube has a server associated with it
+  SonarLint supports only in the IDE like IntelliJ,Eclipse,Visual Studio. 	SonarQube is a central server that processes which covers full analyses which need to be triggered by the various SonarQube Scanners.
+  SonarLint gives instant feedback as you type your code. 	                Sonarqube give a vision of the quality of your complete project code base.
+  SonarLint concentrates on what you are writing run time while coding. 	SonarQube analyzes all the source code for all files in frequent interval.
+
+ **SonarLint It is an IDE extension that helps you detect and fix quality issues as you write code Like a spell checker, it squiggles flaws so 
+   that they can be fixed before committing code. 
+   SonarQube is detailed as "Continuous Code Quality". SonarQube provides an overview of the overall health of your source code and even more importantly, 
+   it highlights issues found on new code. With a Quality Gate set on your project, you will simply fix the Leak and start mechanically improving.
+
+# Diffrence between selenium 4 and 3?
+
+- Capturing screenshots of specific web elements is one of the benefits of using Selenium 4. 
+- As mentioned in the Architecture, Selenium 3 makes use of the JSON Wire Protocol for information transfer between client and server. 
+  However, Selenium 4 does not depend on the JSON Wire Protocol. It uses the W3C consortium to facilitate communication between the client and server.  
+- In selenium 3 ChromeDriver extends directly to RemoteWebDriver, Whereas in Selenium 4, the Chrome Driver Class is extend to Chromiun Driver 
+  which has some predefined method to access Dev tool.
+- Desired Capabilities were primarily used in the test scripts to define the test environment (browser name, version, operating system) for execution 
+  on the Selenium Grid. In Selenium 4, capabilities objects are replaced with Options. (eg Firefox – FirefoxOptions, Chrome – ChromeOptions)
+- In Selenium 4, several new methods have been added to the Actions class:
+  *clickAndHold(WebElement)
+  *contextClick(WebElement)-This method will replace moveToElement(onElement).contextClick(). It will perform the right click operation.
+  *doubleClick(WebElement)
+  *release()
+
+# why can we create obj of abstract class?
+  Because an abstract class is an incomplete class (incomplete in the sense it contains abstract methods without body and output) we cannot 
+  create an instance or object; the same way you say for an interface.
+   * abstract class has a protected constructor (by default)
+
+# can we declare abstract as static?
+  No -> Reason - If you declare a method in a class abstract to use it, you must override this method in the subclass. But, overriding is not possible
+           with static methods. Therefore, an abstract method cannot be static.
+
+  **In abstract class Incomplete static method is not allowed and complete static method is allowed.(Example selenium By class (By.id,By.class))
+
+# static block and non static blocks?
+- static block will allow only static members, whereas non-static will allow both static and non-static
+- static block always run before main method and main method is compulsory for static block, non static block will be executed whennever object is created.
+
+# What is the purpose of making a class a static?
+  Using the static class is a way of grouping classes together. It is also used to access the primitive member of the enclosing class 
+  through the object reference.
+
+# Static methods and variables cannot access non-static members of a class.
+
+# how to integrate java test automation framework with Report Portal:- https://dev.to/giannispapadakis/integrate-reportportal-io-in-java-projects-4634
+
+# Posting Data to ReportPortal?test logs to RP?
+
+# There are several ways how to install listener:
+   Maven Surefire plugin
+   Specify listener in testng.xml
+   Custom runner
+   Using command line
+   Using @Listeners annotation
+   Using ServiceLoader
+
+# There are two different ways to connect to the class and interface.
+
+ 1.The first way is to use Listeners annotation (@Listeners) as shown below:
+
+  @Listeners(Listener_Demo.ListenerTest.class)			
+   public class TestCases {				
+  }				
+
+ 2.If project has multiple classes adding Listeners to each one of them could be cumbersome and error prone.
+   In such cases, we can create a testng.xml and add listeners tag in XML.
+
+  <listeners>
+        <listener class-name="com.epam.Listener"></listener>    
+  </listeners>
+
+# The sequence of execution of all the annotations in TestNG is given below: / Diffrent anaotation of TestNG
+
+    @BeforeSuite -> @BeforeTest -> @BeforeClass -> @BeforeMethod -> @Test -> @AfterMethod -> @AfterClass -> @AfterTest -> @AfterSuite  
+
+# TestNG Listeners
+ -TestNG provides the @Listeners annotation which listens to every event that occurs in a selenium code.
+
+ -It is an interface that modifies the TestNG behavior. For example, when you are running a test case either through selenium or appium and suddenly 
+  a test case fails. We need a screenshot of the test case that has been failed, to achieve such scenario, TestNG provides a mechanism, i.e., Listeners.
+  When the test case failure occurs, then it is redirected to the new block written for the screenshot.
+
+ -Types of TestNG Listeners in Selenium
+  Listeners are implemented in code via interfaces to modify TestNG behaviour. Listed below are the 8 most commonly used TestNG listeners:
+
+    IAnnotationTransformer
+    IExecutionListener
+    IHookable
+    IInvokedMethodListener
+    IMethodInterceptor
+    IReporter
+    ISuiteListener
+    ITestListener
+
+ -Listeners are implemented by the ITestListener interface. An ITestListener interface has the following methods:
+  
+   onTestStart(): 
+   onTestSuccess():
+   onTestFailure():
+   onTestSkipped(): 
+   onTestFailedButWithinSuccessPercentage(): 
+   onStart(): 
+   onFinish():
+
+# What are stack overflow errors?
+  The java.lang.StackOverflowError is a runtime error which points to serious problems that cannot be caught by an application. 
+  The java.lang.StackOverflowError indicates that the application stack is exhausted and is usually caused by deep or infinite recursion.
+
+# Java 11 feature:
+ -Running Java File with single command
+ -New utility methods in String class - isblank(), lines(), repeat()
+ -Reading/Writing Strings to and from the Files (there are various methods which help us to perform several operations on file.)
+   *Java 11 strives to make reading and writing of String convenient. It has introduced the following methods for reading and writing to/from the files:
+    - readString()
+    - writeString()
+ -toArray():In java 11 new default method has been introduced in collection interface.
+
+# Java 8 v/s Java 11
+
+ - It has fewer string methods.	                               - Several new methods of String such as isBlank(), lines(),repeat(n), stripLeading(), 
+                                                                  stripTrailing(), and strip() are introduce. 
+ - No special variables are used for lambda parameters.	       - Java 11 allows us to use var variables to be used in lambda expressions.
+ - There are no suitable methods to work with the file.	       - In Java 11, there are various methods, such as writeString(), readString(), and isSameFile()
+                                                                  which help us to perform several operations on file.
+                                                               - toArray() method is also introduced in java 11 - The toArray() method of ArrayList is used 
+                                                                  to return an array containing all the elements in ArrayList in the correct order.
+# Ant 
+   The main known usage of Ant is the build of Java applications.
+   Ant supplies a number of built-in tasks allowing to compile, assemble, test and run Java applications.
+   Software development projects looking for a solution combining build tool and dependency management can use Ant in combination with Apache Ivy.
+   Ant uses XML as the format.
+
+   Disadvantage :-
+   Ant XML files speedily become unmanageably big even for small projects.
+   Ant does not have the predefined set of build cycles, we need to write the scripts for everything.
+   Ant is simply a Build tool, It doesn’t have dependency management system.
+
+ Ivy
+  Apache Ivy is a very popular and very powerful dependency management tool used to manage dependencies in ANT based projects
+
+# Scrum ceremonies that make up a Sprint:
+
+ Sprint Planning      - Participants: Developers, Scrum Master, Product Owner
+ Daily Scrum          - Participants: Developers, Scrum Master, Product Owner
+ Sprint Review        - Participants: Developers, Scrum Master, Product Owner, Project Stakeholders
+ Sprint Retrospective - Participants: Developers, Scrum Master, Product Owner (optional)
+ Backlog Refinement - Product Backlog Refinement is the act of breaking down and further defining Product Backlog items into smaller, more precise items. 
+                      Participants: Product Owner, Developers
+
+ *Diffrence b/w sprint review and retrospective?
+   sprint review - focus on product - To review the work completed in the sprint with stakeholders.
+   sprint retrospective - focus on process - to review the product development process and identify area for continous improvement.
+
+   At the end of every sprint cycle, the SCRUM team meets again and demonstrates the implemented user stories to the product owner. The product owner
+   may cross verify the stories as per its acceptance criteria. It’s again the responsibility of the Scrum master to preside over this REVIEW MEETING.
+
+   SPRINT RETROSPECTIVE is conducted at the end of each sprint with the entire team including Scrum Master and to discuss what went well, what did not
+   go well and what steps should be taken to improve the process.
+
+# Tfs vs Git
+
+  TFS is Centralized version control system.
+  Git is distributed version sontrol system.
+
+  Tfs will fetch from remote to directly local system where dev will be working (no local repo)
+  Git will fetch from remote to local reprository, here there will be disconnection therfore it is called distributed 
+
+  In centralized when we do any changes and push it will go back to remote repository 
+  In distibuted when we do any changes will be in local repository and its up to us when we want to push to remote repository 
+
+#   			Junit                                 			         TestNG
+   JUnit does not support to execute parallel tests.		        TestNG can Run parallel tests.
+   JUnit does not support the ability to organise tests into groups.	The tests can be bundled together and executed simultaneously.
+   BeforeSuite And AfterSuite Annotation is not present.                BeforeSuite And AfterSuite Annotation is present.
+   Test Listeners is not present                                        Test Listeners is present
+
+# How Junit5 is better than TestNG?
+  Whether JUnit 5 is "better" than TestNG depends on your specific testing needs and preferences.Here are some reasons why you might consider 
+  JUnit 5 over TestNG:
+  1.Official Support: JUnit 5 is supported by the JUnit team and the Java community. It is considered the standard for Java testing, 
+                       making it a strong choice for many Java developers.
+  2.Nested Tests: JUnit 5 allows you to define nested test classes, making it easier to organize and structure your test code.
+
+# 			JDK                            					      JRE
+  JDK is a dedicated kit for solely software development     		JRE is a set of software and library designed for executing Java Programs
+  JDK package is a set of tools for debugging and Developing		JRE Package is one that only supports files and libraries for a runtime environment
+  It contains JRE + Development tools                                   It contains JVM + Set of libraries
+
+# In-sprint automation:
+  In-sprint test automation fills the gap between development sprint and test automation by incorporating QA into the development process.
+
+  Benefits of in-sprint test automation:
+  1.Software with fewer bugs
+  2.Smoother communication between teams
+  3.Cost saver
+
+# To implement Agile we have scrum,xp,kanban
+
+# Can we override a super class method without throws clause as a method with throws clause in the sub class?
+  Yes, but only with unchecked type of exceptions.
+
+# Can we declare abstract methods as synchronized?
+  No, abstract methods can not be declared as synchronized. But methods which override abstract methods can be declared as synchronized.
+
+# (i) Hard Assert:If the hard assert fails, then none of the code gets executed after the assert statement.
+
+ (ii) Soft Assert:If we want to continue the test execution even after the assert statement fails, then we have to use soft assert.
+
+# What is the difference between @Factory and @DataProvider annotation?
+@DataProvider: It is annotation used by TestNG to execute the test method multiple numbers of times based on the data provided by the DataProvider.
+
+@Factory: The @Factory annotation is useful when we want to run multiple test cases through a single test class. 
+          It is mainly used for the dynamic execution of test cases.
+
+# what is functional programming in java 8 ?
+->
+
+some key functional programming features in Java:
+
+1.Lambda Expressions: will have no name and return type, it will only have parameter list and body -> (parameter_list) -> {function_body}
+2.Functional Interfaces:Functional interfaces are interfaces that have exactly one abstract method.
+3.Streams: Streams provide a declarative way to process sequences of elements (e.g., collections) in a functional style. You can perform various 
+         operations on streams, such as map, filter, reduce, and collect, to process and transform data efficiently. 
+4.Method References: Method references provide a shorthand notation for referring to methods or constructors without invoking them.
+
+    List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+    names.forEach(System.out::println);
+
+# https://www.tutorialspoint.com/java8/java8_datetime_api.htm
+
+#Exception in Rest Assured.
+RestAssured is a popular Java library used for testing RESTful web services. When working with RestAssured, you may encounter various exceptions that indicate issues or errors during the execution of your API tests. Here are some common RestAssured exceptions and their meanings:
+
+RequestSpecificationException: This exception is thrown when there's an issue with the configuration of your request, such as missing required parameters or incorrect request syntax.
+
+ResponseSpecificationException: This exception is thrown when there's an issue with the configuration of your response validation, such as an incorrect expected status code or missing expected response elements.
+
+JsonPathException: JsonPath is a feature of RestAssured that allows you to extract data from JSON responses. This exception is thrown if there's an issue with your JsonPath expression, such as invalid syntax or attempting to access a non-existing element.
+
+PathException: This exception can occur when there's an issue with specifying the path in your request, such as an invalid URL or path parameter.
+
+HttpException: This is a general exception that can be thrown for various HTTP-related errors, such as network issues, timeouts, or when the server returns an unexpected HTTP status code.
+
+RestAssuredIOException: This exception is thrown when there's an issue with input or output operations during the HTTP request/response, such as connection problems or reading/writing issues.
+
+RestAssuredException: This is a general exception class for RestAssured, and it can be thrown for various unexpected errors that don't fall into more specific exception categories.
+
+ValidationException: This exception is thrown when the response validation fails. It indicates that the expected conditions specified in your test were not met.

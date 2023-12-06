@@ -1,0 +1,194 @@
+Types of Software Testing:
+----------------------------
+1.Manual Testing
+2.Automation Testing
+
+# Classification of Manual Testing
+- In software testing, manual testing can be further classified into three different types of testing, which are as follows:
+
+1.White Box Testing - It is a type of testing which is done by developers where they check each and every line of code written by then
+           In WBT since develepor can see the code during the testing process hence it is known as WBT/Glass box.
+
+2.Black Box Testing - It is a type of testing which is done by test engineer whwre they check the functionality of the application. Here test
+             engineer will analyze the software against requirements, identify the defects or bug, and sends it back to the development team. 
+             Then, the developers will fix those defects, do one round of White box testing, and send it to the testing team.
+           The source code is not visible in this testing; that's why it is known as black-box testing.
+
+3.Grey Box Testing - It is the combination of both both WBT and BBT and done by a person who has knwlege of source code as well as Testing.
+
+# Black Box Testing is further divided on 2 parts:-
+
+  1.Functional Testing
+  - Functional testing is a type of software testing and a type of black box testing whereby the system is tested against the functional
+    requirements/specifications. 
+  - Example of functional testing types are unit testing, regression testing, Integration testing.
+
+  2.Non-function Testing
+  - Non-function Testing : Non-functional testing is a type of software testing to test non-functional parameters such as reliability, load test,
+                           performance and accountability of the software. 
+
+# Types of Functional Testing:-
+
+  1.Unit Testing 
+  2.Integration Testing
+  3.System Testing
+
+  1.UNIT TESTING
+     i) Unit testing is a type of software testing where individual units of a software are tested. 
+     ii) The purpose is to validate that each unit of the software code performs as expected. 
+     iii) Unit Testing is done during the development (coding phase) of an application by the developers. 
+     iv) Unit testing is typically done by the programmer/developer.
+
+  ??1.Unit Testing - Whenever the application is ready and given to the Test engineer, he/she will start checking every component of the module or
+                   module of the application independently or one by one, and this process is known as Unit testing or components testing.
+      It is the first level of functional testing. The aim behind unit testing is to validate unit components with its performance.
+     ** A unit is a single testable part of a software system and tested during the development phase of the application software.
+
+  2.Integration Testing - Checking the data flow between dependent modules or interface between two features is called integration testing.
+                          The purpose of executing the integration testing is to test the statement's accuracy between each module.
+
+    ****Dont speak until asked****
+   Types of Integration Testing:-
+
+    A.Incremental Integration Testing - Whenever there is a clear relationship between modules, we go for incremental integration testing. 
+       Suppose, we take two modules and analysis the data flow between them if they are working fine or not.If these modules are working fine,
+       then we can add one more module and test again. And we can continue with the same process to get better results.
+       In other words, we can say that incrementally adding up the modules and test the data flow between the modules is known as 
+       Incremental integration testing.
+
+       Incremental integration testing can further classify into two parts, which are as follows:
+      
+    -> Top-down Incremental Integration Testing
+       In this approach, we will add the modules step by step or incrementally and test the data flow between them.
+       We have to ensure that the modules we are adding are the child of the earlier ones. OR
+       If the data is going from top to bottom then we call it TDA.
+
+    -> Bottom-up Incremental Integration Testing
+       In the bottom-up approach, we will add the modules incrementally and check the data flow between modules. 
+       And also, ensure that the module we are adding is the parent of the earlier ones. OR
+       If the data is going from bottom to top then we call it BUA
+
+    B.Non-Incremental Integration Testing/ Big Bang Method -
+      Whenever the data flow is complex and very difficult to classify a parent and a child, we will go for the non-incremental integration approach. 
+      The non-incremental method is also known as the Big Bang method.
+
+  3.System Testing - Checking the end to end flow of an application is known as System Testing, In system testing we navigate through all the 
+                     necessary module of an application and check the system as a whole software. 
+
+**Checking each and every componenet of an application with valid and invalid input.It is also known as Component testing.
+ 
+# Types of Non-functional Testing:-
+
+  1.Performance Testing
+  2.Usability Testing
+  3.Compatibility Testing
+
+  1.Performance Testing - Checking the behaviour of an application by applying some load is know as P.T.
+
+    We mainly focus Response time, Load, scalability, and Stability of the software or an application in Performance Testing.
+     A.Load Testing  - Applying load which is less than or equal to desired load on the particular application to check the application's performance.
+     B.Stress Testing - Stress Testing is testing used to check the accessibility and robustness of software beyond usual functional limits. 
+                        It is also known as Endurance Testing, fatigue testing or Torture Testing.           
+     C.Stability Testing - Stability testing is a procedure where we evaluate the application's performance by applying the load for a precise time.
+     D.Scalability Testing - To analysis, the application's performance by enhancing or reducing the load in particular balances.
+
+  2.Usability Testing - In usability testing, we will analyze the user-friendliness of an application and detect the bugs in the software's end-user interface.
+     Here, the term user-friendliness defines the following aspects of an application:
+
+    -Application should be easy to access
+    -Easy to Understand
+    -Look and feel should be good
+    -Application should be simple to use 
+
+  3.Compatibility Testing - Checking the application behaviour on diffrent platform i.e, diffrent S/W and H/W
+                        Diffrent S/W - Operating system and browsers,
+                        Diffrent H/W - diff size of Ram, HardDisk, Processor, graphic card
+
+        Note: it is not mandatory and will be done for only those applicion were we dont have control over user.
+
+        C.T Bugs - Alignment issue, Scattred objects,overlaped objects, Broken links.
+
+ Automation Testing
+ ---------------------
+ The most significant part of Software testing is Automation testing. It uses specific tools to automate manual design test cases without
+ any human interference.Automation testing is the best way to enhance the efficiency, productivity, and coverage of Software testing.
+
+ 1.Smoke Testing - Identifying the basic, critical and dependent module of an application and checking one postive flow to decide the
+                   build is testable or not is known as smoke testing.
+
+         Benefits:-
+         - When we perform smoke testing, we can identify the blocker bug at the early stage so that the test engineer won't sit idle,
+           or they can proceed further and test the independent testable modules.(they are testable because we have checked one positive value)        
+         - Developer will not be under pressure because he will gets enough time to fix the bug.
+         - Project duration will not get affected beacaue DEV & testing are working paralelly.
+
+    **We do smoke testing as soon as build is intalled because of 2 reason
+      -Since devloper has done some code changes it may affect the smoke feature.
+      -Since the new build is installed there might be some installation/build issue
+    
+    **In smoke testing, we verify every build is testable or not; hence it is also known as Build Verification Testing.
+
+ 2.Sanity Testing - It is used to ensure that all the bugs have been fixed and no added issues come into existence due to these changes. 
+                    Sanity testing is unscripted, which means we cannot documented it. It checks the correctness of the newly added features 
+                    and components.  (OR)
+                    we can say that sanity testing is performed to make sure that all the defects have been solved and no added issues come
+                    into the presence because of these modifications.
+                    It is also known as a variant of regression testing.
+
+     **Diffrence between Smoke And Sanity:
+
+     -Smoke Testing is scripted, which means it can be documented,    sanity testing is unscripted, which implies that it cannot be documented.
+     -Smoke testing is considered shallow and wide testing,           sanity testing is considered narrow and deep testing.
+     -Smoke testing takes all important features and performs         sanity testing takes some very significant features and 
+       high-level testing                                              performs deep testing.
+     -Smoke testing is executed as soon as the build is installed     sanity testing is implemented as soon as the bug fixes are done.
+
+  3.Regression Testing - whenever developer does some code changes across across multiple buils or across multiple release to fix the bug 
+                         or do some enhancement, these changes may have impacted area on the dependent feature, checking for these impacted
+                         area is known as regression testing.
+
+  4.User Acceptance Testing - The User acceptance testing (UAT) is done by the individual team known as domain expert/customer or the client.
+                              And knowing the application before accepting the final product is called as user acceptance testing.
+       In user acceptance testing, we analyze the business scenarios, and real-time scenarios on the distinct environment called the UAT environment. 
+
+  5.Adhoc Testing - Testing the application randomly without following  any sequence/rules is known as Adhoc testing. Also known as Monkey Testing 
+    
+     WHY?- As soon as the application is given to the customer they may use the application in random way beacuse they dont have the knowledge
+           of the application and during this process he/she can find some adhoc issue.
+   
+     Note- >it is genrally done at the last beacuse very few customer will use the application in random way.
+           >Adhoc testing is always done only after the application works in a sequential order according to the the requirement.
+
+  6.Exploratory Testing- When the app is ready but we dont have requirement, or req exits but not clear, and the testing team has experienced 
+                         testers when we have a critical application. New test engineer entered into the team then we go for the exploratory testing.
+        - To execute the exploratory testing, we will first go through the application in all possible ways, make a test document, understand the
+          flow of the application, and then test the application.
+
+#    Diffrence between Adhoc and Exploratory:-
+
+          Adhoc                         Exploratory
+     -req document exits              -no req document
+     -we dont create test documents   -we create test document.  
+
+#      		 Static Testing	                                			 Dynamic Testing
+  It is performed in the early stage of the software development.	It is performed at the later stage of the software development.
+  In static testing whole code is not executed.	                        In dynamic testing whole code is executed.
+  Static testing prevents the defects.	                                Dynamic testing finds and fixes the defects.
+  Static testing is performed before code deployment.			Dynamic testing is performed after code deployment.
+  Static Testing involves checklist for testing process.		Dynamic Testing involves test cases for testing process.
+  It includes walkthroughs, code review, inspection etc.		It involves functional and nonfunctional testing.
+  Example:  Verification                                                Example: Validation 
+
+# Apha and beta testing
+
+- Alpha Testing is done within the organization,                       Beta Testing is done in the user's environment.
+  During Alpha Testing only functionality and usability are tested     During Beta Testing usability, functionality, security, and reliability are tested.
+  It is done by internal testers of the organization.	               It is done by clients who are not part of the organization.
+  Alpha Testing uses both black box and white box testing techniques   Beta Testing only uses the black box testing technique.
+  Developers start fixing bugs as soon as they are identified.	       Errors are found by users and feedback is necessary.
+
+# UAT (USER ACCEPTANCE TESTING)
+   UAT also known as beta or end user testing. UAT is done in the staging environment of testing.
+   It defined as testing the software by the user or client to determine whether it can be accepted or not.
+ 
+       

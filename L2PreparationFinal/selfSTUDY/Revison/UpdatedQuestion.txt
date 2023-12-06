@@ -1,0 +1,167 @@
+1. Tell me about yourself
+
+2. tell me about ur project
+
+3. what is your role and responsibilities
+
+4. what tech uh worked in
+   Selenium, testNg, Maven, cucumber, Reportportal, jenkins, RestAssured
+
+5. what is cross browser testing and parallel testing(Selenium Grid) [Complete understanding and commands]
+   Selenium Grid - Selenium Grid uses a hub-node concept where you only run the test on a single machine called a hub,
+                   but the execution will be done by different machines called nodes. 
+
+   *The hub and nodes communicate with each other using a JSON wire protocol.
+   *DesiredCapabilites is used to set the type of browser and OS that we will automate.
+   *RemoteWebDriver is used to set which node (or machine) that our test will run against.
+
+   *connect to HUB-
+    java -jar selenium-server-standalone-2.41.0.jar -role hub (selenium 3)
+    java -jar selenium-server-4.7.2.jar hub
+
+   *Connect to node 
+    java -jar selenium-server-4.7.2.jar node
+
+6. Maven lifecycle
+   The three build lifecycles are −
+    -clean			:Cleans up artifacts created by prior builds.
+    -default (or build)		:This is used to build the application.
+    -site			:Generates site documentation for the project.
+
+7. Status code series
+
+8. diff between 200 and 201
+   200 Ok : 201 created
+
+9. status is part of body or response
+
+10. diff headers you know
+    There are 2 types->  Request Header and Response Header
+
+    Content-Type: Specifies the format of the request body. ...
+    Content-Type : The MIME type of the response content.
+    Accept: Specifies the preferred format of the response                 
+    content-length : The length of the request body in octets (8-bit bytes).
+    Content-Encoding:The type of encoding used on the data (Content-Encoding: gzip)
+    Status :The Status line in the HTTP response indicates whether the server responded to the request successfully, or if there was an error.
+    
+11. why obj are not created for abstraction nd interface
+
+12. Static variable and static method and their use case(situation based ques)
+    A static method means it can be called without creating an instance of the class. 
+    Static variables and methods in Java provide several advantages, including memory efficiency, global access, object independence, performance, 
+    and code organization.
+
+    Static Methods and Static variables are those methods and variables that belong to the class of the java program, not to the object of the class. 
+    This gets memory where the class is loaded. And these can directly be called with the help of class names.
+
+13. given scenario and asked which solid principle it is
+
+14. why clean code is responsible
+
+15. design pattern which is implemented in project
+
+16. implementation of singleton(3-4 ways uh must knw)
+
+17. which design pattern is used where in selenium(basically he wants to know OOPs features in selenium)
+-   Singleton pattern, Factory pattern, Builder pattern and page object model(POM)
+
+    Factory dp - The best example of factory design pattern would be a factory class which is used to initialize a driver based on the user 
+                 requirement.
+
+18. diff waits
+
+19. JavaScript executor and its uses cases
+
+20. diff selenium exceptions and given one situation and asked it is giving exception. what might be the possibility.
+
+21. java 8 features
+
+22. diff b/w consumer and supplier
+    A supplier is any method which takes no arguments and returns a value.
+    Consumer is any method which takes arguments and returns nothing.
+    A Predicate is a functional interface, which accepts an argument and returns a boolean. Usually, it is used to apply in a filter
+     for a collection of objects.
+    Functions - The function takes an input value and returns a value.
+
+23. stream api(intermediate and terminal operations)
+
+ *Intermediate Operations:
+  Intermediate operations are operations that can be applied to a stream to transform or manipulate the data, but they do not produce a final result.
+  Intermediate operations return a new stream, which allows for chaining multiple operations together.
+
+1.filter(Predicate): Filters elements based on a given condition (Predicate).
+
+	List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+	Stream<Integer> evenNumbers = numbers.stream().filter(n -> n % 2 == 0);
+
+2.map(Function): Transforms elements in the stream by applying a function to each element.
+
+	List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+	Stream<Integer> nameLengths = names.stream().map(String::length);
+
+3.flatMap(Function): Flattens a stream of streams into a single stream by applying a function that returns a stream for each element.
+
+  	List<List<Integer>> listOfLists = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4));
+  	Stream<Integer> flattened = listOfLists.stream().flatMap(List::stream);
+
+4.distinct(): Returns a stream with distinct elements.
+
+	Stream<Integer> distinctNumbers = numbers.stream().distinct();
+
+5.sorted(): Returns a stream with elements sorted in their natural order.
+
+	Stream<Integer> sortedNumbers = numbers.stream().sorted();
+
+ *Terminal Operations:
+  Terminal operations are operations that produce a final result. Once a terminal operation is invoked on a stream, it triggers the execution
+  of the intermediate operations and consumes the stream. 
+
+1.forEach(Consumer): Performs an action on each element in the stream.
+
+	numbers.stream().forEach(System.out::println);
+
+2.collect(Collector): Accumulates elements into a collection or other data structure.
+
+	List<Integer> collectedNumbers = numbers.stream().collect(Collectors.toList());
+
+3.reduce(BinaryOperator): Reduces the elements of the stream to a single value based on a binary operation.
+
+	Optional<Integer> sum = numbers.stream().reduce((a, b) -> a + b);
+
+5.count(): Returns the count of elements in the stream.
+
+	long count = numbers.stream().count();
+
+6.anyMatch(Predicate): Checks if any element in the stream matches a given condition.
+
+	boolean anyEven = numbers.stream().anyMatch(n -> n % 2 == 0);
+
+7.allMatch(Predicate): Checks if all elements in the stream match a given condition.
+
+	boolean allEven = numbers.stream().allMatch(n -> n % 2 == 0);
+
+24. testng basics
+
+25. serializing and deserialization(other libraries as well ex. Jackson)
+
+# how to convert pojo class into map in java?
+
+  // Create ObjectMapper instance
+     ObjectMapper mapper = new ObjectMapper();
+
+  // Converting POJO to Map
+     Map<String, Object> map = mapper.convertValue(foo, new TypeReference<Map<String, Object>>() {});
+
+  // Convert Map to POJO
+     Foo anotherFoo = mapper.convertValue(map, Foo.class);
+
+    ** For more refer to restassured project 
+
+#  -:Dont say untill asked
+      We can directly parse into appropiate pojo class also 
+        ResponseBody resBody=  response.getBody();
+        PojoClass responseBody = resBody.as(PojoClass.class);
+        // Use the JSONSuccessResponseclass instance to Assert the values of Response.
+        Assert.assertEquals("Raza", responseBody.name);
+        Assert.assertEquals("Student", responseBody.job);

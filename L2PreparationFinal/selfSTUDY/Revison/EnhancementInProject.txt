@@ -1,0 +1,17 @@
+1. Enhancement in framework(PROD regression setup)
+ - host upgradation
+ - prod user configuration
+ - making vertical and pool which used in test framework
+
+2. Jenkins Pipeline Creation
+ - Creation of Pipeline for lower env e.g(demo)
+
+3. Participated in implementation of Grid setup in Project.
+
+
+
+Action Item :
+Can we run tests in paralell in BDD cucumber?
+if yes can we do 
+ 
+Grid setup walk through

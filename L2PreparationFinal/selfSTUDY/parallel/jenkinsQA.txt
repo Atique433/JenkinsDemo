@@ -1,0 +1,108 @@
+# Role Strategy Plugin - To enable you to assign different roles and privileges to different users in Jenkins
+
+# Jenkins Architecture:-
+  Jenkins follows Master-Slave architecture to manage distributed builds. In this architecture, slave and master communicate through TCP/IP protocol.
+  Jenkins architecture has two components:
+   1.Jenkins Master/Server
+   2.Jenkins Slave/Node/Build Server
+
+Q) What is Continuous Integration?
+-  Continuous Integration (CI) is a development practice in which the developers are needs to commit changes to the source code in a shared repository
+   at regular intervals. Every commit made in the repository is then built. This allows the development teams to detect the problems early.
+   Continuous integration requires the developers to have regular builds. The general practice is that whenever a code commit occurs, a build
+   should be triggered.
+
+Q) How jenkins works?
+- 1.First of all, a developer commits the code to the source code repository. Meanwhile, the Jenkins checks the repository at regular intervals for changes.
+  2.Soon after a commit occurs, the Jenkins server finds the changes that have occurred in the source code repository. Jenkins will draw those changes
+    and will start preparing a new build.
+  3.If the build fails, then the concerned team will be notified.
+  4.If built is successful, then Jenkins server deploys the built in the test server.
+  5.After testing, Jenkins server generates a feedback and then notifies the developers about the build and test results.
+  6.It will continue to verify the source code repository for changes made in the source code and the whole process keeps on repeating.
+
+Q)Advantages and Disadvantages of using Jenkins?
+
+ **Advantages of Jenkins
+
+  It is an open source tool.
+  It is free of cost.
+  It does not require additional installations or components. Means it is easy to install.
+  It supports 1000 or more plugins to ease your work. If a plugin does not exist, you can write the script for it and share with community.
+  It is built in java and hence it is portable.
+  It is platform independent. It is available for all platforms and different operating systems. Like OS X, Windows or Linux.
+  Easy support, since it open source and widely used.
+  Jenkins also supports cloud based architecture so that we can deploy Jenkins in cloud based platforms.
+
+ **Disadvantages of Jenkins
+
+  Its interface is out dated and not user friendly compared to current user interface trends.
+  Not easy to maintain it because it runs on a server and requires some skills as server administrator to monitor its activity.
+  CI regularly breaks due to some small setting changes. CI will be paused and therefore requires some developer's team attention.
+
+Q) Jenkins Pipeline?
+-  In Jenkins, a pipeline is a collection of events or jobs which are interlinked with one another in a sequence.
+
+Q) What are the types of Jenkins pipelines?
+-  Jenkins Pipelines can be either - a Declarative pipeline or a Scripted Pipeline. 
+   1.Declarative pipeline makes use of numerous, generic, predefined build steps/stages (i.e. code snippets) to build our job according 
+     to our build/automation needs whereas, with 
+   2.Scripted pipelines, the steps/stages can be custom-defined & used using a groovy syntax which provides better control & fine-tuned execution levels.
+
+# differentiation between Continuous Integration, Continuous Delivery & Continuous Deployments terms:
+
+1.Continuous Integration- A process where team member integrate their work continously in a shared repository suing some SCM tools like git.
+                          It can be daily or as needed, every itegration or check-in in the repo is validated by automated builds,
+                          automated unit pr integration tests 
+                                             OR
+    Continuous integration is a process where a developer’s code changes are constantly integrated into the main code and the same will be tested
+    automatically and the results of the tests will decide whether the change is ready for deployment.
+
+2.Continuous Delivery- After the CI process, It Software Development Process where the continuously integrated (CI) changes will be tested & 
+  deployed continuously into a specific environment,The main goal of CD is to ensure that the build is always in a deployable state.
+
+-The main aim of continuous delivery is to build, test, and release software with good speed and frequency. It helps you to reduce the cost time 
+ and risk of delivering changes by allowing for frequent updates in production.
+
+3.Continuous Deployment- Along with the CI and CD() we also do automated deployment to production, which is every changes that passes through automation 
+                         tests is deployed to production
+Note:this may not be the case in every situation that continous deployment may be done automatically or within such shorter period of time but in some
+oragnization this can be done for eg facebook
+
+Diagram explanation:-
+
+-CI expands from build stage until some part of test stage because here we are doing integartion of the code and then after a successful build and code
+ integration we also run some unit test within the dev env and can also run some functional test from QA env to make sure our intrgrated code is working 
+ and there are no error or issue.
+
+-Continous delivery included the CI process and we also deploy it to pre-prod/stagging env so here the CDelivery will expand untill the deployment stage.
+
+-Continuous Deployment we do CI + CD(delivery) and we do deployment to actual production env, we can also say that we are doing release of software to 
+ the final prod env
+
+Q) What are the ways to trigger a Jenkins Job/Pipeline?
+-  There are many ways we can trigger a job in Jenkins. Some of the common ways are as below -
+
+  1.Trigger an API (POST) request to the target job URL with the required data.
+  2.Trigger it manually from the Jenkins web application.
+  3.Trigger it using Jenkins CLI from the master/slave nodes.
+  4.Time-based Scheduled Triggers like a cron job.
+  5.Event-based Triggers like SCM Actions (Git Commit, Pull Requests), WebHooks, etc.
+  6.Upstream/Downstream triggers by other Jenkins jobs.
+
+Q) What are the Scopes of Jenkins Credentials?
+-  Jenkins credentials can be of one of the two scopes - Global & System
+   Global - the credential will be usable across all the jobs configured in the Jenkins instance (i.e. for all jobs). 
+   System - This is a special scope that will allow the Jenkins itself (i.e. the core Jenkins functionalities & some installed plugins)
+
+Q) Name a few Jenkins environment variables.
+   By default, there are numerous variables available in Jenkins. Some of them are:
+
+   $NODE_NAME
+   $JOB_NAME
+   $WORKSPACE
+   $JOB_URL
+   $BUILD_URL
+
+Q) What is the use of the JENKINS HOME directory?
+   JENKINS_HOME directory is used to store all the settings, configurations, and logs.

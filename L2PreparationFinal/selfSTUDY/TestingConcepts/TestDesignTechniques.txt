@@ -1,0 +1,136 @@
+Q) WHAT IS TEST DESIGN?
+- Test Case Design Technique allow you to design better cases. There are five primarily used techniques.
+  1.Boundary value analysis is testing at the boundaries between partitions.
+  2.Equivalent Class Partitioning allows you to divide set of test condition into a partition which should be considered the same.
+  3.Decision Table/Cause-Effect table software testing technique is used for functions which respond to a combination of inputs or events.
+  4.In State Transition technique changes in input conditions change the state of the Application Under Test (AUT)
+  5.Error guessing is a software testing technique which is based on guessing the error which can prevail in the code.
+
+WHEN AND WHY DO WE NEED TEST DESIGN?
+BBT?
+
+Q) Diffrence between BVA and ECP?
+-  We group data in equivalent classes but don’t test values from a particular class only. Instead, we check boundary values, those that 
+   are at the ‘borders’ of the classes.
+
+1.Equivalence Class Partitioning
+- Equivalent Class Partitioning allows you to divide set of test condition into a partition which should be considered the same.
+  The concept behind this Test Case Design Technique is that test case of a representative value of each class is equal to a test of any other
+  value of the same class. It allows you to Identify valid as well as invalid equivalence classes.
+
+  Usage :-The equivalent class partitioning is a good solution for cases when you deal with a large volume of incoming data or
+          numerous identical input variations
+
+  Example:-1
+   Input conditions are valid between - 1 to 10 and 20 to 30  
+   Hence there are five equivalence classes
+    --- to 0 (invalid)
+    1 to 10 (valid)
+    11 to 19 (invalid)
+    20 to 30 (valid)
+    31 to --- (invalid)
+  -> You select values from each class, i.e., - 2, 3, 15, 25, 45
+
+  Example:-2
+   Let’s say, there is an online store that offers different shipping rates depending on a cart price. 
+   For example: 1.The shipping price for orders below $100 is $15. 
+                2.The shipping price for orders over $100 is $5. 
+                3.Free shipping on orders over $300. 
+
+     If you use the equivalent class partitioning technique, you get three sets of data to test: 
+     1.From $1 to $100:
+         – valid boundary conditions: any price in the range from 1 to 99.99; 
+         – invalid boundary conditions: any price below 1 or above 99.99; 
+     2.From $100 to $300: 
+         – valid boundary conditions: any price in the range from 100 to 299.99;
+         – invalid boundary conditions: any price below 100 or above 299.99;
+     3.$300 and higher:
+         – valid boundary conditions: any price above 299.99;
+         – invalid boundary conditions: any price below 300.
+
+2.Boundary Value Analysis - 
+  Boundary value analysis is based on testing at the boundaries between partitions
+  The boundary value analysis is similar to the ECP technique.So what makes the boundary value analysis different? We still group data in
+  equivalent classes but don’t test values from a particular class only.
+  Instead, we check boundary values, those that are at the ‘borders’ of the classes.
+ 
+   EXAMPLE:- Assuming that errors are the most likely to occur at the boundaries, we test only the ‘boundary’ numbers:
+    1.From $1 to $100: 
+       – valid boundary conditions: 1.00, 1.01, 99.99;
+       – invalid boundary conditions: 0.99, 100.00, 100.01;
+    2.From $100 to $300: 
+       – valid boundary conditions: 100.00, 100.01, 299.99;
+       – invalid boundary conditions: 99.99, 300.00;
+    3.$300 and higher:
+       – valid boundary conditions: 300.00, 300.01;
+       – invalid boundary conditions: 299.99.
+
+    Example 2:
+    Input condition is valid between "1 to 10"
+      - Boundary values 0,1,2 and 9,10,11
+
+3.Decision table -
+   A decision table is also known as to Cause-Effect table. This software testing technique is used for functions which respond to a combination
+   of inputs or events. For example, a submit button should be enabled if the user has entered all required fields.
+
+   The first task is to identify functionalities where the output depends on a combination of inputs. If there are large input set of combinations,
+   then divide it into smaller subsets which are helpful for managing a decision table. For every function, you need to create a table and list down
+   all types of combinations of inputs and its respective outputs.
+
+    Usage :- Decision table technique is appropriate for the functions that have a logical relationship between two and more than two inputs. 
+
+    EXAMPLE:-
+
+    Most of us use an email account, and when you want to use an email account, for this you need to enter the email and its associated password.
+    If both email and password are correctly matched, the user will be directed to the email account's homepage; otherwise, it will come back to
+    the login page with an error message specified with "Incorrect Email" or "Incorrect Password."
+  
+   A decision table is created for the login function in which we can log in by using email and password. Both the email and the password are
+   the conditions, and the expected result is action.
+
+    EMAIL(Condition1)          T          T           F            F
+    PASSWORD(Condition2)       T          F           T            F
+    EX.RESULT               Account    incorrect    incorrect   incorrect
+                            page         pass        email        email
+
+   Formula - In order to find the number of all possible conditions, tester uses 2n formula where n denotes the number of inputs;
+             in the example there is the number of inputs is 2 (one is true and second is false).-: 
+      Number of possible conditions =2^2 = 4
+
+4.State Transition -
+   In State Transition technique changes in input conditions change the state of the Application Under Test (AUT). This testing technique allows
+   the tester to test the behavior of an AUT. The tester can perform this action by entering various input conditions in a sequence.
+   In State transition technique, the testing team provides positive as well as negative input test values for evaluating the system behavior.
+
+   Guideline for State Transition:/Usage
+
+  -State transition should be used when a testing team is testing the application for a limited set of input values.
+  -The Test Case Design Technique should be used when the testing team wants to test sequence of events which happen in the application under test.
+
+  Example:-
+  The simplest example of the state transition is visualizing logging into an account during web or mobile app testing.
+  If the user enters a valid password in any of the first three attempts the user will be able to log in successfully. If the user enters the
+  invalid password in the first or second try, the user will be prompted to re-enter the password. When the user enters password incorrectly
+  3rd time, the action has taken, and the account will be blocked.
+
+5.Error Guessing -
+  Error guessing is the most experimental practice of all, usually applied along with another test design technique. In error guessing,
+  a QA engineer predicts where errors are likely to appear, relying on previous experience, knowledge of the system, and product requirements.
+  Thus, a QA specialist is to identify spots where defects tend to accumulate and pay increased attention to those areas.
+
+    EXAMPLE:-
+    ERROR GUESSING As a rule, QA engineers start with testing for common mistakes, such as:
+     1.Entering blank spaces in text fields.  
+     2.Entering invalid parameters (email address instead of a phone number, etc.). 
+     3.Uploading files that exceed the maximum limit. … and so on. 
+     4.Pressing the Submit button without entering data.
+    The more experience a QA specialist has, the more error guessing scenarios they can come up with quickly.
+
+
+When to use : 
+ECP - The equivalent class partitioning is a good solution for cases when you deal with a large volume of incoming data or
+      numerous identical input variations
+DT  - Decision table technique is appropriate for the functions that have a logical relationship between two and more than two inputs
+STS - *State transition should be used when a testing team is testing the application for a limited set of input values.
+      *Also State transition should be used when the testing team wants to test sequence of events which happen in the application under test.
+

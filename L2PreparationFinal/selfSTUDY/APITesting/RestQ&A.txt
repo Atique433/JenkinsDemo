@@ -1,0 +1,256 @@
+#Jackson API is a high performance JSON processor for Java. We can perform serialization, deserialization , reading a JSON file, writing a JSON file
+ and a lot more things using Jackson API.
+
+# Groovy/Gpath - GPath is a path expression language integrated into Groovy which allows parts of nested structured data to be identified.
+              GPath is similar to XPath for XML, Gpath works for both XML and JSON.
+  Uses : dealing with nested POJOs or when dealing with XML.
+
+# Status code
+1xx - informational
+
+200 Ok                      
+201 created
+202 Accepted
+203 Non-Authoritative information
+204 no content
+
+3xx - Redirection
+
+400 Bad request
+401 Unauthorzied
+402 Payment require
+403 forbidden
+404 Not found
+
+500 Internal server error
+501 not implemented
+502 bad gateway
+503 service unavailable
+504 gateway timeout
+
+# Difference between status code 401 and 403?
+  The 401 (Unauthorized) status code indicates that the request not applied because it lacks valid authentication credentials for the target resource.
+  The 403 (Forbidden) status code indicates that the server understood the request but refuses to authorize it.(user not authorize)
+
+Q) What is the difference between SOAP and REST web services?
+->	           SOAP	                                              REST
+                  -------                                           --------
+1)   SOAP is a protocol.	                          REST is an architectural style.
+2)   SOAP stands for Simple Object Access Protocol.	  REST stands for Representational State Transfer.
+3)   SOAP can't use REST because it is a protocol.	  REST can use SOAP web services because it is a concept and can use any protocol like HTTP, SOAP.
+4)   SOAP permits XML data format only.	                  REST permits different data format such as Plain text, HTML, XML, JSON.
+5)   Medium - HTTP (POST)				  Medium - (POST,GET,PUT,DELETE...)
+
+Q) What is API?
+  Application Programming Interface (API) is a software interface that enables two applications to interact with each other without any user intervention.
+  It is a collection of software functions and procedures. API is defined as a code that helps two different software communicate and exchange data with
+  each other.
+
+Q) What are main differences between API and Web Service?
+    - All Web services are APIs but not all APIs are Web services.
+    - Web service uses three styles of use: SOAP, REST and XML-RPC for communication whereas API may be exposed in multiple ways.
+    - Web service needs a network to operate but APIs don’t need a network to operate.
+
+Q) State The Core Components of an HTTP Response?
+-  HTTP response contains four key elements -> Status code, HTTP version, response header, response body
+
+  Response/Status Code- There are response code issues by a sever for client’s request, as 404 means Page Not Found.
+  HTTP Version- HTTP version name. For example, HTTP v2.2
+  Response Header- It included information for the HTTP response message. e.g., content length, content-type, server type, content-Encoding, status, date etc.
+  Response Body – It contains the data which a client requested from the server.
+
+Q) What is an HTTP request?
+-  An HTTP request is a program that the client makes to a name host located on a server. It works as a communication interface or a request-response
+   protocol between a client and server. The primary use of the HTTP request is to access a resource on the server. To initiate the HTTP request,
+   the client uses components of a URL (Uniform Resource Locator) that also includes the information needed to access the resource.
+
+Q) What is the main difference between Authorization and authentication?
+
+  Authorization is the act of allowing or permitting someone, whereas authentication is proving that something is genuine.
+  Authorization always comes first, while authentication comes after authorization.
+  Authorization is open to anyone with permission, whereas authentication requires you to have a password.
+
+Q) What is an Idempotent API?
+-  In the context of REST APIs, when making multiple identical requests has the same effect as making a single request – then that REST API
+   is called idempotent. (OR) when making multiple same request to the server and getting same response from server.
+
+Q) What is an Idempotent HTTP Method?
+-  An idempotent HTTP method is a method that can be invoked many times without the different outcomes. It should not matter if the method has
+   been called only once, or ten times over. The result should always be the same.
+
+# Idempotency with HTTP Methods:-
+
+  1.POST- POST APIs are used to create a new resource on the server. So when we invoke the same POST request N times, we will have N new 
+          resources on the server. So, POST is not idempotent.
+
+  2.GET, HEAD, OPTIONS and TRACE- This methods NEVER change the resource state on the server. They are purely for retrieving the resource
+                                  representation or metadata at that point in time.
+          So invoking multiple requests will not have any write operation on the server, so GET, HEAD, OPTIONS, and TRACE are idempotent.
+
+  3.PUT- PUT APIs are used to update the resource state. If you invoke a PUT API N times, the very first request will update the resource;
+         the other N-1 requests will just overwrite the same resource state again and again – effectively not changing anything.
+         Hence, PUT is idempotent.
+
+  4.DELETE- When you invoke N similar DELETE requests, the first request will delete the resource and the response will be 200 (OK) or 204 (No Content).
+            Other N-1 requests will return 404 (Not Found).Clearly, the response is different from the first request, but there is no change of state
+            for any resource on the server-side because the original resource is already deleted.So, DELETE is idempotent.
+
+Q) What is HEAD method?
+   The HEAD method asks for a response identical to that of a GET request, but without the response body.
+   This is useful for retrieving meta-information written in response headers, without having to transport the entire content
+
+Q) The HTTP OPTIONS method is used to request information about the communication options available for the target resource. 
+ 
+Q) Put vs Patch?
+-                            PUT                                                         	      PATCH                                                        
+1. PUT is a method of modifying resource where the client            PATCH is a method of modifying resources where the client sends partial data that
+   sends data that updates the entire resource .                     is to be updated without modifying the entire data.
+2. if record found it will modify else create it.                    If the record is not there is will throw an error.
+3. We send the entire resource when making a PUT request.            Need to send only the resource to modify
+
+Q)             PUT	                                                                             POST
+
+1.This method is idempotent. This means it will produce     			 -This method is not idempotent. It produces different results 
+  the same results if executed more than once.                                    every time it is executed.
+2.When we need to modify a single resource that is already part of 	         -POST method is called when a child resource is to be added 
+  resource collection, we call the PUT method.                                    under resources collection.
+3.PUT method syntax : PUT /questions/{question-id}	                         -POST method syntax: POST /questions
+4.Put method makes use of the "UPDATE" query.	                                 -POST method makes use of the "CREATE" query.
+5.PUT /vi/cake/orders/1234 indicates updation of a resource	                 -POST /vi/cake/orders* indicate that we are creating a new resource 
+  identified by "1234".                                                           and return an identifier to describe the resource.
+
+#  What is a binary form in POST methods?
+-  Binary representation is the easiest representation for sending complex data with the request,The binary form is designed to help send data in
+   a format that is not possible to be entered manually.
+   These options are used while sending large files like images, CSV files, etc in the POST request
+
+# REST defines 6 architectural constraints/Guiding Principles which make any web service – a true RESTful API.
+
+-1.Uniform interface – The uniform interface constraint defines the interface between clients and servers. It simplifies and decouples
+                       the architecture, which enables each part to evolve independently.
+
+ 2.Client–server - This constraint essentially means that client applications and server applications MUST be able to evolve separately
+   seperation      without any dependency on each other. A client should know only resource URIs, and that’s all.
+
+ 3.Stateless - The server will not store anything about the latest HTTP request the client made. It will treat every request as new.
+                No session, no history. (Server end)
+
+ 4.Cacheable – Caching refers to storing the server response in the client itself, so that a client need not make a server request for the
+               same resource again and again. (Client end)
+ 
+ 5.Layered system - A layered system provides a hierarchical structure between a client and a server. There can be a lot of intermediaries between 
+                    the client and the server working along with REST API without the client's notice. Our clients think there is a direct connection
+                    to the server. We then take advantage of it to improve our architecture and bring down our distributed system complexity. 
+
+ 6.Code-on-demand - The client can send a request to the server asking for the code and then the server will respond with some code in the form of
+                    a script or some other entity. For example, servers can extend the client functionality by downloading and executing pre-compiled 
+                    code like an applet or a client-side script like JavaScript. 
+
+Q) How do you perform chaining in REST Assured?
+-  In the context of object-oriented programming languages, method chaining is used to invoke multiple method calls. Each method returns an object,
+   which allows multiple calls to be chained into a single line that doesn’t require variables to hold interim results.
+            
+         given()
+           .baseUri(baseUri)
+           .queryParam(parameterName, parameterValues)
+           .accept(contentType).
+           .when()
+           .then();
+
+Q) What is JSONPath?
+-  JSONPath is a query language for JSON, similar to XPath for XML. It allows you to select and extract data from a JSON document.
+   You use a JSONPath expression to traverse the path to an element in the JSON structure.
+
+      Response employeesResponse = RestAssured.given().request(Method.GET, "/all");
+      JsonPath jsonPathObj = employeesResponse.jsonPath();
+
+     //get a list of all employees id:
+     List<String> employeeIds = jsonPathObj.get("company.employee.id");
+     //get the first employee name:
+     String empName = jsonPathObj.get("company.employee[0].name");
+
+Q) How do you log a request and response in case REST Assured fails a validation?
+-  If the test validation fails, log().ifValidationFails() will log everything in a request and response.
+
+Q) What are serialization and deserialization in the context of Java?
+-  Serialization is defined as the process of changing an object's state into a byte stream. On the other hand, deserialization is
+   the process of recreating the Java object in memory using the byte stream. This approach keeps the object alive. A serialized 
+   object can be stored in files, external sources, databases etc and can also be transferred over networks.
+
+ --POJO:(Plain Old Java Object) We generally use POJOs to create JSON payload and convert JSON response payload to Java objects.
+   Converting a POJO object to a JSON object is Serialization and converting a JSON object to a POJO object is called deserialization.
+   These conversions can be done with help of Java libraries like Jackson, Gson etc. We don’t need to implement the required interfaces for POJO classes.
+
+Q) List the core components of an HTTP request.
+-  An HTTP request consists of five elements:- URI, Http method (Action),Http version, Request header,Request body
+
+   1.An action (DELETE, GET, POST). This element shows HTTP methods.
+   2.A Uniform Resource Identifier (URI). This element identifies the resource on the server.
+   3.The HTTP version.
+   4.A request header. This element carries the metadata for the message. The metadata could be a format supported by the client,
+                       message body format, browser or client type, cache settings, etc.
+   5.Request body. This element indicates the resource representation or message content.
+
+Q) What is messaging in RESTful Web services?
+-  RESTful web services use the HTTP protocol as a communication tool between the client and the server
+
+Q) How to validate the response time of the request using rest assured?
+
+-  By using a simple long matcher.
+
+    RestAssured.given().baseUri("http://localhost:4001").contentType(ContentType.JSON).log().all()
+		.when().get("/users").then().time(lessThan(5000L)
+
+Q) What is the difference between path params and query params and how to use them?
+
+- * Path params are used to identify resources on the server while query params are used to sort/filter resources.
+  * Query params are key-value-like pairs that appear after the question mark in the URL while path params come before the question mark.
+
+   How to pass Path Param:
+	RestAssured.given()
+	  .pathParam("user", "users/qaautomatonhub")
+
+   How to pass query Param:
+        RestAssured.given()
+                .queryParam("sort","created")
+                .queryParam("direction","desc")
+
+Q) Explain the Request specification and response in Rest Assured.
+
+-  *Request Specification and Response both are Restassured interfaces.
+   *Request specification allows specifying how the request will look like.
+   *The request Specification Interface has methods to define the base URL, base path, headers, body, etc. 
+   *The response interface extends ResponseBody, and ResponseOptions interfaces and uses to return a response to the request.
+
+# Request Specification - RequestSpecification interface provided by Rest Assured is used to club and extract repetitive actions like setting up
+                          base URL, headers, HTTP verbs etc which may be common for multiple Rest calls.
+
+# Response Specification - ResponseSpecification interface comes handy in situation where similar set of assertions need to be done for several
+                           Rest requests. It achieves this by grouping common assertions into a ResponseSpecBuilder instance and using this instance
+                           for validations in multiple tests.
+
+ public RequestSpecification setUpRequestSpecification() {
+        RequestSpecBuilder requestSpec = new RequestSpecBuilder();
+        requestSpec.setBaseUri("https://reqres.in/");
+        requestSpec.addHeader("Content-Type", "application/json");
+        RequestSpecification requestspecification = requestSpec.build();
+        return requestspecification;
+    }
+    public ResponseSpecification setUpResponseSpecification() {
+        ResponseSpecBuilder responseSpec = new ResponseSpecBuilder();
+        responseSpec.expectStatusCode(201);
+        responseSpec.expectContentType("application/json; charset=utf-8");
+        ResponseSpecification responsespecification = responseSpec.build();
+        return responsespecification;
+    }
+
+Q) how do you specify that the response should be of a particular type when sending the request?
+-  Media type (aka MIME type) specifies the format of the data as type/subtype e.g. text/html, text/xml, application/json, image/jpeg etc.
+   
+   In HTTP request, MIME type is specified in the request header using Accept and Content-Type attribute.
+    *The Accept header attribute specifies the format of response data which the client expects and 
+    *The Content-Type header attribute specifies the format of the data in the request body so that receiver can parse it into appropriate format.
+
+  By default, the Web API framework supports two media types: JSON and XML. 
+  When you issue a request with Accept: application/json, then the response message will be JSON and the Content-Type will be set to application/json.
+  Similarly, if you issue a request with Accept: application/xml, then the response message will be XML and the Content-Type will be set to application/xml.

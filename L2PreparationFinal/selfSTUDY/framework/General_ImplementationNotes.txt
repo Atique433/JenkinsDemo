@@ -1,0 +1,45 @@
+Oops implementation in Automation framework:
+#Encapsulation:
+In an automation framework, encapsulation allows you to hide the internal implementation details of test cases and helper methods, making the code more 
+manageable and reducing potential conflicts between different parts of the code.
+#Abstraction:
+In the context of an automation framework, abstraction can be achieved by creating base classes or interfaces that define common behaviors and interactions,
+allowing concrete test case classes to implement them as needed.
+#Inheritance:
+In automation frameworks, inheritance is commonly used to create a hierarchy of test case classes, where common test setups and utility methods are 
+inherited from a base class, reducing code duplication.
+#Polymorphism:
+In an automation framework, polymorphism can be used to handle different web elements using a common interface, making the test code more adaptable to
+changes in the application's UI
+
+Implementing "Oops" (Object-Oriented Programming) principles in an automation framework can greatly enhance the maintainability, reusability, and scalability of your test code. Below, I'll outline how you can apply OOP concepts in an automation framework:
+
+1. **Encapsulation:**
+   - Create classes for different components or pages of your application under test. These classes should encapsulate the data and behavior related
+     to those components.
+   - Use access modifiers like private, public, or protected to control the visibility of properties and methods within the classes.
+
+2. **Abstraction:**
+   - Abstract out the common functionalities into base classes or utility classes. For example, you could have a base page class that contains methods and properties that are common to all pages.
+   - Use abstract classes or interfaces to define common behaviors, ensuring that child classes implement them accordingly.
+
+3. **Inheritance:**
+   - Use inheritance to create a class hierarchy, where child classes inherit properties and methods from their parent classes. This promotes code reuse and helps maintain consistency.
+   - For example, you can have a base test class that contains common setup and teardown methods, which other test classes can inherit.
+
+4. **Polymorphism:**
+   - Leverage polymorphism to allow classes to provide different implementations for the same method or property.
+   - For instance, you could have a common method like "click()" that behaves differently based on the context, such as clicking on a button or a link.
+
+5. **Single Responsibility Principle (SRP):**
+   - Ensure that each class and method in your automation framework has a single responsibility.
+   - If a class or method becomes too complex, consider refactoring it into smaller, more manageable pieces.
+
+6. **Dependency Injection:**
+   - Use dependency injection to provide dependencies to classes rather than hard-coding them. This makes your code more flexible and easier to test.
+   - For example, you could pass WebDriver instance, configuration, or other objects to the page classes rather than instantiating them inside the classes.
+
+7. **Design Patterns:**
+   - Explore design patterns like Page Object Model (POM) to represent web pages as objects and separate them from the test code. This helps in easy maintenance as UI changes can be localized to the page objects.
+   - Another pattern could be the Singleton pattern to ensure only one instance of a class is created, which might be beneficial in certain scenarios.
+

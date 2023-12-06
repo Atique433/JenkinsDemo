@@ -1,0 +1,38 @@
+-Priority indicates how soon the bug should be fixed whereas Severity indicates the seriousness of the defect on the product functionality.
+-Priority is the order in which the developer should resolve a defect whereas Severity is the degree of impact that a defect has on the operation
+  of the product.
+-High Priority and low severity status indicates, defect have to be fixed on immediate bases but does not affect the application while
+ High Severity and low priority status indicates defect have to be fixed but not on immediate bases.
+-Priority status is based on customer requirements whereas Severity status is based on the technical aspect of the product.
+-A Quality Assurance engineer usually determines the severity level of a bug/defect.
+
+**Diffrence between Smoke And Sanity:
+
+     -Smoke Testing is scripted, which means it can be documented,    sanity testing is unscripted, which implies that it cannot be documented.
+     -Smoke testing is considered shallow and wide testing,           sanity testing is considered narrow and deep testing.
+     -Smoke testing takes all important features and performs         sanity testing takes some very significant features and 
+       high-level testing                                              performs deep testing.
+     -Smoke testing is executed as soon as the build is installed     sanity testing is implemented as soon as the bug fixes are done.
+
+#      		 Static Testing	                                			 Dynamic Testing
+  It is performed in the early stage of the software development.	It is performed at the later stage of the software development.
+  In static testing whole code is not executed.	                        In dynamic testing whole code is executed.
+  Static testing prevents the defects.	                                Dynamic testing finds and fixes the defects.
+  Static testing is performed before code deployment.			Dynamic testing is performed after code deployment.
+  Static Testing involves checklist for testing process.		Dynamic Testing involves test cases for testing process.
+  It includes walkthroughs, code review, inspection etc.		It involves functional and nonfunctional testing.
+  Example:  Verification                                                Example:Validation  
+
+# diffrence between DDL and DML?
+-                        DDL	                                                                   DML
+   It stands for Data Definition Language.	                           It stands for Data Manipulation Language.
+   DDL does not use WHERE clause in its statement.	                   While DML uses WHERE clause in its statement.
+   DDL is used to define the structure of a database.	                   DML is used to manipulate the data within the database.
+   DDL statements do not change the contents of the database.	           DML statements change the contents of the database.
+   Examples of DDL commands: CREATE TABLE, ALTER TABLE, DROP TABLE, 	   Examples of DML commands: SELECT, INSERT, UPDATE, DELETE, and MERGE.
+      TRUNCATE TABLE, and RENAME TABLE.
+
+Q) truncate vs delete in sql?
+-  *The DELETE command is used to delete particular records from a table. The TRUNCATE command is used to delete the complete data from the table.
+   *Delete is a DML command whereas Truncate is a DDL
+   *Delete can be use with Where clause whereas Truncate does not use WHERE clause.

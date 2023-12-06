@@ -1,0 +1,146 @@
+# waits:
+  1. Implicit Wait:
+     When to Use: Implicit waits are best used when you have a consistent waiting condition that applies to most or all elements and interactions 
+                  on a web page.
+     Advantages: Simplicity, global application, less code repetition.
+     Example: When most elements require waiting for their visibility before interacting with them, you can set an implicit wait to 
+              wait for visibility globally
+  2.Explicit Wait:
+    When to Use: Explicit waits are suitable when you need to wait for a specific condition or element to become available before proceeding 
+                 with a particular action.
+    Advantages: Precise control over waiting conditions, timeouts, and exceptions handling.
+    Use Cases: Waiting for an element to be clickable, waiting for a specific text to appear, waiting for a loader to disappear, etc.
+
+  3.Fluent Wait:
+    When to Use: Fluent waits are valuable when you need more complex waiting scenarios, such as waiting for multiple conditions or defining
+                 custom polling intervals.
+    Advantages: Fine-grained control, multiple conditions, and custom polling intervals.
+    Use Cases: Waiting for an element with a custom condition or waiting for an element to meet multiple conditions simultaneously.
+
+# does exlicit wait internally uses polling?
+  Yes, explicit waits internally use polling to repeatedly check for a specified condition until either the condition is met or a timeout occurs.
+
+  The condition is met: If the condition becomes true before the timeout expires, the wait will immediately stop, and your script can proceed.
+  Timeout occurs: If the condition is not met within the specified timeout, the wait will throw a timeout exception.
+
+# Which Is The Super Interface Of Selenium Web Driver?
+  The SearchContext acts as the super interface for the Web Driver.
+  It is the external interface which has only two methods: findElement() and findElements()
+
+# Selenese - It is a collection of Selenium commands to perform actions on a web page.
+      There are mainly 3 types of command in selenese : Actions,Accessors,Assertion. 
+
+# Difference between Frame and iFrame in Selenium
+  A frame is used to divide a page into multiple sections, with new content on each section.
+  An iFrame is used to embed the content of the external websites into the web page, in order to avoid cross-site scripting issues.
+
+# How Is An Assert Different From Verify?
+ ▪ Assert: It allows us to verify the result of an expression or an operation. If the “assert” fails, then it will abort the test execution and
+           continues with the next case.
+	
+ ▪ Verify: It also operates the same as the assert does. However, if the “verify” fails, then it won’t abort the test instead continues with the next step.
+
+# By is an abstract class and all the locators are static methods, that is why we use BY.xpath,By.id..., we access with the help of class name.
+
+# How can we customized the size of the window?
+  we can do it with the help of setSize() method of DimensionClass. Dimension is a predefined class present in selenium package.
+	Dimension d = new Dimension(340, 640);
+        driver.manage().window().setSize(d);
+
+# Types Of exception :
+ ▪	TimeoutException: This occurs if a command doesn’t finish within the specified duration.
+ ▪	NoSuchElementException: This occurs if the web element with the specified attributes is not present on the page.
+ ▪	ElementNotVisibleException: This occurs if the element is not visible but still there inside the DOM.
+ ▪	StaleElementException: This occurs in the absence of an element that either got deleted or detached from the DOM.
+ *      WebDriverTimeOutException:
+
+# Xpath engines are different in each browser, hence make them inconsistent. IE does not have a native xpath engine, therefore selenium
+  injects its own xpath engine for compatibility of its API. Hence we lose the advantage of using native browser features that WebDriver
+  inherently promotes.
+
+# Locating Strategies-:
+ -Contains in xpath syntax: //<HTML tag>[contains(@attribute_name,'attribute_value')]  or //*[contains(@attribute_name,'attribute_value')]  
+ -Using And: //<HTML tag>[@attribute_name1='attribute_value1' and @attribute_name2='attribute_value2]
+ -Using or:  //<HTML tag>[@attribute_name1='attribute_value1' or @attribute_name2='attribute_value2]  
+ -Using starts-with(): //<HTML tag>[starts-with(@attribute_name,'attribute_value')]  
+
+# javascript has access to dom where as java dont have access.(DOM- Document Object Mode)
+
+# The major difference between the following and following siblings is that the following sibling takes all the sibling nodes
+  after the context but will also share the same parent,and same goes with preceding and preciding-sibling.
+     //div[@class=’Mammal’]/following-sibling::div
+
+# Few Xpath Axes :
+
+ancestor::       Selects all ancestors (parent, grandparent, etc.) of the current node
+descendant::     Selects all descendants (children, grandchildren, etc.) of the current node
+child::          Selects all children of the current node
+parent::         Selects the parent of the current node
+
+# isSelected() : Checks whether a checkbox is selected or not.
+  isDisplayed(): Checks whether a checkbox/webelement displays on the web page or not.
+  isEnabled()  : Checks whether a checkbox is enabled or not
+
+Q) Diffrence between isDisplayed() and isSelected()?
+- 1.isDisplayed()
+    The isDisplayed method in Selenium verifies if a certain element is present and displayed. If the element is displayed,
+    then the value returned is true. If not, then the value returned is false.
+
+    Syntax:boolean eleSelected= driver.findElement(By.xpath("xpath")).isDisplayed();
+
+  2.isSelected()
+    This method is often used on radio buttons, checkboxes or options in a menu. It is used to determine is an element is selected.
+    If the specified element is selected, the value returned is true. If not, the value returned is false.
+
+    Syntax:boolean elePresent = driver.findElement(By.xpath("xpath")).isSelected();
+
+ *isDisplayed resolves to whether the element is visible or not, but throws an exception if it is not in the DOM.
+ *isPresent resolves to whether it is there in the DOM or not, regardless of whether it is actually visible or not. It doesn't throw an exception.
+ 
+Q)JavascriptExecutor Provides Two Methods:
+
+   ExecuteScript - This method executes the test script in the context of the currently selected window or frame. The script in the method runs as
+                   an anonymous function. If the script has a return statement, the following values are returned: WebElement,Long,boolean,list,String.
+           This method is used to execute synchronous JavaScript code.
+
+   ExecuteAsyncScript -This method executes the asynchronous piece of JavaScript on the current window or frame. An asynchronous script will be executed
+                       while the rest of the page continues parsing, which enhances responsiveness and application performance.
+                        1.executeAsyncScript renders your webpage faster
+                        2.Using executeAsyncScript, our script runs by the browser side and not by the server side
+           This method is used to execute Asynchronous JavaScript code.
+
+Q) which is better among css and xpath in selenium?
+
+- 1.CSS selectors tend to perform better, faster, and more reliably than XPath in most browsers. They are much shorter and easier to read
+    and understand. However, there are some situations where you need to use XPath instead of CSS, like when searching for a parent element
+    or searching for an element by its text.
+  2.Xpath expression is represented by [//tagname[@attribute = 'value']. The css expression is repression is represented by [tagname[attribute = 'value'].
+  3.There are two types of xpath – absolute and relative. But css has no such types.
+
+
+
+input.senkeys(keys.chord(keys.CONTROL,"a"));
+input.sendkeys(keys.chord(keys.Control,"c"));
+input.sendkeys(keys.TAB);
+input.sendkeys(keys.chord(keys.Control,"v"));
+
+
+Action act = new Action(driver);
+
+act.keyDown(Keys.CONTROL);
+act.sendKeys("a");
+act.keyUp(Keys.CONTROL);
+act.perform();
+
+act.keyDown(Keys.CONTROL);
+act.sendkeys("c");
+act.KeyUp(Keys.CONTROL);
+act.build().perform();
+
+act.keyDown(Keys.TAB);
+act.build.perform;
+
+act.keyDown(Keys.CONTROL);
+act.sendkeys("v");
+act.KeyUp(Keys.CONTROL);
+act.build().perform();

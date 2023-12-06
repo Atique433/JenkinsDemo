@@ -1,0 +1,453 @@
+# Why do you want to go to L2?
+  Good Understanding on testing concepts.
+  Good history of working in a team and in helping new team members to resolve their queries.
+  Expertise on Test Automation with java + Selenium using TestNG.
+  Able to build the framework from scratch.
+  Expertise on Jenkins and Report Portal.
+  Experience in working with Build tools like Maven and Management tool(GIT).
+  To advance in my profession and acquire new skills.
+
+# The IllegalArgumentException is an unchecked exception is an exception that is thrown to indicate that the current state of an object is not in
+  an appropriate or valid condition to perform a particular operation
+ * What is an example of IllegalStateException in Java?
+  It is automatically thrown by the Java Virtual Machine when a Java application attempts to perform an invalid operation. 
+
+# what are the things you see when review code?
+  What are the parameter we generally use or check when review code?
+  What are point when u review code in project? 
+
+ 1.Test Case Clarity and Purpose:
+   * Ensure that the test cases are clear and have descriptive names that convey their purpose.
+ 2.Code Readability and Maintainability:
+   * Check if the code follows consistent and readable coding conventions (e.g., indentation, naming conventions).
+   * Ensure that comments and documentation are present where necessary to explain complex logic or assumptions.
+   * Look for code duplication and encourage the use of reusable methods or utilities.
+ 3.Assertions:
+   * Review the assertions used in the test cases to ensure they are relevant and verify the expected behavior.
+ 4.Error Handling and Reporting:
+   * Check how errors and exceptions are handled. Are there meaningful error messages
+ 5.Test Execution Environment Configuration:
+   * Ensure that the test environment can be configured easily, including different configurations for development, testing, and production.
+ 6.Insure test are following SOLID principals
+ 7.Also we follow some coding standards in our projects that needs to be cover, eg,. we maintain services layer in our project each and every 
+   method define there should we also  included in Interface, so we can use it according to aur need 
+
+# Postman UI:
+
+# Root cause analysis (RCA) is the process of discovering the root causes of problems in order to identify appropriate solutions. 
+
+# Collection fastest to search java? and Collection where it is easy to insert.
+    -Searching: ArrayList
+    -Insertion: LinkedList 
+
+# Dry used case = dont repeat your self, eg. waits, screnshot.
+
+# sub query in mysql?
+  In MySQL, a subquery, also known as a nested query or inner query, is a SQL query nested inside another query. 
+  eg.,
+   SELECT column1, column2, ...
+   FROM table1
+   WHERE columnN operator (SELECT column FROM table WHERE condition);
+
+  Real Time example:
+   1.Subquery in WHERE Clause: You can use a subquery in the WHERE clause to filter rows based on a condition derived from another table or result set.
+        SELECT name
+	FROM employees
+	WHERE department_id IN (SELECT department_id FROM departments WHERE location = 'New York');
+
+   2.Subquery in FROM Clause(Derived Table):You can use a subquery in the FROM clause to create a derived table, which can then be used in the main query.
+	SELECT department, AVG(salary) AS avg_salary
+	FROM (SELECT department, salary FROM employees) AS employee_data
+	GROUP BY department; 
+
+# CI, CDelivery vs. CDeployment 
+
+  1.Continuous Integration (CI) is a development practice in which the developers are needs to commit changes to the source code in a shared repository
+    at regular intervals. 
+    *Every commit made in the repository is then built. This allows the development teams to detect the problems early.
+    *The general practice is that whenever a code commit occurs, a build should be triggered.
+
+  2.Continuous Delivery - CD is an extension of CI and focuses on automating the delivery of tested code changes to pre-production or staging environments.
+
+    *Once code passes the CI phase, it is automatically deployed to a staging environment where further testing can occur, including user acceptance
+     testing (UAT) or integration testing.
+    *In CDelivery, code changes are automatically built, tested, and deployed to a staging environment where further manual testing or approval
+     might be required before deploying to production.
+    *The key goal of CDelivery is to ensure that your software is always in a deployable state, even if the final decision to deploy to 
+     production is made manually.
+  
+   3.Continuous Deployment- Along with the CI and CD() we also do automated deployment to production, which is every changes that passes through automation 
+                            tests is deployed to production
+     *Continuous Deployment we do CI + CD(delivery) and we do deployment to actual production env, we can also say that we are doing release of software to 
+      the final prod env
+     *CDeployment is typically used in scenarios where rapid and frequent deployments to production are feasible and desirable.
+     *It requires a high level of confidence in the automated testing and deployment processes.
+
+    Note:this may not be the case in every situation that continous deployment may be done automatically or within such shorter period of time but in some
+         oragnization this can be done for eg facebook
+
+#  Can you explain what a Jenkins pipeline is in the context of Selenium Grid?
+-> A Jenkins pipeline is a set of tasks that can be run in order to automate the testing and deployment of applications.
+   In the context of Selenium Grid, a Jenkins pipeline can be used to automatically run Selenium tests on a grid of machines
+   in order to speed up the testing process.
+
+#TestNg Reporting
+ Whenever TestNG is run, HTML and XML reports are generated by default in the directory ./test-output.
+ For implementing a reporting class, the class has to implement an org.testng.IReporter interface. 
+
+  The default implementations are:
+    Main 		–index.html in  test-output directory.
+    FailedReporter      –testng-failed.xml.
+    XMLReporter         –testng-results.xml.
+    EmailableReporter2  –emailable-report.html.
+
+# Re-Run Failed Test
+  If we run any test in TestNG knows what tests failed in a particular run and makes it to rerun just these tests, 
+  present in test-output folder testng-failed.xml
+  We can run this file by right click on it just like the testng.xml file and it will execute only failed test cases.
+  
+# Can we use rerun bdd/ also how to implement rerun using TestNg in TDD and BDD -> yes
+  We can achieve our goal in 2 ways.
+   testng-failed.xml
+   rerun plugin
+ 
+   *More details - https://automationqahub.com/how-to-rerun-failed-test-cases-in-cucumber-testng-project/
+
+# what is maven goal
+  There are three built-in lifecycles:default, clean, site 
+  Each lifecycle consists of a sequence of phases. The default build lifecycle consists of 23 phases, as it's the main build lifecycle.
+
+  Maven Goal - A goal represents a specific task which contributes to the building and managing of a project. It may be bound to zero or more build phases. 
+  mvn clean: Executes the clean goal.
+  mvn compile: Executes the compile goal in the compile phase.
+  mvn test: Executes the test goal in the test phase.
+  mvn package: Executes the package goal in the package phase.
+
+# How ci/cd is implemented in testting framework/ ci/cd in terms of test automation framework, how to achive CI/CD in test automation frameowrk?
+
+  CI/CD in a test automation framework involves setting up automated processes that ensure your tests are continuously built, tested, and deployed in an 
+  efficient and reliable manner.
+  
+  1.Version Control: Start by using a version control system like Git/TFS to manage your test automation code.
+  2.Choose a CI/CD Platform:Select a CI/CD platform like Jenkins, GitLab CI/CD. These platforms automate the build, test, and deployment 
+                            processes based on triggers, such as code commits.
+  3.Automated Tests : using selenium.
+  4.Reporting: Test results are collected and reported, indicating which tests passed and which ones failed. (ReportPortal)
+
+# can we declare throw and throws in constructor -yes
+
+# custom Exception in project - 
+  InatilizeUserException(class for exception during Inatilizing)
+  ErrorOnPageException
+  DriverNotFoundException(class for exception during Webdriver is being setup)
+
+# can we run suite in parallely - yes
+
+# advantages of SoapUi/Postman
+
+# while performing testing you find error how to trouble shoot it manullay and through automation?
+
+# Beta testing? and participants(check ppt)
+
+# RTM, how to map, what type of data will be present in RTM ?
+
+  The test engineer will prepare RTM for their respective assign modules, and then it will be sent to the Test Lead. The Test Lead will go repository
+  to check whether the Test Case is there or not and finally Test Lead consolidate and prepare one necessary RTM document.
+   
+  - The purpose of the Requirement Traceability Matrix (RTM) is used to ensure that each 
+    requirement is linked with its associated test case, so that testing can be done as per the requirements.  
+  - I can identify any gap using RTM where the test missing.
+
+# Why RTM is useful?
+   The main goals for this matrix are:
+   i) Make sure software is developed as per the mentioned requirements.
+   ii) Helps in finding the root cause of any bug
+
+# Merge will have new commit? Yes
+
+# Can we achive mobile testing through selenium?
+  No, we cannot achive mobile testing through selenium.
+  We can integrate appium with selenium to achieve mobile testing, Appium supports both iOS and Android platforms.
+
+# Selenium grid diffrence 3 & 4-> in command, desired capabilities
+  #connect to HUB-
+  java -jar selenium-server-standalone-4.7.2.jar -role hub
+  java -jar selenium-server-4.7.2.jar hub
+  
+  Selenium 3: Used DesiredCapabilities class and setCapability method to set capabilities for all browsers.
+  Selenium 4: Uses browser-specific options classes (e.g., ChromeOptions, FirefoxOptions) and methods to set capabilities in a more refined way.  
+
+  Selenium 3:
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    capabilities.setCapability("browserName", "chrome");
+    capabilities.setCapability("version", "latest");
+    capabilities.setCapability("platform", "Windows");
+    // Set more capabilities as needed
+    WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+
+  Selenium 4:
+    ChromeOptions options = new ChromeOptions();
+    options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+    options.addArguments("--disable-popup-blocking");
+    options.setHeadless(true);
+    // Set more Chrome-specific options as needed
+    WebDriver driver = new ChromeDriver(options);
+
+# Are there any limitations when running tests in parallel mode on Selenium Grid?
+  Yes, there are a few potential limitations, One is that not all browsers may be supported by the grid.
+
+# Diffrence between scrum and kunban
+
+# Diffrence between inner join and outer join
+  INNER JOIN, OUTER JOIN (further divided into LEFT JOIN and RIGHT JOIN), SELF JOIN, and CROSS JOIN.
+
+# Can we define a class as static in java.
+  Yes, we can declare a class static in Java, provided the class is inside a top-level class.
+  An instance of an inner class cannot be created without an instance of the outer class. Therefore, an inner class instance can access all of 
+  the members of its outer class, without using a reference to the outer class instance. For this reason, inner classes can help make programs 
+  simple and concise. 
+  * The class in which the nested class is defined is known as the Outer Class. 
+
+# Stages of SDLC**
+    Requirements Gathering
+    Design the software(HLD and LLD)
+    Build the Software(Coding)
+    Test
+    Deployment
+    Maintenance.
+
+  Stages of STLC**
+    Requirement Analysis 
+    Test Planning
+    Test Development
+    Test Environment Setup
+    Test Execution & Closure
+
+  1.Req Analysis - Test leads and manager understand the req and prepare test plan.
+  2.Test plan - 
+  3.Test Documentation -
+      Understand req -> write Test Scenario -> Write TestCase -> Review & Approve TC -> Store TC in TC repository.
+  4.RTM
+  5.Test Execution
+  6.Defect Life Cycle
+  7.Test Excecution Report - After all the TC are executed, pass, Bug are fixed we create a summary report known as Test Exceution Report.
+  8.Retrospect Meet
+    
+# Differnce Between SDLC and STLC?
+
+ -The main difference is that SDLC is focused on the development of the software, while STLC is focused on the testing of the software.
+ -The main object of SDLC life cycle is to complete successful development of the software including testing and other phases, whileThe only objective
+  of the STLC phase is testing.
+ -In SDLC the business analyst gathers the requirements and create Development Plan, In STLC the QA team analyze requirement documents.
+ -In SDLC Whole project team is involved, while in STLC only Testers/QA Engineer are involved.
+
+# How to achieve End to End testing
+
+(1) Using Selenium Java to do Front End testing.
+(2) Using API and RestAssure to do Middle End testing.
+(3) Using SQL to do Backend testing. 
+
+# What is Regression Fix? 
+  Regression Fix means if any bug change, any defect fix, then we must run the regression suite again. This is call regression fix.
+
+# Test Pyramid
+  Levels:
+  unit testing - component testing - integration testing - System Testing - Acceptance Testing - Alpha testing - beta testing
+
+  * Alpha and beta (Business related testing) 
+  * Test Automation Pyramid Functions at Three Levels
+    Unit Testing
+    Integration Testing
+    End-to-End Tests
+  * Advantages:
+    1.Early Issue Detection: Unit tests help catch bugs and issues at a very early stage
+    2.Test Stability: Unit tests are less likely to break due to changes in other parts of the system.
+    3.Focused Integration Testing: This helps identify issues that might arise when different parts of the system interact.
+    4.Cost Efficiency: By focusing on the lower layers of the pyramid, you invest more effort in catching issues early when they are less expensive to fix.
+
+# What is Test Case?
+ Test Case is a detail document that describes step by step process to execute a test
+ Test cases should include Test case ID, Test case title, Description, Test steps, expected result and Actual result (once tested).
+
+# Test Scenarios: A Test Scenario is any functionality that can be tested.
+
+  Test Cases: It is a document that contains the steps that has to be executed, it has been planned earlier.
+
+  Test Script: It is written in a programming language and it's a short program used to test part of functionality of the software system. 
+
+  Test Strategy: Test strategy is set of guidelines which describes how testing needs to be done.
+                 It is used at the organizational level. It is normally developed from the Business Requirement Specification (BRS).
+                 Documents like Test Plan are prepared by keeping this document as base.
+
+  Test Plan: Test plan is the overall strategic (plan) or detailed document that describes entire testing Process to meet the objectives of
+             the testing requirements. 
+             Test Plan is developed based on the 
+             i) User Requirement Specification (URS), 
+             ii) Business Requirement Specification (BRS), 
+             iii) System Requirement Specifications (SRS).
+
+# how you achived clean code in project - it can be achived by using static code analyzers (sonar lint & sonar qube) and solid principles.
+
+# clean code - talk about static code analyzers, sonar lint , sonar qube and solid principles with examples
+  
+  Static code analyzers are tools used in software development to analyze source code without actually executing it. They identify potential issues, 
+  vulnerabilities, and coding standards violations in the codebase.
+  SonarLint and SonarQube are two popular tools used for static code analysis in Java (and other programming languages).
+
+  SonarLint:
+  SonarLint is an extension or plugin that integrates with Integrated Development Environments (IDEs) such as IntelliJ IDEA, Eclipse, and Visual Studio.
+  It provides real-time feedback to developers as they write code.
+  SonarLint connects to a SonarQube server or SonarCloud account to download and apply the same rules and quality profiles used for code analysis in SonarQube.
+
+  SonarQube:
+  SonarQube is a more comprehensive tool that provides not only real-time code analysis but also centralizes code quality management for entire projects
+  or codebases. It can be used for continuous inspection of code quality and security vulnerabilities throughout the development lifecycle.
+
+  *SonarQube analyzes all the source code for all files in frequent interval.
+  *Allows customizing rules, quality profiles, and thresholds based on project requirements.
+  *Offers integration with various build systems and continuous integration/continuous deployment (CI/CD) pipelines.
+
+  SonarLint and SonarQube use a set of predefined rules and coding standards to analyze the code. we can customize these rules to align with our 
+  project's requirements. The goal of using these tools is to identify and address issues early in the development process, reducing the likelihood of bugs,
+  vulnerabilities, and poor code quality making their way into production.
+
+# Benefits of Using SonarQube
+  Quality test automation code
+  Reduces complexity, code duplication and optimised test scripts
+  Reduces effort on test maintenance and faster modifications
+  Enhanced test automation script development skills
+
+   ways to Set up SonarQube for Test Automation
+   1. Using SonarLint Plugin
+   2. Using Jenkin Jobs
+
+# Bug logging process/What will you do when you find a bug?
+  
+  Identify the Issue:
+  Reproduce the Issue:
+  Gather Information:Collect all relevant information about the issue, including:
+     Description of the problem: Clearly explain what is happening and why it's a problem.
+     Environment details: Mention the operating system, browser, device, and any other relevant information.
+     Screenshots or videos: Visual evidence can be very helpful in understanding the issue.
+     Log files and error messages: Include any error messages, log outputs, or stack traces related to the issue.
+
+  Choose an Issue Tracking System:
+  Assign Priority and Severity: Severity indicates how critical the issue is to the functionality of the software, while priority indicates its urgency in terms of fixing.
+  Assign to the Responsible Team:
+  Communication and Updates: Through Email, Teams
+  Fix and Test:
+  Review and Verification:
+  Close the Issue:
+  Documentation:
+
+#
+ Defect ID	 D_AppXYZ_Module1_001
+ Defect Title	 Manager Dashboard is not allowing adding newly reports types- history, work completion trends
+ Defect Description/Steps to reproduce	
+ Expected Result	
+ Actual Result	
+ Evidence/attachment	
+ Severity	   :High
+ Priority	   :Medium
+ Module affected	
+ Environment	
+ Reported by	
+ Reported on	
+ Status	           :New
+ Assigned To	
+
+# secanrios which cannot be automated :
+ captcha verification,
+ OTP verification,
+ Exploratory Testing: This requires creativity, intuition, and a human tester's ability to adapt and explore.
+ Non-Functional Requirements: Testing non-functional requirements like performance,Usability Testing
+
+# What is a branching strategy?
+ -A branching strategy, is the strategy that software development teams adopt when writing, merging and deploying code when using
+  a version control system.
+ -It is essentially a set of rules that developers can follow to stipulate how they interact with a shared codebase.
+ -Adhering to a branching strategy will help solve this issue so that developers can work together without stepping on each other’s toes. 
+
+# Explain - incorporate parent and module project in maven?
+
+-Parent Project : A parent project is a Maven project that serves as a container for one or more child module projects.
+                  It typically holds common configuration settings, dependencies, and plugins that are shared among the modules.
+                  The parent project is defined in its own pom.xml file, which contains the common settings and dependencies.
+
+-Module Projects: Module projects are individual projects that reside within the parent project's directory structure. 
+                  They have their own pom.xml files and can represent separate deliverables, components, or functionalities. 
+
+-Benefits:
+
+ Code Organization    : Hierarchical structure keeps related projects organized and grouped together.
+ Consistency          : Common configurations in the parent project promote consistency across modules.
+ Dependency Management: Dependencies defined in the parent project are automatically inherited by modules.
+ Build Coordination   : The parent project can define build lifecycles that apply to all modules
+
+<project>
+    <groupId>com.example</groupId>
+    <artifactId>parent-project</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>module1</module>
+        <module>module2</module>
+    </modules>
+    
+    <!-- Common dependencies, plugins, properties, etc. -->
+</project>
+
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>parent-project</artifactId>
+        <version>1.0</version>
+    </parent>
+    
+    <artifactId>module1</artifactId>
+    <version>1.0</version>
+    
+    <!-- Module-specific dependencies, plugins, properties, etc. -->
+</project>
+
+# How do you decide on automation candidate:
+
+ 1.Understand Testing Objectives: Begin by understanding the objectives of your testing process. 
+ 2.Analyze Test Types           : Identify the types of tests in your testing strategy. Common types include unit tests, integration tests,
+                                  functional tests, regression tests.
+ 3.Prioritize Test Cases        : Prioritize test cases based on their importance and frequency. High-priority tests that are executed frequently 
+                                  are good candidates for automation.
+ 4.Repetition & Regression      : Tests that need to be executed repeatedly, such as regression tests, benefit the most from automation. 
+ 5.Complexity & Stability       : Complex scenarios, especially those with many steps or configurations, are good candidates for automation
+ 6.Data-Driven Tests            : If you have test cases that require multiple sets of data inputs or parameter variations, consider automating them.
+ 7.Time-Consuming Tests         : Identify tests that are time-consuming when executed manually.
+ 8.Repetitive Tasks	        : Tests that involve repetitive tasks, such as data entry or navigation through multiple screens, are excellent 
+                                  candidates for automation. These tasks are error-prone when done manually.
+
+# what are the diffrent technique when you are designing the test cases and how do you make sure you have best test coverage?
+
+ 1.Requirement-Based Testing:Design test cases that directly address each requirement. This ensures that all specified functionalities are tested.
+ 2.Boundary Value Analysis:
+ 3.Equivalence Partitioning:
+ 4.Positive and Negative Testing: Ensure that you test both valid (positive) and invalid (negative) inputs. Positive testing checks if the system 
+                                  behaves as expected with valid inputs, while negative testing validates error handling and edge cases.
+ 5.Exploratory Testing: Here testers actively explore the application to find defects. This can uncover issues that scripted tests might miss.
+ 6.Ad Hoc Testing: ad-hoc testing to simulate real-world usage scenarios and identify unexpected issues.
+ 7.Regression Testing:Include test cases that cover areas of the application that have been modified or updated since the last release.
+ 8.Error Guessing:
+
+# Can we run ant file on maven project?
+  In general, Ant and Maven are two different build tools, each with its own build file format (Ant uses XML-based build files, 
+   while Maven uses POM - Project Object Model - XML files). 
+   However, it is possible to run Ant tasks within a Maven project.
+
+  1.Define an Ant Build File:
+  2.Configure the Maven-Antrun-Plugin: The maven-antrun-plugin has only one goal, run. This allows Maven to run Ant tasks. 
+
+# 		Scrum							Kanban
+  - The iterations/Sprints are fixed in duration. 	    	This is measured in terms of Cycle times.
+  - Team basically estimates or plans each sprint 	    	This is tracked in terms of the Workflow/Work item/Kanban card
+    based on the Backlog sheet.
+  - 3 roles-:Product Owner, scrum master, Development team      This doesn’t work on the basis of roles.
+  - No changes are allowed once the Sprint has started	    	This is flexible here. Changes are allowed at any moment

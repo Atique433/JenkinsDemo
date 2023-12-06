@@ -1,0 +1,238 @@
+cmd - 
+1.navigate to ->Program Files\MySQL\MySQL Server 8.0\bin 
+2.mysql -u root -p -> click enter
+3.enter password
+ 
+* command to viw database -> show database;
+
+JDBC
+-----
+  JDBC stands for Java Database Connectivity. JDBC is a Java API to connect and execute the query with the database. It is a part of JavaSE 
+  (Java Standard Edition). JDBC API uses JDBC drivers to connect with the database. There are four types of JDBC drivers:
+
+   -JDBC-ODBC Bridge Driver,
+   -Native Driver,
+   -Network Protocol Driver, and
+   -Thin Driver
+
+Q) Why Should We Use JDBC?
+-  Before JDBC, ODBC API was the database API to connect and execute the query with the database. But, ODBC API uses ODBC driver which is written
+   in C language (i.e. platform dependent and unsecured). That is why Java has defined its own API (JDBC API) that uses JDBC drivers
+   (written in Java language).
+
+   We can use JDBC API to handle database using Java program and can perform the following activities:
+
+    -Connect to the database
+    -Execute queries and update statements to the database
+    -Retrieve the result received from the database.
+
+JDBC - Driver Types
+-------------------
+
+ JDBC driver is a software component having various classes and interfaces, that enables the Java application to interact with a database.
+
+− JDBC-ODBC Bridge Driver:-
+  The JDBC-ODBC bridge driver uses ODBC driver to connect to the database. The JDBC-ODBC bridge driver converts JDBC method calls into 
+  the ODBC function calls. A JDBC bridge is used to access ODBC drivers installed on each client machine.
+
+− JDBC-Native API:-
+  The Native API driver uses the client-side libraries of the database. The driver converts JDBC method calls into native calls of
+  the database API. It is not written entirely in java.
+
+− Network Protocol driver:-
+  The Network Protocol driver uses middleware (application server) that converts JDBC calls directly or indirectly into the vendor-specific
+  database protocol. It is fully written in java.
+
+  This kind of driver is extremely flexible, since it requires no code installed on the client and a single driver can actually provide access to 
+  multiple databases
+
+− Thin driver:-
+  The thin driver converts JDBC calls directly into the vendor-specific database protocol. That is why it is known as thin driver. 
+  It is fully written in Java language.
+
+  This kind of driver is extremely flexible, you don't need to install special software on the client or server. Further, these drivers can 
+  be downloaded dynamically.
+
+Q)Which Driver should be Used?
+- *If you are accessing one type of database, such as Oracle, Sybase, or IBM, the preferred driver type is 4.
+  *If your Java application is accessing multiple types of databases at the same time, type 3 is the preferred driver.
+  *Type 2 drivers are useful in situations, where a type 3 or type 4 driver is not available yet for your database.
+  *The type 1 driver is not considered a deployment-level driver, and is typically used for development and testing purposes only.
+
+# Register JDBC Driver:
+
+1.Class.forName()- The most common approach to register a driver is to use Java's Class.forName() method, to dynamically load the driver's class 
+                   file into memory, which automatically registers it. This method is preferable because it allows you to make the driver 
+                   registration configurable and portable.
+
+2.DriverManager.registerDriver()- second approach you can use to register a driver, is to use the static DriverManager.registerDriver() method.
+                    You should use the registerDriver() method if you are using a non-JDK compliant JVM, such as the one provided by Microsoft.
+
+# DriverManager class:
+  The DriverManager class is the component of JDBC API and also a member of the java.sql package. The DriverManager class acts as an 
+  interface between users and drivers.
+
+  Methods of the DriverManager Class:
+
+  1) public static synchronized void registerDriver(Driver driver)          :is used to register the given driver with DriverManager.
+  2) public static synchronized void deregisterDriver(Driver driver)        :is used to deregister the given driver (drop the driver from the list) 
+                                                                             with DriverManager.
+  3) public static Connection getConnection(String url) throws SQLException :is used to establish the connection with the specified url.
+  4) public static Connection getConnection(String url,String userName,     :is used to establish the connection with the 
+     ,String password) throws SQLException                                   specified url, username, password. 
+
+# Connection interface:
+  A Connection is a session between a Java application and a database. It helps to establish a connection with the database.
+  The Connection interface is a factory of Statement, PreparedStatement, and DatabaseMetaData, i.e., an object of Connection can be
+  used to get the object of Statement and DatabaseMetaData.
+
+    Commonly used methods of Connection interface:
+
+    1) public Statement createStatement(): creates a statement object that can be used to execute SQL queries.
+
+    2) public Statement createStatement(int resultSetType,int resultSetConcurrency): Creates a Statement object that will generate ResultSet objects
+                                                                                    with the given type and concurrency.
+    3) public void setAutoCommit(boolean status): is used to set the commit status. By default, it is true.
+
+    4) public void commit(): saves the changes made since the previous commit/rollback is permanent.
+
+    5) public void rollback(): Drops all changes made since the previous commit/rollback.
+
+    6) public void close(): closes the connection and Releases a JDBC resources immediatel
+
+# JDBC - Statements, PreparedStatement and CallableStatement:
+
+1.Statement- The Statement interface provides methods to execute queries with the database.The interface is a factory of ResultSet i.e. 
+             it provides factory method to get the object of ResultSet. Useful when you are using static SQL statements at runtime. 
+             The Statement interface cannot accept parameters.
+
+   -int executeUpdate (String SQL)      − Returns the number of rows affected by the execution of the SQL statement. 
+                                          Used to execute specified query, it may be create, drop, insert, update, delete etc.
+   -ResultSet executeQuery (String SQL) − Used to execute SELECT query. It returns the object of ResultSet.
+   -int[] executeBatch()                − used to execute batch of commands
+   -boolean execute(String sql)         - is used to execute queries that may return multiple results.
+
+2.PreparedStatement- PreparedStatement is a sub-interface of Statement and is used to execute parameterized queries.
+                     It improves the performance of the application because the query is compiled only once.
+
+   **All of the Statement object's methods for interacting with the database (a) execute(), (b) executeQuery(), and (c) executeUpdate() 
+    also work with the PreparedStatement object.
+
+   - setInt(int paramIndex, int value)       - Sets the integer value to the given parameter index
+   - setString(int paramIndex, String value)
+
+3.CallableStatement- CallableStatement interface is used to call the stored procedures and functions.
+
+               The prepareCall() method of Connection interface returns the instance of CallableStatement.
+               -CallableStatement stmt=con.prepareCall("{call procedure(?,?)}");  
+
+# Result Sets:
+  The java.sql.ResultSet interface represents the database result set, which is obtained after the execution of SQL query using Statement objects.
+  Object of ResultSet maintains a cursor pointing to the current row of data in the result set. Initially, the cursor is located before the first row.
+  Then the cursor is moved to the next row by using the next() method.
+  The next() method can be used to iterate through the result set with the help of a while loop. If there are no further rows, the next() method will
+  return false.
+            Example for the creation of ResultSet is given below:
+             ResultSet rs = con.executeQuery(sqlQuery);
+
+  Note:
+  By default, ResultSet object can be moved forward only and it is not updatable.
+  But we can make this object to move forward and backward direction by passing either TYPE_SCROLL_INSENSITIVE or TYPE_SCROLL_SENSITIVE 
+  in createStatement(int,int) method as well as we can make this object as updatable by:
+
+  Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,  
+                     ResultSet.CONCUR_UPDATABLE); 
+
+  Commonly used methods of ResultSet interface
+  1) public boolean next():	                is used to move the cursor to the one row next from the current position.
+  2) public boolean previous():                	is used to move the cursor to the one row previous from the current position.
+  3) public boolean first():             	is used to move the cursor to the first row in result set object.
+  4) public boolean last():	                is used to move the cursor to the last row in result set object.
+  5) public boolean absolute(int row):	        is used to move the cursor to the specified row number in the ResultSet object.
+  6) public boolean relative(int row):	        is used to move the cursor to the relative row number in the ResultSet object, it may be positive or negative.
+  7) public int getInt(int columnIndex):	is used to return the data of specified column index of the current row as int.
+  8) public int getInt(String columnName):	is used to return the data of specified column name of the current row as int.
+  9) public String getString(int columnIndex):	is used to return the data of specified column index of the current row as String.
+ 10) public String getString(String columnName):is used to return the data of specified column name of the current row as String.
+
+# ResultSetMetaData Interface:
+  The metadata means data about data i.e. we can get further information from the data.
+
+  If you have to get metadata of a table like total number of column, column name, column type etc., ResultSetMetaData interface is useful
+  because it provides methods to get metadata from the ResultSet object.
+
+   Commonly used methods of ResultSetMetaData interface
+              Method	                                                                             Description
+   public int getColumnCount()throws SQLException	                it returns the total number of columns in the ResultSet object.
+   public String getColumnName(int index)throws SQLException	        it returns the column name of the specified column index.
+   public String getColumnTypeName(int index)throws SQLException	it returns the column type name for the specified index.
+   public String getTableName(int index)throws SQLException	        it returns the table name for the specified column index.
+
+# DatabaseMetaData interface:
+  DatabaseMetaData interface provides methods to get meta data of a database such as database product name, database product version, driver name, 
+  name of total number of tables, name of total number of views etc.
+
+Q) To create a database connection in Java, we must follow the sequence given below:
+
+  Import JDBC packages.
+  Load and register the JDBC driver.
+  Open a connection to the database.
+  Create a statement object to perform a query.
+  Execute the statement object and return a query resultset.
+  Process the resultset.
+  Close the resultset and statement objects.
+  Close the connection.
+
+Q)Components of JDBC?
+- There are four major components of JDBC using which it can interact with a database. They are:
+
+ 1.JDBC API: It provides different methods and interfaces for easier communication with the database.It has two packages as follows which consist
+             of Java SE and Java EE platforms.->( java.sql.*; javax.sql.*;)
+
+ 2.JDBC DriverManager: It is the class in JDBC API. It loads the JDBC driver in a Java application for establishing a connection with the database. 
+
+ 3.JDBC Test suite: It is used to test the operations like insertion, deletion, updation etc., being performed by JDBC Drivers.
+
+ 4.JDBC-ODBC bridge drivers: It will connect database drivers to the database. JDBC-ODBC bridge interprets JDBC method call to the ODBC
+   function call.
+
+Q)Which data types are used for storing the image and file in the database table? 
+
+- BLOB (binary large object) data type is used to store the image in the database. We can also store videos and audio by using the BLOB data type.
+                              It stores the binary type of data.
+- CLOB (character large object) data type is used to store the file in the database. It stores the character type of data.
+
+Q) Classes in JDBC?
+-  1.DriverManager
+   2.BLOB
+   3.CLOB
+
+Q) How to use JDBC API to call Stored procedures?
+
+-   CallableStatement cs = con.prepareCall("{call insertEmployee(?,?,?,?,?)}");
+    stmt.setInt(1, id);
+    stmt.setString(2, name);
+    stmt.setString(3, role);
+    stmt.setString(4, address);
+    stmt.setString(5, salary);
+   //registering the OUT parameter before calling the stored procedure
+    cs.registerOutParameter(5, java.sql.Types.VARCHAR);
+    cs.executeUpdate();
+ ***We must register the OUT parameters before executing the CallableStatement.
+
+Q) common exception in JDBC?
+-  java.sql.SQLException         - It is the base class for JDBC exceptions.
+   java.sql.BatchUpdateException – It occurs during the batch update operation.
+
+# Two pacakge in JDBC :
+ 1.java.sql Package: 
+ 2.javax.sql Package: eg.Rowset
+
+class.forName(com:mysql:JDBC:Driver);
+Connectin con =DriverManager.getConnection(url,uname,pass);
+Statement st= con.createStatement();
+ResultSet rs = st.executeQuery();
+
+while(rs.next()){
+    rs.get
+}

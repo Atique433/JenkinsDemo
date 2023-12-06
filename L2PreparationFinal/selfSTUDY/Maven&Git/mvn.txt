@@ -1,0 +1,8 @@
+first enter in cmd 
+mvn archetype:generate -DgroupId=com.javatpoint -DartifactId=CubeGenerator -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+1.mvn archetype:generate- create project structure
+2.DarchetypeArtifactId=maven-archetype-quickstart - we are using maven-archetype-quickstart to create simple maven core project.
+                                                    if you use maven-archetype-webapp, it will generate a simple maven web application.
+3.DinteractiveMode=false -

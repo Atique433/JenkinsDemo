@@ -1,0 +1,111 @@
+# Java Anonymous Class
+ - A nested class that doesn't have any name is known as an anonymous class.
+ - An anonymous class must be defined inside another class. Hence, it is also known as an anonymous inner class.
+ - Anonymous classes usually extend superclasses or implement interfaces.
+
+ Note: Anonymous classes are defined inside an expression. So, the semicolon is used at the end of anonymous classes to indicate the end of the expression.
+
+# Lambda expression is a new feature which is introduced in Java 8. A lambda expression is an anonymous function. 
+   * A function that doesn’t have a name and doesn’t belong to any class.
+   * It is beneficial in iterating, filtering, and extracting data from a collection.
+
+  //Syntax of lambda expression
+ (parameter_list) -> {function_body}
+
+# A lambda expression in Java has these main parts:
+  Lambda expression only has body and parameter list.
+   1. No name – function is anonymous so we don’t care about the name
+   2. Parameter list
+   3. Body – This is the main part of the function.
+   4. No return type – The java 8 compiler is able to infer the return type by checking the code. you need not to mention it explicitly.
+
+# Where to use the Lambdas in Java
+- To use lambda expression, you need to either create your own functional interface or use the pre defined functional interface provided by Java. 
+  
+- Functional Interface : An interface with only single abstract method is called functional interface(or Single Abstract method interface),
+  for example: Runnable, callable, Comparator, and Comparable.  
+
+- present in -> import java.util.function
+
+ ** Point on Functional Interface:-
+   - It can have any number of default, static methods but can contain only one abstract method.
+   - It can contain any number of Object class methods.  eg -> int hashCode();   String toString();   boolean equals(Object obj);  
+
+# What are some standard Java pre-defined functional interfaces?
+  Some of the famous pre-defined functional interfaces from previous Java versions are Runnable, Callable, Comparator, and Comparable. 
+  While Java 8 introduces functional interfaces like Supplier, Consumer, Predicate, etc.
+
+# predicate , function, consumer and supplier - comes under java.util.function package
+
+  Consumer - A Consumer is a functional interface that accepts a single input and returns no output, The consumer interface has two methods.
+              - Consumer<String> printConsumer= city-> System.out.println(city);    
+                cities.forEach(printConsumer);
+         **As the name suggests the implementation of this interface consumes the input supplied to it.
+
+  Predicate - A Predicate is a functional interface, which accepts an argument and returns a boolean. Usually, it is used to apply in a filter
+              for a collection of objects.
+               - Predicate<String> filterCity = city -> city.equals("Mumbai");
+                 cities.stream().filter(filterCity).forEach(System.out::println);
+
+  Functions - The function takes an input value and returns a value. The function interface has four methods, mostly function used in map 
+              feature of stream APIs.
+               - Function<String, Character> getFirstCharFunction = city -> {
+                  return city.charAt(0);
+                 };
+
+  Supplier - It represents a function that does not take in any argument but produces a value of type T. It contains only one method.
+               - Supplier<String[]> citySupplier = () -> {
+        	  return new String[]{"Mumbai", "Delhi", "Goa", "Pune"};
+ 	         };
+
+#  Method reference is a shorthand notation of a lambda expression to call a method.(Refer screenshot in phone) 
+
+    For example:
+    If your lambda expression is like this:- str -> System.out.println(str)
+    
+    then you can replace it with a method reference like this:- System.out::println
+
+ - The :: (Double coloun) operator is used in method reference to separate the class or object from the method name
+
+# Stream : All the classes and interfaces of this API is in the java.util.stream package. 
+           By using streams we can perform various aggregate operations on the data returned from collections, arrays, Input/Output operations. 
+
+# The filter() is an intermediate operation that reads the data from a stream and returns a new stream after transforming the data based on 
+  the given condition
+
+   eg:
+  - List<Double> fitered_list= list.stream().filter(p->p.price>30).map(p->p.price).collect(Collectors.toList);
+    sout(fitered_list);
+  - list.stream().filter(p->p.price>30).forEach(n->sout(n));
+  - map.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(n->System.out.println(n));
+
+# How are Collections different from Stream?
+
+          Collections 									Stream
+  Data structure holds all the data elements			No data is stored. Have the capacity to process an infinite number of elements on demand
+  External Iteration						Internal Iteration
+  Can be processed any number of times				Traversed only once
+  Elements are easy to access					No direct way of accessing specific elements
+  Is a data store						Is an API to process the data
+
+# What are selection operations available in Java 8 Stream API?
+
+ Operation	Description
+ filter()	Selects the elements which satisfy the given predicate.
+ distinct()	Selects only unique elements
+ limit() 	Selects first n elements
+ skip()	        Selects the elements after skipping first n elements
+
+# Reducing operations are the operations which combine all the elements of a stream repeatedly to produce a single value.
+
+# methods of Collectors class and their usage?
+
+ Method			Description
+ joining()		Concatenates input elements separated by the specified delimiter.
+ counting()		Counts number of input elements
+ groupingBy()		Groups the input elements according supplied classifier and returns the results in a Map.
+ partitioningBy()	Partitions the input elements according to supplied Predicate and returns a Map<Boolean, List<T>>
+ toList()		Collects all input elements into a new List
+
+# Name three important classes of Java 8 Date and Time API?
+  java.time.LocalDate, java.time.LocalTime and java.time.LocalDateTime

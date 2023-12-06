@@ -1,0 +1,450 @@
+Constructor overloading -> wln -> pojo-> alert ->keycite
+
+inheritance -> wln -> keycite ->keyciteNewBasedOnSelected extends commonAlertBaseTest(contain user realted stuffs)
+method overloading (compile time polymorphism):common->alerts->factory->keycite/westclipfactory
+
+# What is the purpose of a default constructor?
+  The default constructor is used to provide the default values to the object like 0, null, etc., depending on the type.
+
+# Java Copy Constructor
+  A copy constructor is used for copying the values of one object to another object. Java doesn’t have a concept of copy constructor like C++,
+  however there are certain ways by which you can copy the values of one object to another object:
+
+  -By creating a parameterized constructor with class reference as parameter.
+  -By using clone() method of the Object class.
+  -By assigning the values from one object to another object.
+
+class JavaExample{  
+   String web; 
+   JavaExample(String w){  
+	web = w;
+   }  
+
+   /* This is the Copy Constructor, it 
+    * copies the values of one object
+    * to the another object (the object
+    * that invokes this constructor)
+    */
+   JavaExample(JavaExample je){  
+	web = je.web; 
+   }  
+   void disp(){
+	System.out.println("Website: "+web);
+   }  
+
+   public static void main(String args[]){  
+	JavaExample obj1 = new JavaExample("BeginnersBook");  
+		
+	/* Passing the object as an argument to the constructor
+	 * This will invoke the copy constructor
+	 */
+	JavaExample obj2 = new JavaExample(obj1);  
+	obj1.disp();  
+	obj2.disp();  
+   }  
+}
+
+# Super keyword in Method Overriding(cannot be used inside non-static)
+  The super keyword is used for calling the parent class method/constructor.
+
+  class ABC{
+   public void myMethod()
+   {
+	System.out.println("Overridden method");
+   }	   
+  }
+  class Demo extends ABC{
+   public void myMethod(){
+	//This will call the myMethod() of parent class
+	super.myMethod();
+	System.out.println("Overriding method");
+   }
+   public static void main( String args[]) {
+	Demo obj = new Demo();
+	obj.myMethod();
+   }
+  }
+
+# Object Cloning in Java
+
+ -The object cloning is a way to create exact copy of an object. The clone() method of Object class is used to clone an object.
+ -The java.lang.Cloneable interface must be implemented by the class whose object clone we want to create. 
+ -If we don't implement Cloneable interface, clone() method generates CloneNotSupportedException.
+
+ Q)Why use clone() method ?
+ - The clone() method saves the extra processing task for creating the exact copy of an object. If we perform it by using the new keyword,
+   it will take a lot of processing time to be performed that is why we use object cloning.
+
+class Student18 implements Cloneable{  
+int rollno;  
+String name;  
+  
+Student18(int rollno,String name){  
+this.rollno=rollno;  
+this.name=name;  
+}  
+  
+public Object clone()throws CloneNotSupportedException{  
+return super.clone();  
+}  
+  
+public static void main(String args[]){  
+try{  
+Student18 s1=new Student18(101,"amit");  
+  
+Student18 s2=(Student18)s1.clone();  
+  
+System.out.println(s1.rollno+" "+s1.name);  
+System.out.println(s2.rollno+" "+s2.name);  
+  
+}catch(CloneNotSupportedException c){}  
+  
+}  
+}  
+
+# Anonymous Array in Java
+ Java supports the feature of an anonymous array, so you don't need to declare the array while passing an array to the method.
+
+  //Java Program to demonstrate the way of passing an anonymous array to method.'
+  
+   public class TestAnonymousArray{  
+  static void printArray(int arr[]){  
+   for(int i=0;i<arr.length;i++)  
+    System.out.println(arr[i]);  
+   }  
+  
+  public static void main(String args[]){  
+   printArray(new int[]{10,22,44,66});//passing anonymous array to method  
+   }}  
+
+# String
+
+ - CharSequence Interface
+   The CharSequence interface is used to represent the sequence of characters. String, StringBuffer and StringBuilder classes implement it. 
+   It means, we can create strings in Java by using these three classes.
+
+ Q)Why Java uses the concept of String literal?
+ - To make Java more memory efficient (because no new objects are created if it exists already in the string constant pool).
+
+# Object class equals()-> In String class equals() is overridden, we will get content level comparision
+                          In StringBuffer class equals() is not overridden, we will get address level comparision
+
+# What is the difference between str1 == str2 and str1.equals(str2)?
+  * Essentially, equals() is a method, while == is an operator.
+  * The == operator can be used for comparing references (addresses) and the .equals() method can be used to compare content. 
+    To put it simply, == checks if the objects point to the same memory location, whereas .equals() compares the values of the objects.
+
+# What are the new String methods introduced in Java 11?
+  isBlank(), lines(), repeat(), strip(), stripLeading() and stripTrailing() are the new methods introduced to String class in Java 11.
+
+#String Intern : String intern refers to string object in the string constant pool.
+    - Interning is the process of creating a string object in String Constant Pool which will be exact copy of string object in heap memory.
+    - intern() method of java.lang.String class is used to perform interning i.e creating an exact copy of heap string object in string constant pool.
+
+# Wrapper classes in Java
+  The wrapper class in Java provides the mechanism to convert primitive into object and object into primitive.
+  Wrapper class are nothing but object view of primitive Datatype.
+  The object of wrapper class is immutable in nature.
+
+ -Use of Wrapper classes in Java:-
+  Java is an object-oriented programming language, so we need to deal with objects many times like in Collections, Serialization, Synchronization, etc.
+  Let us see the different scenarios, where we need to use the wrapper classes.
+
+  Serialization: We need to convert the objects into streams to perform the serialization. If we have a primitive value, we can convert it in objects 
+                 through the wrapper classes.
+  Synchronization: Java synchronization works with objects in Multithreading.
+  java.util package: The java.util package provides the utility classes to deal with objects.
+  Collection Framework: Java collection framework works with objects only. All classes of the collection framework (ArrayList, LinkedList, Vector, 
+                        HashSet, LinkedHashSet, TreeSet, PriorityQueue, ArrayDeque, etc.) deal with objects only.
+
+# Hashing is nothing but the function/algorithm/method which when applied on any object/variable returns an unique integer value representing 
+  that object/variable. This unique integer value is called hashcode.
+
+# If we dont want any dublicate element and also want to maintains the insertion order -> LinkedHashSet
+
+# If we dont want any dublicate element and also want to sorts the elements in the ascending order -> TreeSet
+
+# Three marker interfaces implemented by ArrayList -> RandomAccess, Cloneable and Serializable.
+
+# Why Map is not inherited from Collection interface although it is a part of Java collection framework?
+  Map is a collection of key-value pairs where as other collection types like List, Set and Queue are the collection of values.
+  Collection interface has the methods which support only the collection of values but not the collection of key-value pairs. 
+  That’s why Map doesn’t inherit Collection interface.
+
+# Difference between ArrayList and HashMap in Java?
+
+ >ArrayList implement List Interface while HashMap is an implementation of Map interface.
+ >ArrayList maintains the insertion order while HashMap does not maintain insertion order.
+ >ArrayList allows duplicate elements while HashMap doesn’t allow duplicate keys but does allow duplicate values.
+
+#		 HashSet						HashMap
+  HashSet implements Set interface.			HashMap implements Map interface.
+  HashSet stores the data as objects.			HashMap stores the data as key-value pairs.
+  HashSet internally uses HashMap.			HashMap internally uses an array of Entry<K, V> objects.
+  HashSet doesn’t allow duplicate elements.		HashMap doesn’t allow duplicate keys, but allows duplicate values.
+  HashSet allows only one null element.			HashMap allows one null key and multiple null values.	
+
+# 				Collection							Collections
+  Collection is a root level interface of the Java Collection Framework. 	Collections is an utility class in java.util package. 
+  List, Set and Queue are main sub interfaces of this interface.	        Collections.max(), Collections.min(), Collections.sort() are some methods 
+                                                                                of Collections class.
+
+# 		Collections								Streams
+  Collections are mainly used to store and group the data.		Streams are mainly used to perform operations on data.
+  You can add or remove elements from collections.	        	We can’t add or remove elements from streams.
+  Collections have to be iterated externally.				Streams are internally iterated.
+  Collections can be traversed multiple times.				Streams are traversable only once.
+
+# What are the characteristics of Queue?
+  -Queue is a data structure in which elements are added from one end called tail and removed from another end called head.
+  -Queue is first-in-first-out type of data structure. That means an element which is inserted first will be the first element to be removed from the queue.
+  -null elements are not allowed in the queue.
+  -Queue can have duplicate elements.
+  -Queue is not random access. i.e you can’t set or insert or get elements at an arbitrary positions.
+
+# 	List		         	    Queue
+     Random Access.	 		No random access.
+     Can have null elements.		No null elements.
+
+# What is Iterable interface?
+  Iterable interface is a member of java.lang package which is extended by java.util.Collection interface which is nothing but the root level
+  interface of the Java collection framework. Iterable interface has only one method called iterator() which returns an Iterator object, using that
+  object you can iterate over the elements of Collection.
+
+# Diffrence between Iterator and ListIterator
+- Iterator support traversing in forward direction only.
+  ListIterator support traversing in both forward and backward direction.
+
+# HashMap : * We can use the put() method of the HashMap class to add new key-value pairs to the HashMap. 
+            * To iterate the HashMap, we are using entrySet() method. This method returns an equivalent Set. This is to pass the key-value 
+              pairs to the Map.Entry, which contains the methods getKey() and getValue() that we can use to print key-value pairs of HashMap. 
+            * HashMap elements are traversed using for loop and key-value pairs are printed.
+
+# Queue interface in Java collections has two implementation: Deque(double ended queue) Interface and PriorityQueue class, 
+                                                              Further LinkedList and ArrayDeques classes implements Deque interface.
+
+# Can you add a null element into a TreeSet or HashSet?
+  We can add null elements in a HashSet but we cannot add null elements in a TreeSet. The reason is that TreeSet uses the compareTo() method 
+  for comparing and it throws a NullPointerException when it encounters a null element.
+
+# What makes a HashSet different from a TreeSet?
+
+  Implementation: For a HashSet, the hash table is utilized for storing the elements in an unordered manner. 
+                  However, TreeSet makes use of the red-black tree to store the elements in a sorted manner.
+
+  Methods: hashCode() and equals() are the methods utilized by HashSet for making comparisons between the objects.
+           Conversely, compareTo() and compare() methods are utilized by TreeSet to facilitate object comparisons.
+
+  Objects type: Heterogeneous and null objects can be stored with the help of HashSet. 
+                In the case of a TreeSet, runtime exception occurs while inserting heterogeneous objects or null objects
+
+# PriorityQueue: we have seen how to remove and add elements based on the priority.
+  What if we want to serve the request based on the priority rather than FIFO? In a practical scenario this type of solution would be preferred 
+  as it is more dynamic and efficient in nature. This can be done with the help of PriorityQueue, which serves the request based on the priority
+  that we set using Comparator.
+
+# Deque is an interface and has two implementations: LinkedList and ArrayDeque.
+ 
+  Deque dq = new LinkedList();
+  Deque dq = new ArrayDeque();
+
+# Queue (FIFO) : Stack (LIFO).
+
+# HashSet       - HashSet uses HashMap internally to store it’s elements.
+  LinkedHashSet - LinkedHashSet uses  LinkedHashMap internally to store it’s elements.
+  TreeSet       - TreeSet uses TreeMap internally to store it’s elements.
+
+# LinkedHashSet is an extended version of HashSet. HashSet doesn’t follow any order where as LinkedHashSet maintains insertion order. HashSet uses
+  HashMap object internally to store it’s elements where as LinkedHashSet uses LinkedHashMap object internally to store and process it’s elements.
+
+# When to use ArrayList and when to use ArrayDeque?
+- ArrayDeque has the ability to add or remove the elements from both ends (head or tail), on the other hand removing last element from ArrayList
+  takes O(n) time as it traverses the whole list to reach the end. So if you want to add or remove elements from both ends choose ArrayDeque
+  over ArrayList, however if you only want to perform the opreation on the tail (at the end) then you should choose ArrayList.
+
+# Comparable Interface :
+   It is to sort the Arrays and list of objects that implements Comparable interface, you just need to call the Collections.sort (and Arrays.sort).
+   eg: SortingArraysAndWrapperClass 
+   However if you want to sort the objects of custom class then you need to implement the Comparable interface in our custom class.
+
+- when to use what?
+  If we want to sort the objects based on any of the data member then we can use Comparable but what if we want to have multiple sort choices 
+  and we can sort objects based on any choice, this can be done using Comparator interface.
+
+# 1) Comparable provides a single sorting sequence.	     	   The Comparator provides multiple sorting sequences. 
+  2) Comparable affects the original class.	             	   Comparator doesn't affect the original class
+     i.e., the actual class is modified.                             i.e., the actual class is not modified.
+  3) Comparable provides compareTo() method to sort elements.      Comparator provides compare() method to sort elements.
+  4) Comparable is present in java.lang package.	           A Comparator is present in the java.util package.
+  5) We can sort the list elements of Comparable 	           We can sort the list elements of Comparator type 
+     type by Collections.sort(List) method.                         by Collections.sort(List, Comparator) method.
+
+ ** Diffrence in implementation of compareTo() and compare() methods:
+
+    //Comparable 
+    @Override
+    public int compareTo(Student person) {
+        return name.compareTo(person.name);
+    }
+
+    //Comparator 
+     @Override
+    public int compare(StudentInfo s1, StudentInfo s2) {
+        return s1.name.compareTo(s2.name);
+    }
+
+# Differentiate between Iterator and Enumeration.
+
+			  Iterator								Enumeration
+  - Iterators can make changes (for example, the delete() method 	 The Enumeration interface is a read-only interface, which means you can't 
+    removes an element from a Collection during traversal).              make any changes to the Collection while traversing its elements.
+
+  - The remove() method is available in the Iterator class.	         The remove() method is not available in the enumeration.
+
+  - Iterator is not a legacy interface. Iterator can traverse	       	 Enumeration is a legacy interface for traversing Hashtables and Vectors.
+    HashMaps, LinkedLists, ArrayLists, HashSets, TreeMaps, and TreeSets.
+
+# What are the restrictions that are applied to the Java static methods?
+
+  Two main restrictions are applied to the static methods.
+  1.The static method can not use non-static data member or call the non-static method directly.
+  2.this and super cannot be used in static context as they are non-static.
+
+# Can we make constructors static? No
+  As we know that the static context (method, block, or variable) belongs to the class, not the object. Since Constructors are invoked only when
+  the object is created, there is no sense to make the constructors static. However, if you try to do so, the compiler will show the compiler error.
+
+# Can we make the abstract methods static in Java? ->
+  No,we can not use static and abstract together
+  In Java, if we make the abstract methods static, It will become the part of the class, and we can directly call it which is unnecessary. 
+  Calling an undefined method is completely useless therefore it is not allowed.
+
+#  We can’t instantiate an abstract class. Then why constructors are allowed in abstract class?
+   It is because, we can’t create objects to abstract classes but we can create objects to their sub classes. From sub class constructor, 
+   there will be an implicit call to super class constructor. That’s why abstract classes should have constructors. Even if you don’t write 
+   constructor for your abstract class, compiler will keep default constructor.
+
+# Can we declare static variables and methods in an abstract class? (Selenium - By.id..)
+  Yes, we can declare static variables and methods in an abstract method.
+  As we know that there is no requirement to make the object to access the static context, therefore, we can access the static context declared
+  inside the abstract class by using the name of the abstract class.
+
+# Can you declare an interface method static?
+  No, because methods of an interface are abstract by default, and we can not use static and abstract together.
+
+# Can the Interface be final?
+  No, because an interface needs to be implemented by the other class and if it is final, it can't be implemented by any class.
+
+# What are the advantages of Java inner classes?
+  There are two types of advantages of Java inner classes.
+
+  -Nested classes represent a special type of relationship that it can access all the members (data members and methods) of the outer class including private.
+  -Nested classes are used to develop a more readable and maintainable code because it logically groups classes and interfaces in one place only.
+  -Code Optimization: It requires less code to write.
+
+# What is the difference between final, finally and finalize?
+
+	        final				   finally					 finalize
+  1) *  Final is used to apply restrictions on class, method, and variable. The final class can't be inherited, final method can't be overridden,
+        and final variable value can't be changed.		
+     *  Finally is used to place important code, it will be executed whether an exception is handled or not.	
+     *  Finalize is used to perform clean up processing just before an object is garbage collected.
+
+  2)	Final is a keyword.			Finally is a block.				 Finalize is a method.
+
+# What is a ClassLoader?
+  A classloader in Java is a subsystem of Java Virtual Machine, dedicated to loading class files when a program is executed; 
+  ClassLoader is the first to load the executable file.
+
+  * Java Classloader is the program that belongs to JRE (Java Runtime Environment). The task of ClassLoader is to load the required classes 
+    and interfaces to the JVM when required. 
+    Example- To get input from the console, we require the scanner class. And the Scanner class is loaded by the ClassLoader
+
+# Memory Allocations
+
+  It has been classified into 3 categories:-
+  1. Static pool area/method area
+  2. Heap Area
+  3. Stack Area
+
+ * In method area & heap area are considered to be a storage area.
+ * In stack area all the execution will take place.
+
+# What part of memory - Stack or Heap - is cleaned in garbage collection process? -> Heap.
+
+# What happens when the main() isn't declared as static?
+  When the main method is not declared as static, then the program may be compiled correctly but ends up with a severe ambiguity and throws
+  a run time error that reads "NoSuchMethodError."
+
+# How is the creation of a String using new() different from that of a literal?
+  The new () operator always produces a new object in heap memory when creating a String object. The String pool may return an existing object 
+  if we build an object using the String literal syntax
+
+# How would you differentiate between a String, StringBuffer, and a StringBuilder?
+  The string class is immutable but the other two are mutable in nature. StringBuffer is synchronous whereas the StringBuilder is asynchronous. 
+  String uses string pool as memory storage whereas the other two use heap memory for storage purposes.
+  - In String class equals() is overridden, In StringBuffer class equals() is not overridden.
+  - String is Thread-safe, StringBuffer is Thread-safe, StringBuilder is Not thread-safe.
+  - Objects can be created either through string literal or through new operator, for StringBuffer and StringBuilder Objects 
+    can be created only through new operator	
+  - Objects are stored in string constant pool as well as heap memory, for StringBuffer and StringBuilder Objects are stored in heap memory only
+
+# What are the default values assigned to variables and instances in java?
+  *There are no default values assigned to the variables in java. We need to initialize the value before using it. Otherwise, it will throw a
+   compilation error of (Variable might not be initialized). 
+  *But for instance, if we create the object, then the default value will be initialized by the default constructor depending on the data type. 
+     -If it is a reference, then it will be assigned to null. 
+     -If it is numeric, then it will assign to 0.
+     -If it is a boolean, then it will be assigned to false. Etc
+
+# What is an Association?
+  An Association can be defined as a relationship that has no ownership over another. For example, a person can be associated with multiple banks, 
+  and a bank can be related to various people, but no one can own the other.
+
+# What do you mean by aggregation?
+  The term aggregation refers to the relationship between two classes best described as a “whole/part” and “has-a” relationship.
+  It contains the reference to another class and is said to have ownership of that class.
+
+# What are Composition and Aggregation? State the difference.
+  Composition, and Aggregation help to build (Has - A - Relationship) between classes and objects. But both are not the same in the end. 
+  Let’s understand with the help of an example. 
+
+  -Consider the University as a class that has some departments in it. So the university will be the container object. And departments in it will
+   contain objects. Now in this case, if the container object destroys then the contained objects will also get destroyed automatically.
+   So here we can say that there is a strong association between the objects. So this Strong Association is called Composition.
+
+  -Now consider one more example. Suppose we have a class department and there are several professors' objects there in the department. 
+   Now if the department class is destroyed then the professor's object will become free to bind with other objects. Because container objects 
+   (Department) only hold the references of contained objects (Professor’s). So here is the weak association between the objects. 
+   And this weak association is called Aggregation.
+
+  *Compostion will have strong association with object whereas Aggregation will have weak association with object.
+
+# What is covariant return type in java?
+  Java version 5.0 onwards it is possible to have different return types for an overriding method in the child class, but the child’s return type
+  should be a subtype of the parent’s return type
+  * Covariant return type works only for non-primitive return types.
+
+  ADV:  *The covariant return type in Java helps us to write readable, usable, and maintainable code. 
+        *covariant return type in java reduces the run-time ClassCastExceptions. 
+
+# Difference between IS-A and HAS-A in OOP java
+
+   IS-A Relationship (Inheritance):The "IS-A" relationship is based on inheritance, where a subclass inherits properties and behaviors from a superclass.
+
+    class Animal {
+    }
+
+    class Dog extends Animal {
+    }
+
+  HAS-A Relationship (Composition):The "HAS-A" relationship represents composition, where a class has an instance of another class as one of its attributes. 
+                                   This relationship is implemented by creating an instance variable of another class within a class.
+
+   class Engine {
+    }
+
+   class Car {
+    private Engine engine; // Car "HAS-A" Engine
+
+    }

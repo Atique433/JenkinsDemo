@@ -1,0 +1,70 @@
+Select drp = new Select(ele);
+drp.getOptions;
+for(WebElement option : options){
+option.getText();
+}
+
+driver.manage.timeout.implicitwait(Durations.ofSeconds(10));
+-if the page is not loaded within given duration in will throw WebDriverTimeOutException
+-DisAdv: not good for Dynamic webelement
+
+WebDriverWait wait = new WebDriverWait(Durations.ofSeconds(4));
+ wait.until(ExpectedCondition.elementToBeVisible(element));
+
+Wait<WebDriver> foo = new FluentWait<WebDriver>(driver)
+.withTimeout(Durations.oFSeconds(30))
+.pollingEvery(Durations.oFSeconds(5))
+.ignoring(Exception.class);
+ 
+foo.until(ExpectedCondition.elementToBeClickable(element));
+
+Actions act = new Actions(driver); we are passing webdriver refrence because it holds the browser control.
+
+//ctrl+A
+  act.keyDown(Keys.CONTROL);
+  act.sendKeys("a");
+  act.keyUp(Keys.CONTROL);
+  act.perform();
+
+// With driver, without action class, i.e sendkeys method,  
+    input1.sendKeys(Keys.chord(Keys.CONTROL, "A"));
+
+Popup-
+
+//Alert popup -> Alert is an interface
+Alert alt = driver.switchTo().alert();
+alt.getText();
+alt.accept();
+alt.dismiss();
+
+//Window-popup
+driver.switchTo().window(windowId);
+
+*WindowID is a string value
+
+1.getWindowHandle-> return type String
+2.getWindowHandles-> return type Set<String> 
+
+//Frame
+
+driver.switchTo().frame(by index,name,id or by webelement);
+driver.switchTo().parentframe
+drive.switchTo().defaultcontenet()
+
+//screenshot
+TakesScreenshot ts = (TakesScreenshot) driver;
+        File src = ts.getScreenshotAs(OutputType.FILE);
+        File file = new File(".//screenshots/homepage.png");
+        FileUtils.copyFile(src, file);
+
+// for a particular webelement
+        WebElement element = driver.findElement(By.partialLinkText("redbus"));
+        File src1 = element.getScreenshotAs(OutputType.FILE);
+        File file1 = new File(".//screenshots/webelement.png");
+        FileUtils.copyFile(src1, file1);
+
+//
+JavascriptExecutor js = (JavascriptExecutor)driver;
+
+js.executeScript();         -> This method is used to execute synchronous JavaScript code.
+js.executeAsynsScript();    -> This method is used to execute Asynchronous JavaScript code.

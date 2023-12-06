@@ -1,0 +1,23 @@
+Q) How will you automate CAPTCHA?
+This question can be asked because of 2 reasons.
+1. The interviewer does not have a clue what he is asking.
+2. Interviewer is tricking you to get your response.
+
+Answer part 1:
+
+CAPTCHA's sole goal is to avoid bots/automation.
+You do not automate it!
+
+Then the interview may ask that their app uses captcha before logging in, so you mean we should not automate it? Some interviewers may become
+aggressive or even hostile.
+
+Answer part 2:
+I am not saying that we should not automate it. The correct way to handle CAPTCHA is to disable them  in the lower test environments eg. QA, staging etc.
+And before you go to production perhaps in a pre-prod environment you check with CAPTCHA enabled manually, just once.
+This way you will have best of all worlds.
+
+Q)What is Page Object Model (POM)?
+
+1. It is a UI test automation design pattern.
+2. It basically says: We map every page/screen of the AUT(application under test) with a class/file in your test automation framework.
+3. Each class/file contains all the elements present in that page/screen of AUT as well as all the methods that interact with those elements.

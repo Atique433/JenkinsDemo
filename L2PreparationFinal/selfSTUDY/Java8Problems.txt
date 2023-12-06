@@ -1,0 +1,26 @@
+SeperateOddEven - numbers.stream().collect(Collectors.partitioningBy(i -> i % 2 == 0));
+
+removeDublicateElement - remove.stream().distinct().collect(Collectors.toList()));
+   
+reverseOrder - numbers.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+   
+sumOfDigit - numbers.stream().reduce(0, Integer::sum);
+           - Arrays.stream(arr).sum();
+
+averageOfNum - Arrays.stream(arr).average().getAsDouble();
+       
+threeMaxMinNumber - numbers.stream().sorted().limit(3).forEach(System.out::println); 
+                  - numbers.stream().sorted(Comparator.reverseOrder()).limit(3).forEach(System.out::println);
+
+sortListOfStringsIncreasingOrder - listOfStrings.stream().sorted(Comparator.comparing(String::length)).forEach(System.out::println);
+
+commonElementInTwoArrays - list1.stream().filter(list2::contains).forEach(System.out::println);
+
+firstTenNaturalNumber - IntStream.range(1, 11).sum();
+
+reverseEachwordofString -
+        String str = "Java Concept Of The Day";
+        String reversedStr = Arrays.stream(str.split(" ")).map(words -> new StringBuffer(words).reverse())
+                .collect(Collectors.joining(" "));
+        System.out.println(reversedStr);
+      

@@ -1,0 +1,264 @@
+# What is stagging area?
+- The staging area can be described as a preview of your next commit. When you create a git commit, Git takes changes that are in the staging area
+  and make them as a new commit. You are allowed to add and remove changes from the staging area. The staging area can be considered as a real area
+  where git stores the changes.	
+ 
+ There are three places in Git where file changes can reside, and these are working directory, staging area, and the repository.
+
+# What git add and git commit command does
+ 
+  Git add--> add the changes to index area
+  Git commit--> add changes to local repo
+
+# How would you recover a commit that was accidentally deleted?
+  If a commit was accidentally deleted, you can recover it by using the "git reflog" command to identify the commit's SHA hash.
+  Once you have the SHA hash, you can create a new branch or reset the current branch to that commit
+  using git branch <branch-name> <commit-SHA> or git reset <commit-SHA>.
+ 
+# 1.Cloning a Repository into a Specific Local Folder:
+    $ git clone https://github.com/ImDwivedi1/Git-Example.git "new folder(2)"  :
+
+  2.Git Clone Branch:
+    $ git clone -b <Branch name><Repository URL>  
+
+# Git Ignore:
+  In Git, the term "ignore" is used to specify intentionally untracked files that Git should ignore. It doesn't affect the Files that 
+  already tracked by Git.
+
+  Diff between Tracked,untracket and ignore
+
+  -Tracked    : Tracked files are such files that are previously staged or committed.
+  -Untracked  : Untracked files are such files that are not previously staged or committed.
+  -Ignored    : Ignored files are such files that are explicitly ignored by git. We have to tell git to ignore such files.
+
+# Git Fork
+  A fork is a rough copy of a repository. Forking a repository allows you to freely test and debug with changes without affecting the original project.
+  One of the excessive use of forking is to propose changes for bug fixing. 
+ -To resolve an issue for a bug that you found, you can:
+   Fork the repository.
+   Make the fix.
+   Forward a pull request to the project owner.
+
+#Git Merge:
+
+ 1.To merge the specified commit to currently active branch -> $ git merge <commit>  
+   eg: 
+      I have made some changes in my project's file newfile1.txt and committed it in my test branch.
+       -git add new file.txt in test branch
+       -commit the the new file with git commit -m "".
+       -git log -> take the commit id
+      Copy the particular commit you want to merge on an active branch and perform the merge operation. See the below output:
+       -git checkout test2
+       -git merge <commitId>
+
+ 2.To merge commits into the master branch:
+
+   To merge a specified commit into master, first discover its commit id. Use the log command to find the particular commit id.
+   To merge the commits into the master branch, switch over to the master branch -> $ git checkout master 
+   Use the git merge command along with master branch name.
+
+ 3.Git merge branch.
+   Git allows merging the whole branch in another branch. Suppose you have made many changes on a branch and want to merge all of that at a time. 
+
+  - I have made changes in newfile1 on the test branch. Now, I have committed this change in the test branch.
+  - Now, switch to the desired branch you want to merge. I have switched to the master branch. 
+    Perform the below command to merge the whole branch in the active branch.  
+   
+    $ git merge <branchname>  
+
+# Git Merge Conflict
+  When two branches are trying to merge, and both are edited at the same time and in the same file, Git won't be able to identify which version
+  is to take for changes. Such a situation is called merge conflict. If such a situation occurs, it stops just before the merge commit so that you 
+  can resolve the conflicts manually.
+
+# GitMerge vs. Rebase:
+  *Rebasing is not recommended in a shared branch because the rebasing process will create inconsistent repositories. For individuals, rebasing 
+   can be more useful than merging.
+  *If we want to see the complete history, we should use the merge. Merge tracks the entire history of commits, 
+   while rebase rewrites a new one.
+  *Merging is used to merge previous history while rebasing rewrties history.
+  *Merging creates a final commit at merging while rebase does not create any commit at rebasing.
+
+  *git merge apply all unique commits from branch A into branch B in one commit 
+  *git rebase gets all unique commits from both branches and applies them one by one.
+
+# What is the functionality of git ls-tree?
+  This command returns a tree object representation of the current repository along with the mode and the name of each item and 
+  the SHA-1 value of the blob.
+
+# Cherry Pick - Cheery picking in git stands for applying some commit from one branch into another branch
+     test branch -  git add .
+                    git commit -m ""
+                 oops, but i want to commit in master branch
+
+                    git log - pick commit id
+                    git checkout master
+                    git cherrypick <coomit-id>
+                    
+# Diffrence between Stash and Squash?
+  Stash is used to switch branches without committing the current branch
+  squash is used to squash the previous commit into one, or a group og commit into one
+
+# Diffrence between Revert and reset?
+  git reset change the commit history by moving the current head of the branch back to the specified commit. 
+  git revert does not change the commit history, by creating a new commit that undoes the changes in the specified commit.
+
+# Diffrence between git reset hard,mixed,soft?
+ -Git reset hard undoes changes and removes the associated files from the working directory, staging area, and commit history/Local repository.
+ -Git reset mixed untracks files without deleting them from the working area. It is the default, and keeps all files the same but unstages the changes.
+    Will remove from stagging area and local repository/commit history. 
+ -Git reset soft undoes the changes to the index(staging area).
+
+19. Difference between soft, mixed, and hard resets?
+
+--soft: Uncommit changes but leave those changes staged
+--mixed (the default): Uncommit and unstage changes, but changes are left in the working directory
+--hard: Uncommit, unstage, and delete changes
+
+# Git fetch and pull?
+
+ -pull will get the data and merge it 
+ -fetch will only get the data and not merge it
+
+ -We can see that with the help of just git pull command we directly fetched and merged our remote repository with the local repository.
+    --git pull = git fetch + git merge
+
+ -Git Fetch is the command that tells the local repository that there are changes available in the remote repository without bringing the changes into
+  the local repository. Git Pull on the other hand brings the copy of the remote directory changes into the local repository.
+
+# Tags : diffrence between tags and branches
+
+  Tags make a point as a specific point in Git history. Tags are used to mark a commit stage as relevant. We can tag a commit for future reference. 
+  OR
+  Tags are ref's that point to specific points in Git history. Tagging is generally used to capture a point in history that is used for a 
+  marked version release (i.e. v1.0.1)
+
+  There are two types of tags.
+
+  The motive of both tags is the same as marking a point in the repository`
+  1.Annotated tag
+  2.Light-weighted tag
+  Both of these tags are similar, but they are different in case of the amount of Metadata stores.
+
+  **When to create a Tag:
+   - When we want to create a release point for a stable version of your code.
+   - When we want to create a historical point that you can refer to reuse in the future.
+
+  **Git Create tag -
+     To create a tag first, checkout to the branch where you want to create a tag.
+     Syntax: $ git tag <tag name>  
+
+   Git List Tag -
+   We can list the available tags in our repository. There are three options that are available to list the tags in the repository. 
+   
+   1. git tag `        - git tag command is listing the available tags from the repository.
+   2. git show         - command will display the tag description eg: such as author name and date.
+   3. git tag -l ".*" -> $ git tag -l "<pattern>.*"  (It displays the available tags using wild card pattern)
+
+ **Annotated Tags
+   Annotated tags are tags that store extra Metadata like developer name, email, date, and more. They are stored as a bundle of objects in
+   the Git database.
+    Syntax: 
+        $ git tag <tag name> -m "< Tag message>
+
+ **Light-Weighted Tag:
+   It does not store unnecessary information to keep it light-weight. No command-line option such as -a,-s or -m are supplied in 
+   light-weighted tag, pass a tag name.
+   Syntax:
+         $ git tag <tag name>    
+
+   When to use :
+   If you are pointing and saving a final version of any project, then it is recommended to create an annotated tag. But if you want to make a 
+   temporary mark point or don't want to share information, then you can create a light-weight tag. 
+
+------------------------------------------------------------------------------------------------
+# What is a branching strategy?
+ -A branching strategy, is the strategy that software development teams adopt when writing, merging and deploying code when using
+  a version control system.
+ -It is essentially a set of rules that developers can follow to stipulate how they interact with a shared codebase.
+  
+ -Adhering to a branching strategy will help solve this issue so that developers can work together without stepping on each other’s toes. 
+  In other words, it enables teams to work in parallel to achieve faster releases and fewer conflicts by creating a clear process when making 
+  changes to source control.
+
+     Some common Git branching strategies?
+  --------------------------------------------
+   1.Git Flow / Git Branching Model
+   2.GitHub Flow
+   3.GitLab Flow
+   4.Trunk-based development
+
+1. Git Flow / Git Branching Model
+
+ **The Main Branches:-
+   Two of the branching model's branches are considered as main branches of the project. These branches are as follows:
+
+ 1. Master Branch ---- PROD?
+  - The master branch is the main branch of the project that contains all the history of final changes. Every developer must be used to the master branch. 
+  - Your local repository has its master branch that always up to date with the master of a remote repository.
+  - It is suggested not to mess with the master. If you edited the master branch of a group project, your changes would affect everyone else,
+    and very quickly, there will be merge conflicts.
+
+ 2. Develop Branch ---- QED?
+  - It is parallel to the master branch. It is also considered as the main branch of the project. 
+  - This branch contains the latest delivered development changes for the next release.
+  - It has the final source code for the release. It is also called as a "integration branch."
+  - When the develop branch reaches a stable point and is ready to release, it should be merged with master and tagged with a release version.
+
+ **Supportive Branches:-
+    The development model needs a variety of supporting branches for the parallel development, tracking of features, assist in quick fixing
+    and release, and other problems. These branches have a limited lifetime and are removed after the uses.
+
+  1. Feature Branches----CI?
+    - Feature branches can be considered as topic branches. 
+    - It is used to develop a new feature for the next version of the project. 
+    - The existence of this branch is limited; it is deleted after its feature has been merged with develop branch.
+
+  2. Release ----DEMO/QED?
+    - help prepare a new production release; 
+    - usually branched from the develop branch and must be merged back to both develop and master
+
+  3. Hotfix Branches
+    -Hotfix branches are similar to Release branches; both are created for a new production release.
+    -The hotfix branches arise due to immediate action on the project. In case of a critical bug in a production version, a hotfix branch may branch
+     off in your project. After fixing the bug, this branch can be merged with the master branch with a tag
+
+ Dis-adv of git flow:
+ -However, as more branches are added, they may become difficult to manage as developers merge their changes from the development branch to the main.
+----------------------------------------------------------------------
+
+*********this are not branching statergy
+
+2. GitHub Flow
+   -This model doesn’t have release branches. 
+   -The main idea behind this model is keeping the master code in a constant deployable state and hence can support continuous integration and 
+    continuous delivery processes.
+
+   GitHub Flow pros and cons:-
+   -Github Flow focuses on Agile principles and so it is a fast and streamlined branching strategy with short production cycles and frequent releases. 
+   -This strategy also allows for fast feedback, so that teams can quickly identify issues and resolve them.
+   -Since there is no development branch as we are testing and automating changes to one branch which allows for quick and continuous deployment.
+
+   -disadvantage is as this model is more suited to small teams and hence, as teams grow merge conflicts can occur as everyone is merging to the 
+    same branch
+
+3.GitLab Flow
+  -GitLab Flow is a simpler alternative to GitFlow that combines feature-driven development and feature branching with issue tracking.
+  -GitLab Flow is great when you want to maintain multiple environments and when you prefer to have a staging environment separate from the 
+   production environment. Then, whenever the main branch is ready to be deployed, you can merge back into the production branch and release it.
+
+ Diffrence:-
+   -With GitFlow, developers create a develop branch and make that the default while GitLab Flow works with the main branch right away.
+   -While GitHub Flow assumes that you can deploy into production whenever you merge a feature branch into the master, GitLab Flow seeks to resolve
+    that issue by allowing the code to pass through internal environments before it reaches production, 
+
+4.Trunk-based development
+  -Trunk-based development is a branching strategy that in fact requires no branches but instead, developers integrate their changes into a shared trunk
+   at least once a day. This shared trunk should be ready for release anytime.
+  
+  -The main idea behind this strategy is that developers make smaller changes more frequently and thus the goal is to limit long-lasting branches and 
+   avoid merge conflicts as all developers work on the same branch. In other words, developers commit directly into the trunk without the use of branches.
+
+  -This strategy is often combined with feature flags. As the trunk is always kept ready for release, feature flags help decouple deployment from 
+   release so any changes that are not ready can be wrapped in a feature flag and kept hidden while features that are complete can be released to
+   end-users without delay.

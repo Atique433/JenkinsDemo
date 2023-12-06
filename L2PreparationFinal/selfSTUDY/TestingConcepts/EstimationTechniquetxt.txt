@@ -1,0 +1,116 @@
+Function point technique - The estimation is calculted based on Function points on the basic of(Size,duration and cost).
+three point technique    - this tecniques we divide project size using three values: optimistic, pessimistic, and most likely. 
+                           and then we use pert formula to calculate,E = (a+4m+b)/6
+delphi method            - This is done by experts over multiple round of surveys unless & until a final estimation of task is not finalized.
+work breakdown structure - no actually an estimation but used before estimating, A big project is made manageable by first breaking it down into
+                           individual components in a hierarchical structure, 
+planning poker           - Planning poker, also known as “scrum poker” and “pointing poker”, is a gamified technique that development teams use
+                           to guess the effort of project management tasks.
+           Planning Poker uses of the Fibonacci sequence to assign a point value to a feature or user story.(Tshirt size fibonaci - S,M,L,XL,XL>Epic)
+
+1.Function Points: This technique involves estimating the project size based on the functionality provided by the software. Function points consider
+   factors such as inputs, outputs, inquiries, and files to arrive at the project size estimate.
+   
+ ->The Test Manager estimates Size, Duration, and Cost for the tasks
+
+  Step A) Estimate size for the task:
+     Prior to start actual estimating tasks effort, functional points are divided into three groups like Complex, Medium, Simple as following:
+     Based on the complex of software functions, the Test Manger has to give enough weightage to each functional point.
+
+  STEP B) Estimate duration for the task:
+
+        Total effort = Total Function Points * Estimate defined per Function Points
+                 170 = 34 * 5 
+
+     Total Effort                        : The effort to completely test all the functions of the website
+     Total Function Points               : Total modules of the website
+     Estimate defined per Function Points: The average effort to complete one function points. This value depends on the productivity of the member
+                                           who will take in charge this task.
+
+  STEP C) Estimate the cost for the tasks
+
+     Suppose, on average your team salary is $5 per hour. The time required for “Create Test Specs” task is 170 hours. Accordingly, the cost for
+     the task is 5*170= $850. Now you can calculate budget for other activities in WBS and arrive at overall budget for the project.
+
+2.Three-point Estimation: 
+  This technique involves estimating the project size using three values: optimistic, pessimistic, and most likely. These values are then used to 
+  calculate the expected project size using a formula such as the PERT formula.
+
+  In three-point estimation, three values are produced initially for every task based on prior experience or best-guesses as follows
+  - the best-case estimate
+  - the most likely estimate
+  - the worst case estimate
+
+   a = 120, m = 170, b = 200
+  
+   E = (a+4m+b)/6    E is known as Weighted Average.                                            
+ -
+  ** to check if the estimation is correct - > SD = (b-a)/6   ,SD mean Standard Deviation
+
+3.Delphi Technique: This is one of the widely used software testing estimation technique.
+   In the Delphi Method is based on surveys and basically collects the information from participants who are experts. In this estimation technique 
+   each task is assigned to each team member & over multiple rounds surveys are conduct unless & until a final estimation of task is not finalized.
+   In each round the thought about task are gathered & feedback is provided. By using this method, you can get quantitative and qualitative results.
+  - who are there in depli technique - experts
+
+4.Work Breakdown Structure (WBS):
+   A big project is made manageable by first breaking it down into individual components in a hierarchical structure, known as the
+   Work breakdown structure, or the WBS
+
+   In this technique the complex project is divided into smaller pieces. The modules are divided into smaller sub-modules. Each sub-modules are 
+   further divided into functionality. And each functionality can be divided into sub-functionalities. After breakdown the work all functionality 
+   should review to check whether each & every functionality is covered in the WBS.
+
+5.Planning Poker:
+   Also called “Scrum Poker,” is a consensus-based Agile planning and estimating technique used to assess product backlogs, guessing how much time and
+   effort is needed to complete each of the backlog’s initiatives.
+  - Planning poker (also known as Scrum poker) is a consensus-based, gamified technique for estimating, mostly used to estimate effort or 
+    relative size of development goals in software development.
+  - Planning poker, also known as “scrum poker” and “pointing poker”, is a gamified technique that development teams use to guess the effort of project
+    management tasks.
+
+  -Who to include in planning poker meetings- Scrum team members,scrum master, Product owner
+  
+ **Steps for Planning Poker
+
+ 1.To start a poker planning session, the product owner or customer reads an agile user story or describes a feature to the estimators.
+     For example:
+     “Customer logs in to the reservation system”
+     “Customer enters search criteria for a hotel reservation”
+ 2.Team members of the group make estimates by playing numbered cards face-down to the table without revealing their estimate 
+   (Fibonacci values: 1,2,3,5,8,13,20,40)
+ 3.Cards are simultaneously displayed
+ 4.The estimates are then discussed, and high and low estimates are explained
+ 5.Repeat as needed until estimates converge
+
+ # Fibonacci sequence and Planning Poker
+   - Planning Poker uses of the Fibonacci sequence to assign a point value to a feature or user story.
+
+	0		Task is already completed.
+	1/2		The task is tiny.
+	1, 2, 3		These are used for small tasks.
+	5, 8, 13	These are used for medium sized tasks.
+	20, 40		These are used for large tasks.
+	100		These are used for very large tasks.
+	<infinity>	The task is huge.
+	?		No idea how long it takes to complete this task.
+	<cup of coffee>	I am hungry 🙂
+   *Tshirt size fibonaci - S,M,L,XL,XL>Epic
+
+ # Agile Estimation – Relative vs Absolute
+   An estimate is nothing more than a well educated guess. We use all the knowledge and experience at hand to make a guess about the amount of time
+   it is going to take. So instead of looking at every new work item separately, why not compare it to previously finished work items? It’s easier 
+   for humans to relate to similar items than to guess the actual size of things anyway.
+
+   Our brain is not capable of doing absolute estimates; we always put that new thing that we need to estimate in relationship to things we already know.
+
+ Benefits:
+  1. The game framework encourages collaboration and team building.
+  2. Requiring a consensus among the team, rather than having one person dictate estimates, can increase morale by giving everyone on the 
+   cross-functiona team a vote.
+
+ Drawbacks:
+  1. Arriving at a consensus can give the team a false sense of confidence. They might still be missing important pieces of information, and their
+     estimate might still be off.
+  2. A dominating person in the group can unduly influence the other participants. If you’re not careful, it can lead to estimate driven not by 
+     consensus but force of will.

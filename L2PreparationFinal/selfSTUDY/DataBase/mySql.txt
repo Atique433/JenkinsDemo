@@ -1,0 +1,337 @@
+# Cheat sheet -> https://javaconceptoftheday.com/sql-cheat-sheet/
+
+# MySql - MySQL is a relational database management system based on the Structured Query Language, which is the popular language for accessing
+          and managing the records in the database. MySQL is open-source and free software under the GNU license. It is supported by Oracle Company.
+
+# diffrence between DDL and DML?
+-                        DDL	                                                                   DML
+   It stands for Data Definition Language.	                           It stands for Data Manipulation Language.
+   DDL does not use WHERE clause in its statement.	                   While DML uses WHERE clause in its statement.
+   DDL is used to define the structure of a database.	                   DML is used to manipulate the data within the database.
+   DDL statements do not change the contents of the database.	           DML statements change the contents of the database.
+   Examples of DDL commands: CREATE TABLE, ALTER TABLE, DROP TABLE, 	   Examples of DML commands: SELECT, INSERT, UPDATE, DELETE, and MERGE.
+      TRUNCATE TABLE, and RENAME TABLE.
+
+Q) truncate vs delete in sql?
+-  The DELETE command is used to delete particular records from a table. The TRUNCATE command is used to delete the complete data from the table.
+   Delete is a DML command whereas Truncate is a DDL
+   Delete can be use with Where clause whereas Truncate does not use WHERE clause.
+
+Q) How do you create a database in MySQL?
+    Use the following command to create a new database called ‘books’:
+     * CREATE DATABASE books;
+
+Q) Query the Name of any student in STUDENTS who scored higher than Marks 75. 
+   Order your output by the last three characters of each name
+
+   Select name from STUDENTS
+   where marks =>75 order by Right(Name,3);
+
+Q) How can you interact with MySQL?
+   There are three main ways you can interact with MySQL: 
+
+   *using a command line
+   *via a web interface
+   *through a programming language
+
+Q) How do you create a table using MySQL?
+   Use the following to create a table using MySQL:
+
+   CREATE TABLE history (
+    author VARCHAR(128),
+    title VARCHAR(128),
+    type VARCHAR(16),
+    year CHAR(4));
+
+Q) How to Delete Data From a MySQL Table?
+   In MySQL, the DELETE statement is used to delete records from a table:
+
+   DELETE FROM table_name
+   WHERE column_name = value_name
+
+  Delete form Students where name = 'Atique';
+
+# Diffrent type of database -> MySQL, Sybase, Oracle, MongoDB, PostgreSQL, SQL Server,
+
+# Some of The Most Important SQL Commands
+
+  SELECT - extracts data from a database
+  UPDATE - updates data in a database
+  DELETE - deletes data from a database
+  INSERT INTO - inserts new data into a database
+  CREATE DATABASE - creates a new database
+  ALTER DATABASE - modifies a database
+  CREATE TABLE - creates a new table
+  ALTER TABLE - modifies a table
+  DROP TABLE - deletes a table
+  CREATE INDEX - creates an index (search key)
+  DROP INDEX - deletes an index
+ 
+Q) To select particular/multiple coloumn from table - 
+     1.SELECT Continent FROM world.country;
+     2.SELECT Name,Continent FROM world.country;
+
+Q) The SELECT DISTINCT statement is used to return only distinct (different) values.
+    *SELECT DISTINCT Continent FROM world.country;
+
+-> WHERE Clause:- The WHERE clause is used to filter records.It is used to extract only those records that fulfill a specified condition.
+
+Q) WAQTD specific country details 
+    - SELECT * FROM world.country Where Name='India';
+
+# Text Fields vs. Numeric Fields
+  SQL requires single quotes around text values (most database systems will also allow double quotes).
+  However, numeric fields should not be enclosed in quotes:
+
+Q) WAQTD to select on the basis of Independance Year -
+    - SELECT * FROM world.country Where IndepYear=1947;
+
+# Concatination -jonning two or more coloumn , we can achive using (||) 
+    eg: select Continent || Region from world.country;
+  
+# Operators in The WHERE Clause
+  The following operators can be used in the WHERE clause:
+
+   Operator	Description	                                                              Example
+     =	         Equal	
+     >	         Greater than	
+     <	         Less than	
+     >=	         Greater than or equal	                                           SELECT * FROM world.country Where IndepYear>=1947;
+     <=	         Less than or equal	
+     <>	         Not equal. Note: In some versions of 
+                 SQL this operator may be written as !=	                           SELECT * FROM world.country Where IndepYear!=1947;
+   BETWEEN	 Between a certain range	                                   SELECT * FROM world.country Where IndepYear BETWEEN 1947 AND 1950; 
+    LIKE	 Search for a pattern	                                           SELECT * FROM Customers WHERE City LIKE 's%';
+     IN	         To specify multiple possible values for a column
+
+# The MySQL AND, OR and NOT Operators
+  The WHERE clause can be combined with AND, OR, and NOT operators.
+
+  1.AND Syntax
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition1 AND condition2 AND condition3 ...;
+
+  2.OR Syntax
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition1 OR condition2 OR condition3 ...;
+
+  3.NOT Syntax
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE NOT condition;
+
+
+   (AND)- SELECT * FROM world.country where Name = 'Argentina' and Continent='South America';
+
+   (OR)- WAQTD All view the region that comes under 'Southern Europe' Or 'South America'?
+          - SELECT * FROM world.country WHERE Region= 'Southern Europe' Or 'South America';
+
+ *Combining AND, OR and NOT
+
+   -WAQT selects all fields from "Customers" where country is "Germany" AND city must be "Berlin" OR "Stuttgart" 
+    (use parenthesis to form complex expressions):
+       SELECT * FROM Customers
+       WHERE Country = 'Germany' AND (City = 'Berlin' OR City = 'Stuttgart');
+
+   -WAQT selects all fields from "Customers" where country is NOT "Germany" and NOT "USA":
+       SELECT * FROM Customers
+       WHERE NOT Country = 'Germany' AND NOT Country = 'USA';
+
+# ORDER BY:-The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+            The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
+
+   -ORDER BY Syntax
+     SELECT column1, column2, ...
+     FROM table_name
+     ORDER BY column1, column2, ... ASC|DESC;
+
+   -SELECT * FROM world.country order by Region DESC;
+   -(Using Both) SELECT * FROM world.country order by Region DESC,Name ASC;
+
+# INSERT INTO :- The INSERT INTO statement is used to insert new records in a table.
+
+  INSERT INTO Syntax:- 
+
+  1. Specify both the column names and the values to be inserted:
+
+     INSERT INTO table_name (column1, column2, column3, ...)
+       VALUES (value1, value2, value3, ...);
+
+      eg: INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+            VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+      eg: insert into world.country (Code, Name)
+           values ('jsr','Sackhi');
+	
+  2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make
+     sure the order of the values is in the same order as the columns in the table. Here, the INSERT INTO syntax would be as follows:
+
+     INSERT INTO table_name
+      VALUES (value1, value2, value3, ...);
+
+    eg: insert into world.country
+          values ('JSR','Sackhi');
+
+# How to Test for NULL Values?
+- It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+
+  **We will have to use the IS NULL and IS NOT NULL operators instead.
+
+    IS NULL Syntax:
+        SELECT column_names
+        FROM table_name
+        WHERE column_name IS NULL;
+
+    eg:Select * from world.country where IndepYear is null;
+      :Select name, continent from world.country where IndepYear is null;
+
+    IS NOT NULL Syntax:
+       SELECT column_names
+       FROM table_name
+       WHERE column_name IS NOT NULL;
+
+    eg:Select * from world.country where IndepYear is Not null;
+
+# UPDATE Statement: The UPDATE statement is used to modify the existing records in a table.
+
+  ** Be careful when updating records. If you omit the WHERE clause, ALL records will be updated!
+     UPDATE Syntax:
+       UPDATE table_name
+       SET column1 = value1, column2 = value2, ...
+       WHERE condition;
+     
+      eg: UPDATE world.country
+          SET Continent = 'south america'
+          WHERE code = 'ISL';
+       
+# DELETE Statement: The DELETE statement is used to delete existing records in a table.
+  
+     DELETE Syntax:
+       DELETE FROM table_name WHERE condition;
+
+     eg: Delete form Students where name = 'Atique';
+
+# LIMIT Clause: The LIMIT clause is used to specify the number of records to return.
+
+     LIMIT Syntax:
+        SELECT column_name(s) FROM table_name
+        WHERE condition
+        LIMIT number;
+    eg: Select * from world.country limit 5;
+      : Select * from world.country where Continent = 'Asia' limit 5;
+
+# MIN() and MAX() Functions
+   -The MIN() function returns the smallest value of the selected column.
+   -The MAX() function returns the largest value of the selected column.
+
+    MIN() Syntax :                                                    MAX() Syntax :
+      SELECT MIN(column_name) FROM table_name                          SELECT MAX(column_name) FROM table_name
+        WHERE condition;                                                 WHERE condition;
+
+# COUNT(), AVG() and SUM() Functions
+  -The COUNT() function returns the number of rows that matches a specified criterion.
+
+      COUNT() Syntax:
+          SELECT COUNT(column_name) FROM table_name
+            WHERE condition;
+
+  -The AVG() function returns the average value of a numeric column. 
+
+      AVG() Syntax:
+         SELECT AVG(column_name) FROM table_name
+            WHERE condition;
+
+      Select AVG(name) from world.country
+      where IndYear = 1947;
+
+  -The SUM() function returns the total sum of a numeric column. 
+
+      SUM() Syntax:
+         SELECT SUM(column_name) FROM table_name
+            WHERE condition;
+      eg: Select SUM(IndepYear) from world.country ;
+      
+# LIKE Operator
+   -The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+      There are two wildcards often used in conjunction with the LIKE operator:
+         *The percent sign (%) represents zero, one, or multiple characters
+         *The underscore sign (_) represents one, single character
+         *The percent sign and the underscore can also be used in combinations!
+
+       LIKE Syntax
+         SELECT column1, column2, ...
+          FROM table_name
+          WHERE columnN LIKE pattern;
+
+     Q)print the name that have a in third postion
+      eg: Select * from world.country where name like '__a%'; 
+ 
+         LIKE Operator	                            Description
+   WHERE CustomerName LIKE 'a%'	           Finds any values that start with "a"
+   WHERE CustomerName LIKE '%a'	           Finds any values that end with "a"
+   WHERE CustomerName LIKE '%or%'	   Finds any values that have "or" in any position
+   WHERE CustomerName LIKE '_r%'	   Finds any values that have "r" in the second position
+   WHERE CustomerName LIKE 'a_%'	   Finds any values that start with "a" and are at least 2 characters in length
+   WHERE CustomerName LIKE 'a__%'	   Finds any values that start with "a" and are at least 3 characters in length
+   WHERE ContactName LIKE 'a%o'	           Finds any values that start with "a" and ends with "o"
+
+# Wildcard Characters: A wildcard character is used to substitute one or more characters in a string.
+                       Wildcard characters are used with the LIKE operator.
+
+	Symbol	        Description	                                   Example
+	%	Represents zero or more characters	     bl% -  finds bl, black, blue, and blob
+	_	Represents a single character	             h_t -  finds hot, hat, and hit
+
+    eg: SELECT * FROM Customers WHERE City LIKE '_ondon';
+        SELECT * FROM Customers WHERE City LIKE 'L_n_on';
+
+# IN Operator: The IN operator allows you to specify multiple values in a WHERE clause.
+               The IN operator is a shorthand for multiple OR conditions.
+
+      IN Syntax:-
+            SELECT column_name(s)
+            FROM table_name
+            WHERE column_name IN (value1, value2, ...);
+      or:
+            SELECT column_name(s)
+            FROM table_name
+            WHERE column_name IN (SELECT STATEMENT);
+
+       eg:Select * from world.country where region IN ('Middle East','South America');
+
+# BETWEEN Operator: The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+                    The BETWEEN operator is inclusive: begin and end values are included.
+
+       BETWEEN Syntax:
+          SELECT column_name(s)
+          FROM table_name
+          WHERE column_name BETWEEN value1 AND value2;	
+
+     eg: 
+         1.Select * from world.country where IndepYear between 1947 and 1991
+           And Continent Not in ('Asia','Africa');
+         2.Select * from world.country where IndepYear between 1947 and 1991;
+         3.SELECT * FROM Orders WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+
+# Aliases: Aliases are used to give a table, or a column in a table, a temporary name.
+           Aliases are often used to make column names more readable.
+           An alias only exists for the duration of that query.
+           An alias is created with the "AS" keyword.
+
+        Alias Column Syntax:
+           SELECT column_name AS alias_name FROM table_name;
+
+         eg: Select Name as countryName , Region as origin
+             from world.country;
+
+    *The following SQL statement creates two aliases, one for the CustomerName column and one for the ContactName column. 
+     Note: Single or double quotation marks are required if the alias name contains spaces:
+    - Example:SELECT CustomerName AS Customer, ContactName AS "Contact Person" FROM Customers;
+   
+    *The following SQL statement creates an alias named "Address" that combine four columns (Address, PostalCode, City and Country):
+    - SELECT CustomerName, CONCAT_WS(', ', Address, PostalCode, City, Country) AS Address  
+      FROM Customers;
+         

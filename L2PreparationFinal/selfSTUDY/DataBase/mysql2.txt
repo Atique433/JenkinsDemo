@@ -1,0 +1,73 @@
+# JOINS: SQL Join statement is used to combine data or rows from two or more tables based on a common field between them. 
+    Different types of Joins are as follows: 
+
+   1.INNER JOIN- The INNER JOIN keyword selects all rows from both the tables as long as the condition is satisfied. This keyword will create the
+                 result-set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be the same. 
+
+              Syntax:
+
+              SELECT table1.column1,table1.column2,table2.column1,....
+              FROM table1 
+              INNER JOIN table2
+              ON table1.matching_column = table2.matching_column;
+
+               eg:SELECT world.country.Continent,world.country.Region, world.city.Population
+                  FROM world.country
+                  JOIN world.city 
+                  ON world.country.Name=world.city.Name;
+  
+   2.LEFT JOIN- This join returns all the rows of the table on the left side of the join and matches rows for the table on the right side
+                of the join. For the rows for which there is no matching row on the right side, the result-set will contain null.
+                LEFT JOIN is also known as LEFT OUTER JOIN.
+
+   3.RIGHT JOIN- RIGHT JOIN is similar to LEFT JOIN. This join returns all the rows of the table on the right side of the join and matching rows 
+                 for the table on the left side of the join. For the rows for which there is no matching row on the left side, the result-set will
+                 contain null. RIGHT JOIN is also known as RIGHT OUTER JOIN.
+
+              Syntax for LEFT/RIGHT:-
+
+              SELECT table1.column1,table1.column2,table2.column1,.... 
+              FROM table1 
+              LEFT/RIGHT JOIN table2
+              ON table1.matching_column = table2.matching_column;
+   
+   4.FULL JOIN/CROSS JOIN - FULL JOIN creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN. The result-set will contain
+                            all the row from both tables. For the rows for which there is no matching, the result-set will contain NULL values.`
+
+# The DROP DATABASE statement is used to drop an existing SQL database.
+  The DROP TABLE statement is used to drop an existing table in a database.
+  The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.
+
+# ALTER TABLE Statement: The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+                         The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+
+                   -ALTER TABLE table_name
+                    ADD column_name datatype;
+
+                   -ALTER TABLE table_name
+                    DROP COLUMN column_name;
+
+                   -ALTER TABLE table_name
+                    DROP COLUMN column_name;
+
+# MySQL Constraints:-
+  SQL constraints are used to specify rules for the data in a table.
+  Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table.
+  If there is any violation between the constraint and the data action, the action is aborted.
+  Constraints can be column level or table level. Column level constraints apply to a column, and table level constraints apply to the whole table.
+
+     The following constraints are commonly used in SQL:
+
+     NOT NULL - Ensures that a column cannot have a NULL value
+     UNIQUE - Ensures that all values in a column are different
+     PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+     FOREIGN KEY - Prevents actions that would destroy links between tables
+     CHECK - Ensures that the values in a column satisfies a specific condition
+     DEFAULT - Sets a default value for a column if no value is specified
+     CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+#	                 PrimaryKey							      ForeignKey
+  A primary key is used to ensure data in the specific column is unique.	A foreign key is a column or group of columns in a relational database 
+                                                                                table that provides a link between data in two tables.
+  It is a combination of UNIQUE and Not Null constraints.			It can contain duplicate values and a table in a relational database.
+  It does not allow NULL values.						It allows contain NULL values.

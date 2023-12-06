@@ -1,0 +1,40 @@
+##Test case writing: Test case id,  test name , desciption, Test Steps. Test data, expected, actual result
+   Other fields = Test scenario, module name, author name, priority - high/low
+
+-------------------------------------------------------------------------
+Api Testing (PRACTICAL QUESTION CHECK) - Done
+database - Done
+paralell - Done
+practical question(Coding-string,array,collections) - Done
+
+-------------------------------------------------------------------------
+selenium - Done
+Bdd - Done
+Testing concepts - Done
+Design pattern - Done
+
+-------------------------------------------------------------------------
+maven- Done
+git - Done
+java- Docs, Static non static, abstract vs interface, Comparable vs comparator, exceptions, collections - Done
+framework - OOPs notes in VDI - Done
+agile/scrum notes - 18
+
+-------------------------------------------------------------------------	
+TestNG - Done
+Java 8 - Done
+project implemetation (exception,wait,screenshot,logger,abstraction,Reportportal) - OOPs notes in VDI - Done
+
+Revision Notes
+Diff between ON-prem and Cloud
+waterfall model vs Agile
+process related question, used cases in project.
+
+-------------------------------------------------------------------------
+int  i= Integer.parseInt(str1);
+       System.out.println(i);
+       String str2 = Integer.toString(i);
+       System.out.println(str2);
+
+
+

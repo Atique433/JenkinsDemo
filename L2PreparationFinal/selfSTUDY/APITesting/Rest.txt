@@ -1,0 +1,166 @@
+# What is Web Service?
+  Web Service is a standard software system used for communication between two devices (client and server) over the network.
+  Web services provide a common platform for various applications written in different languages to communicate with each other over the network.
+
+  There are mainly two types of web services.
+   1.SOAP web services.
+   2.RESTful web services.
+
+# Component of webservices - revise
+  1.WSDL - Web service description launguage,This is an xml based interface.
+           Service provider publishes an interface for his webservice that describes all attributes of the webservices
+  2.UDDI - Universal Description, Discovery and Integration.
+           A webservice provider publishes his webservice(through wsdl) on an online directory from where consumers can query and search webservices.
+
+Q) How to Deserialize JSON Response to Class with Rest Assured? 
+-  To deserialize a JSON response into a Java class using Rest Assured, we'll need to use a library like Jackson or Gson.
+
+Q) How to Deserialize JSON Response Body based on Response Status?
+   To deserialize a JSON response body based on the response status using Rest Assured, we can first check the status code of the response and then 
+   conditionally deserialize the JSON response into different Java classes depending on the status code.
+
+   To deserialize the JSON response body based on the response status, we'll need to handle the deserialization process conditionally.
+   we can use Rest Assured to make the API request and then use Jackson or any other JSON library to deserialize the response body based on the status code.
+
+ Note: Deserialize - Json to Pojo(person class)
+       serialize   - pojo to json 
+
+# POJO classes are extensively used for creating JSON and XML payloads for API.
+
+# What is JSONPath?
+  JSONPath is a query language for JSON, similar to XPath for XML. It allows you to select and extract data from a JSON document.
+  You use a JSONPath expression to traverse the path to an element in the JSON structure.
+
+# Guiding principles or constraints of REST
+
+- For an API to be RESTful, it has to fulfil or adhere to the following guiding principles or constraints defined by REST are:
+  1.Uniform interface
+  2.Client-server separation
+  3.Stateless - server end
+  4.Layered system
+  5.Cacheable - client end
+  6.Code-on-demand(optional)
+
+# What is REST API?
+
+- An API (Application Programming Interface) conforming to the REST architectural style or REST standards is known as a "REST API".
+  A Rest API facilitates interaction between the client and RESTful web services*( server)* to get the required information.
+
+# What is REST Assured?
+- Rest-Assured is an open-source Java-based library useful for testing and validating REST APIs or RESTFul Web Services. It is like a 
+  headless (no GUI) client that accesses and tests the REST Web Services.
+
+# advantages/disadvantages of the library.
+
+--Advantages
+   Implements builder pattern for creating request, parse the response and then match with expected results.
+   It is open-source and hence free to use.
+   It is very rich in syntax and ready-made assertions. Rest Assured requires less coding as compared to Apache HTTP Client.
+   The setup of Rest Assured is easy and straightforward.
+   The response is given in JSON or XML format and is easy to parse and validate.
+   It uses inbuilt Hemcrest Matchers for easy extraction of values.
+   Response time is quick as also an assertion of status code.
+   The library has a powerful logging mechanism. Also, we can verify headers, cookies, content type, etc on the fly.
+   It can easily be integrated with other Java libraries like TestNG, JUnit, etc. We can also integrate it with Selenium-Java 
+   and achieve end-to-end automation.
+   It supports JsonPath and XmlPath that helps in parsing JSON and XML response. It also has support for the JSON Schema Validation library to verify JSON Schema.
+   Rest Assured can also be integrated with Maven and CI/CD.
+   It follows the BDD (Behavioural Data-Driven) approach and keywords like given() when(), then() which makes code readable and supports clean coding.
+  
+--Disadvantages of Rest Assured
+
+  It does not support the testing of SOAP APIs explicitly.
+  Using this library requires that the user has good Java programming knowledge.
+  There is no inbuilt reporting in Rest Assured.
+  As the services follow the idea of statelessness, it is not possible to maintain sessions.
+
+# class io.restassured.RestAssured:-
+
+  *It generates HTTP Requests with a base URI.
+  *Provides support to create Requests for different HTTP method types (GET, POST, PUT, PATCH, DELETE, UPDATE, HEAD, and OPTIONS).
+  *It communicates with the server using HTTP and sends the Request created in the tests to the server.
+  *Receives the response from the server.
+  *Provides support for validating the Response received from the server.
+
+# An HTTP Response contains:- status, Collection of Headers, Body.
+
+# io.restassured.response:- Rest Assured library provides a package named "io.restassured.response" which has a Response interface. 
+                            The Response interface provides methods that can help to get parts of the received response.
+
+# status line:- A "Status-Line" is the first line returned in the HTTP response. The status line consists of three substrings:
+                 HTTP protocol version, Status Code, Status Code’s string value. for eg - "HTTP/1.1 200 OK".
+
+# The Response interface of REST Assured provides 2 methods related to headers.
+  headers(String headerName): This method is used to retrieve the value of a specific header from the response.
+  headers() : This method is used to retrieve all the headers from the response as a Headers object.
+
+  Note: The collection of headers is represented by a class called io.restassured. HTTP.Headers.
+        This class implements the Iterable interface.
+        Hence, we can use the "for each (for( : ))"  loop to read all the headers.
+
+# Response interface contains two methods to get the Response Body
+
+    1.Response.body() : returns ResponseBody
+    2.Response.getBody() : returns ResponseBody
+
+# In Java, a Serializable object is an object which inherits from either of the two interfaces:-
+      1.java.io.Serializable   - Serializable interface is a marker interface. Which means that you do not have to implement any methods
+                                 if your class derives from this interface.
+      2.java.io.Externalizable - The Externalizable interface is not a marker interface. If you derive from Externalizable interface you
+                                 have to implement these two methods- (readExternal(ObjectInput input),writeExternal(ObjectOutput output)).
+
+** Rest assured has four types of authentication schemes. They are basic, digest, form, and OAuth authentication.
+   By default, rest assured uses a challenge-response mechanism.
+
+example: https://automationreinvented.blogspot.com/2020/09/api-authentication-methods-automation.html
+
+# There are two types of Basic Authentications:
+
+  1. Challenged Basic Authentication - REST Assured will not supply the credentials unless the server has explicitly asked for it. This means that 
+                                    REST Assured will make an additional request to the server in order to be challenged and then follow up with the same 
+                                    request once more but this time setting the basic credentials in the header.
+
+  2. Preemptive Basic Authentication - This will send the basic authentication credential even before the server gives an unauthorized response in certain
+                                    situations, thus reducing the overhead of making an additional connection.
+
+ *Basic authentication uses the easily reversible Base64 encoding making it unsecure. 
+
+# Digest Authentication - It is somewhat similar to challenge-based authentication but is more secure as it uses a digestive key in subsequent requests.
+                          It applies a hash function to the username and password before sending them over the network.
+                          given().auth().digest("your username", "your password").get("your end point URL")
+
+# Form Authentication - There can be many cases when you need to pass the authentication credentials in an HTML form.
+                        This request is generally sent as a post method where the credentials entered in the form are used for authentication.
+                        given().auth().form("your username", "your password").post("your end point URL")
+
+# OAuth Authentication - OAuth is an authorization framework that defines an identity protocol. 
+     OAuth 1.0 - Secured resources built using OAuth 1.0 requires passing consumer key, secret, access token, and token secret.
+                 syntax : given().auth().oauth(consumerKey, consumerSecret, accessToken, tokenSecret).get("your end point URL")
+
+     OAuth 2.0 - There are cases when we need to generate an access token for a user session. This access token performs various transactions
+                 and helps maintain the user session. While using OAuth 2.0 you need to directly pass the access token generated when the user
+                 login using the below syntax : given().auth().oauth2("Access token").get("your end point URL")
+
+# differences between a PUT and a POST request.
+
+   - POST request
+   *201 with a location header pointing to the new resource.
+   *400 if the new item is not created.
+
+   - PUT request
+   *204 for OK/SUCCESS (but no content).
+   *200 for OK with Content Body (Updated response).
+   *400 if the data sent was invalid.
+
+# Post Request 
+
+  - JSONObject is a class present in org.json.simple package
+  - It is programmatic representation of json Object
+
+       -JSONObject requestParams = new JSONObject();
+	requestParams.put("FirstName", "Virender"); 
+	requestParams.put("LastName", "Singh");
+
+  - Set Header Type - request.header("Content-Type", "application/json");
+  - Add jsonObject in request body - request.body(requestParams.toJSONString());
+  - Send the request - Response response = request.post("/register");

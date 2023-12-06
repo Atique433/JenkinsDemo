@@ -1,0 +1,112 @@
+# Is java a completely object-oriented programming language? 
+  Java is not a pure object-oriented programming language, because it has direct access to primitive data types. And these primitive data types don't 
+  directly belong to the Integer classes.
+
+# Why is Java not a pure object oriented language?
+  Java supports primitive data types - byte, boolean, char, short, int, float, long, and double and hence it is not a pure object oriented language.
+
+# Instance variable and a local variable?
+  Instance variables are those variables that are accessible by all the methods in the class. They are declared outside the methods and inside the class.
+  Local variables are those variables present within a block, function, or constructor and can be accessed only inside them. 
+
+# Is it possible that the ‘finally’ block will not be executed? If yes then list the case.
+  Generally fianlly block execute everytime when define, but there might be some case where ‘finally’ block will not be executed. The cases are-
+
+   * Suppose we use System.exit() in the above statement.
+   * If there are fatal errors like Stack overflow, Memory access error, etc.
+
+# super keyword is used to access hidden fields and overridden methods or attributes of the parent class.
+
+# What is a ClassLoader?
+  Java Classloader is the program that belongs to JRE (Java Runtime Environment). The task of ClassLoader is to load the required classes and interfaces
+  to the JVM when required. 
+  Example- To get input from the console, we require the scanner class. And the Scanner class is loaded by the ClassLoader
+
+#       int[] n1 = new int[0];
+        boolean[] n2 = new boolean[-200];
+        double[] n3 = new double[2241423798]; //error
+        char[] ch = new char[20];
+
+# System.out.println() is used to print the message on the console. System - It is a class present in java.lang package. Out is the static variable 
+  of type PrintStream class present in the System class. println() is the method present in the PrintStream class
+
+# JIT stands for (Just-in-Time) compiler is a part of JRE(Java Runtime Environment), it is used for better performance of the Java applications
+  during run-time. 
+
+# What are the features of JAVA?
+  Simple              : Java launguage is very easy to learn it has simple syntax
+  OOP concepts        : Java is Object oriented programming laungauge.
+  Platform independent: A single program works on different platforms without any modification. 
+  High Performance    : JIT (Just In Time compiler) enables high performance in Java. JIT converts the bytecode into machine language and then JVM 
+                        starts the execution.
+  Multi-threaded      : A flow of execution is known as a Thread. JVM creates a thread which is called the main thread. 
+                        The user can create multiple threads by extending the thread class or by implementing the Runnable interface.
+  Secured             : java launguage is highly secured beausue of its internal tool called JVM.
+
+# Why is Java platform independent? 
+  When javac compiles a java program it generates an executable file called .class file.The class file contains byte codes.
+  this byte code made java platform independent, beacuse it can be run on multiple platform.
+
+# After java 8 what are the difference between abstract class and interfaces?
+   Default and Static Methods:
+    Abstract Classes: Prior to Java 8, abstract classes could only contain abstract methods (methods without a body). However, with Java 8, 
+                      abstract classes can also include default and static methods with implementations. 
+    Interfaces: In Java 8, interfaces can also have default and static methods.`
+
+   //not allowed
+    public static void meth1();
+
+  public interface Java8feauturesforInterfaces {
+    void abstractMethod(); // Abstract Method
+
+    default void defaultMethod() {
+        System.out.println("It is a default method");
+    }
+
+    static void staticMethod() {
+        System.out.println("It is a static method");
+    }
+  }
+
+ class AnyClass implements Java8feauturesforInterfaces
+  {
+    @Override
+    public void abstractMethod() 
+    {
+        System.out.println("Abstract Method implemented");
+    }
+     
+    //No need to implement defaultMethod()
+     
+    //Can't implement staticMethod()
+  }
+
+# Why Default Methods?
+  Default methods are introduced to add extra features to current interfaces without disrupting their existing implementations. For example, stream() 
+  is a default method which is added to Collection interface in Java 8. If stream() would have been added as abstract method, then all classes 
+  implementing Collection interface must have implemented stream() method which may have irritated existing users.
+
+  Thanks to Java 8 default method feature, now it is a default method, all implementations of Collection interface inherit default
+  implementation of stream() method.
+
+# processes and threads - A process can contain multiple threads, A Thread is sometimes called a lightweight process. 
+
+# If me make any class as abstract then with that, it will help us to not implement all the methods of interface.
+
+  public interface RecordFormatter {
+
+    String format();
+  }
+
+  public abstract class Record implements RecordFormatter {
+
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+  }

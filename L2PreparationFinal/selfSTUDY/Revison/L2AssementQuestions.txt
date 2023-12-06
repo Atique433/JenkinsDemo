@@ -1,0 +1,34 @@
+1. Tell me about yourself
+2. what are tools and technologies you have worked in.
+3. What is polymorphism, implementation in project.
+4. Features Of Java 8
+4. what is functional interface in Java 8
+5. what is stream
+6. diffrence between Filter and Reduce
+7. How can you sort a collection,(Comparator & Comparable)
+8. Best Collection to insert
+9. What is Set and where can we use it
+10. Tell me about Inspint Automation and advantages
+11. How do you select automation Candidate
+12. What are plugins in Maven, Diffrence Between dependency and plugin?
+13. What is transitive dependencies and used case?
+14. What is RequestSpecification?
+15. How would to store Response based on status code?
+16. CI/CD tool you have worked with? How you have configured/built pipline in your project
+17. What is Merge, What is Stash?
+18. What Test Design Technique you know and how do you use when designing the testcase.
+19. What is Agile, How you followed in the Project.
+20. Have you worked With Jira.
+21. What/how can you make your framework better, what things you add to make it better 
+22. Selenium 4 features.
+23. diff waits and diffrence between each of them
+24. Deign pattern in project and implementation, and any other you know.
+25. What are the process you follow for code review, what are the things you see when reviewing the code.
+26. Exceptions, Customexception, implementation in project
+27. Dis-Advantages of selenium.
+28. What are project Estimation Technique you know.
+29. What are Joinns and its types.
+30. What are Relative Locators.
+31. Diffrent Selenium Exceptions.
+32. What is Object Class and its method.
+

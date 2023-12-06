@@ -1,0 +1,30 @@
+tdd, bdd, kdt
+layers on framework
+logging integrating report
+test data
+diffrent ways to handle date?? wait??
+tools selection
+selenium new features
+api - request headers , response header 
+what api we use in project
+testng
+mested class
+wd->stagging area- local repository
+log4 implementation in project-log, info, warn
+adv of rp - parrel run , can see runs while running 
+where we can se log-> console,rp,resource
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+ TDD ->
+ First we will be having test layer->this involves the test cases covering the application under test. All the test logic is present here.
+ then we will be having core/implementataion layer -> here we will be having pages, commoun utilities(waits,logger,browser, exception etc)
+ service layer - here all the logic are grouped, which help in reuasibility, better code maintainnace.
+ then will be having resource/test data layer -> driver,logs, excel file, config files, scrren shot
+
+ Api framework->
+ will be having 2 layers
+ 1. webservice layer
+ 2. test layer
+
+ Tools: Postman, Rest Assured

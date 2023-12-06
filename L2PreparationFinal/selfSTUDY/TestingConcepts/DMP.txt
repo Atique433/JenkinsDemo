@@ -1,0 +1,64 @@
+Defect - Deviation from requirement
+Bug    - Informal name of defects, (A coding error) 
+Error  - The Problem in code leads to errors.
+Failure- Many defects lead to the software's 
+
+Q)What is Defect Management Process?
+- Defect Management is a systematic process to identify and fix bugs.
+   (OR) 
+ The Defect Management Process is an iterative process that continues throughout the software development life cycle, and helps to ensure
+ that defects are identified, tracked, and resolved in a timely and efficient manner, leading to higher software quality and reliability.
+
+ A defect management cycle contains the following stages
+ 1) Discovery of Defect,
+ 2) Defect Categorization
+ 3) Fixing of Defect by developers
+ 4) Verification by Testers,
+ 5) Defect Closure
+ 6) Defect Reports at the end of project
+
+ 1.Discovery - In the discovery phase, the project teams have to discover as many defects as possible, before the end customer can discover it.
+               A defect is said to be discovered and change to status accepted when it is acknowledged and accepted by the developers
+
+ 2.Categorization - Defect categorization help the software developers to prioritize their tasks. That means that this kind of priority helps the
+                    developers in fixing those defects first that are highly crucial.
+
+ 3.Defect Resolution - Defect resolution process starts with assigning defects to developers, then developers schedule the defect to be fixed as
+                      per priority, then defects are fixed and finally developers send a report of resolution to the test manager. This process 
+                      helps to fix and track defects easily.
+
+    Assignment -> Shedule Fixing -> Fix the defect -> report solution
+
+ 4.Verification - After the development team fixed and reported the defect, the testing team verifies that the defects are actually resolved.
+
+ 5.Closure - Once a defect has been resolved and verified, the defect is changed status as closed. If not, you have send a notice to the development
+             to check the defect again.
+
+ 6.Defect Reporting - In software testing is a process in which test managers prepare and send the defect report to the management team for feedback
+                     on defect management process and defects’ status. Then the management team checks the defect report and sends feedback or provides
+                     further support if needed. Defect reporting helps to better communicate, track and explain defects in detail.
+
+# Important Defect Metrics:-
+
+Q) How to measure and evaluate the quality of the test execution?
+-  There are 2 parameters which you can consider as following
+
+   1.defection rejection ratio (DRR) is 20/84 = 0.238 (23.8 %).
+   2.defect leakage ratio (DLR) is 20/64 = 0.312 (31.2 %).
+
+# RCA:
+
+Q)What Is Root Cause Analysis?
+- RCA (Root Cause Analysis) is a mechanism of analyzing the Defects, to identify its cause. We brainstorm, read and dig the defect to identify whether
+  the defect was due to “testing miss”, “development miss” or was a “requirement or designs miss”.
+
+- Advantages Of Root Cause Analysis
+
+Prevent the reoccurrence of the same problem in the future.
+Eventually, reduce the number of defects reported over time.
+Reduces developmental costs and saves time.
+Improve the software development process and hence aiding quick delivery to market.
+Improves customer satisfaction.
+Boost productivity.
+Find hidden problems in the system.
+Aids in continuous improvement.

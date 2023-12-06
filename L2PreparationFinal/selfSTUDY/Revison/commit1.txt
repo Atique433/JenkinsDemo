@@ -1,0 +1,44 @@
+Commit 1
+
+Movie archive is damaged or empty
+Total: 0 actors, 0 cameramen, superstars: []
+Movie production failed. Budget is over. Current progress is 74.00 
+Movie archive is damaged or empty
+Total: 0 actors, 0 cameramen, superstars: []
+Movie archive is damaged or empty
+Total: 0 actors, 0 cameramen, superstars: []
+Budget: 161000000 initial, 129580000 spent, 31420000 economy
+Recruiter: 'Andrew Carnegie', earned money: 496000, salary: 2000
+Accountant: 'William Welch Deloitte', earned money: 620000, salary: 2500
+Actor: 'Leo DiCaprio', earned money: 12400000, salary: 50000
+Actor: 'Kate Winslet', earned money: 12400000, salary: 50000
+Actor: 'Billy Zane', earned money: 12400000, salary: 50000
+Actor: 'Kathy Bates', earned money: 12400000, salary: 50000
+Actor: 'Frances Fisher', earned money: 12400000, salary: 50000
+Actor: 'Bernard Hill', earned money: 12400000, salary: 50000
+Actor: 'Jonathan Hyde', earned money: 12400000, salary: 50000
+Actor: 'Danny Nucci', earned money: 12400000, salary: 50000
+Actor: 'David Warner', earned money: 12400000, salary: 50000
+Actor: 'Bill Paxton', earned money: 12400000, salary: 50000
+Cameraman: 'Guy Norman Bee', earned money: 1488000, salary: 6000
+Cameraman: 'Marcis Cole', earned money: 1488000, salary: 6000
+Cameraman: 'Tony Guerin', earned money: 1488000, salary: 6000
+Movie archive is damaged or empty
+Total: 0 actors, 0 cameramen, superstars: []
+Budget: 61000000 initial, 46545500 spent, 14454500 economy
+Recruiter: 'Andrew Carnegie', earned money: 254000, salary: 2000
+Accountant: 'William Welch Deloitte', earned money: 317500, salary: 2500
+Actor: 'Mark Hamill', earned money: 6350000, salary: 50000
+Actor: 'Harrison Ford', earned money: 6350000, salary: 50000
+Actor: 'Carrie Fischer', earned money: 6350000, salary: 50000
+Actor: 'Billy Dee Williams', earned money: 6350000, salary: 50000
+Actor: 'Anthony Daniels', earned money: 6350000, salary: 50000
+Actor: 'David Prowse', earned money: 6350000, salary: 50000
+Actor: 'Peter Mayhew', earned money: 6350000, salary: 50000
+Cameraman: 'John Campbell', earned money: 762000, salary: 6000
+Cameraman: 'Bill Neil', earned money: 762000, salary: 6000
+Movie archive is damaged or empty
+Total: 0 actors, 0 cameramen, superstars: []
+Budget: 1000001 initial, 4500 spent, 995501 economy
+Recruiter: 'Andrew Carnegie', earned money: 2000, salary: 2000
+Accountant: 'William Welch Deloitte', earned money: 2500, salary: 2500

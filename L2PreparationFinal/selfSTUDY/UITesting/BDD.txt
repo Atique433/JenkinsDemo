@@ -1,0 +1,207 @@
+**ctrl+ shift +f = will align everthing\
+# runner class - https://www.lambdatest.com/support/docs/running-cucumber-scripts-with-testng-and-selenium/
+# Handle Ajax call Using JavaScriptExecutor in Selenium? - https://toolsqa.com/selenium-cucumber-framework/handle-ajax-call-using-javascriptexecutor-in-selenium/
+# diff between bdd and tdd
+# getPageSource() - will give html page of that particular page
+# if we want to perform Data Driven in BDD we go for Scenario Outline
+# javaScriptExecutor = whenever click operation is not working then go for javaScriptExecutor
+# By.tagName("body") = this will give complete html code from body (use to get confimation code by calling getText() after it)
+# A feature or scenario can have as many tags as you like. Separate them with spaces:
+    @billing @bicker @annoy
+    Feature: Verify billing
+
+# tools available for BDD implementation are :-
+
+Cucumber (Ruby framework)
+SpecFlow (.NET framework)
+Behave (Python framework)
+JBehave (Java framework)
+JBehave Web (Java framework with Selenium integration)
+Lettuce (Python framework)
+Concordion (Java framework)
+Behat (PHP framework)
+
+# Dependency for cucumber
+  Cucumber-core	
+  Cucumber-testNG
+  Cucumber-html
+  Cucumber-java
+  Cucumber-reporting 
+  Hamcrest-core
+  Gherkin
+  Junit/TestNG
+
+# Cucumber supports over a dozen different software platforms like −
+
+  Ruby on Rails
+  Selenium
+  PicoContainer
+  Spring Framework
+  Watir
+
+# can we use rerun in bdd - yes. 
+  How? - re-run plugin in test runner file.
+
+#The primary keywords are:
+
+  -Feature
+  -Rule (as of Gherkin 6)                 - The purpose of the Rule keyword is to represent one business rule that should be implemented. It provides
+                                            additional information for a feature. A Rule is used to group together several scenarios that belong to this
+                                            business rule. A Rule should contain one or more scenarios that illustrate the particular rule.
+  -Example (or Scenario)                  - The keyword Scenario is a synonym of the keyword Example
+  -Given, When, Then, And, But, (or *)    - (*)-> This can be helpful when you have some steps that are effectively a list of things,
+                                            so you can express it more like bullet points
+  -Background
+  -Scenario Outline (or Scenario Template)- The Scenario Outline keyword can be used to run the same Scenario multiple times, 
+                                            with different combinations of values.
+
+# Doc Strings - Doc Strings are handy for passing a larger piece of text to a step definition.
+                The text should be offset by delimiters consisting of three double-quote marks on lines of their own:
+``
+Given a blog post named "Random" with Markdown body
+  """
+  Some Title, Eh?
+  ===============
+  Here is the first paragraph of my blog post. Lorem ipsum dolor sit amet, 
+  consectetur adipiscing elit.
+  """
+
+# There is no limit in defining tags within the feature file. Based on your need, you can derive tags to be used and scenarios to be executed.
+   There are mainly two types of tag −
+   1.Default tag − Default tag has their predefined meanings. Example @Dev,@Ignore
+   2.Custom tag − Custom tag provides you full flexibility to choose appropriate text for defining your tag.
+
+# While defining multiple tags, we can also define logical or/and logical and operation.
+
+  *Defining logical or in runner class − @dev,@wip − It says that scenarios matching any of this tag needs to be executed.
+     ex - Execute all tests tagged as @SmokeTest OR @RegressionTest - {"@SmokeTest,@RegressionTest"} *in eclipse- "@Sanity or @Regression"
+
+  *Defining logical and in runner class − [@dev,~@wip] − It says that scenarios matching both these tag needs to be executed.
+    ex- Execute all tests tagged as @SmokeTest AND @RegressionTest - {"@SmokeTest","@RegressionTest"} *in eclipse- 
+
+# We use two types of hooks: “Before” hook and “After” hook. Method/function/piece of code, defined within Before and After hooks, always run,
+  even if the scenario gets passed or failed.
+  *Hooks are defined within the step definition file only.
+
+ *Tagged Hooks-
+  We can also indicate if we want before and after hooks to be executed with a specific tag only. Example − @Before(‘@Web’).
+  The same concept of tag logical and/or can be applied with hooks as well. Example − @Before(@dev,@wip), @Before(@dev,~@wip)
+
+# Report generation in cucumber - here we can ans we can use html report(view on webpage) and json reporting
+  1. using pretty- 
+      @RunWith(Cucumber.class) 
+    @CucumberOptions(features="src\\test\\java\\CucumberConfigs\\Features\\test2.feature",
+                 glue = "CucumberConfigs",
+                 plugin = {"html:target/cucumber.html",
+                           "json:target/cucumber.json",
+                           "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                           "rerun:target/failed_scenarios.txt"}
+                 )
+	
+      //Specifying pretty as a format option ensure that HTML report will be generated. 
+      //When we specify html:target/Destination - It will generate the HTML report 
+
+      -inside the Destination folder, in the target folder of the maven project. 
+
+  2.Json Report -
+      usage - if we want to pass on this report information to any other application.
+            - it can be used to be displayed as a web page.
+      DisAdv- JSON is less readable as compared to the HTML report format
+
+     RunWith(Cucumber.class) 
+     @CucumberOptions(plugin = {"json:target/Destination/cucumber.json"}) 
+
+     //When we specify json:target/Destination/cucumber.json - It will generate the JSON  
+     -report inside the Destination folder, in the target folder of the maven project.
+
+# dryRun(in test runner) = true,  this will check every features files lines contains step defination or not
+# monochrome = //display the console output in a proper readable format
+
+Q) command to run tags
+-> mvn test -Dcucumber.filter.tags="@smoke and @fast" 
+
+Q) diff between datatable and scenario outline? when to opt?
+-> DataTable        -> In some cases we might want to pass more data to a step than fits on a single line. For this purpose Gherkin has
+                       Doc Strings and Data Tables.  ex - registration form . 
+   Scenario Outline -> The Scenario Outline keyword can be used to run the same Scenario multiple times, with different combinations of values.
+                       ex -multiple user login 
+
+#  {String}-> this is the general case, when we know the type of inpur data (e.g, String).
+    @When("User open url {string}")
+    public void user_open_url(String url) {
+    } 
+
+   (.*) -> when we dont know the type of data or any character, we can use this.
+    @And("^enter the username as (.*) and password as (.*) and click login button$")
+    public void enter_the_username_as_and_password_as_and_click_login_button(String user, String pwd) { 
+
+Q) diff between data table and doc string?
+-> Data Tables are handy for passing a list of values to a step definition:
+   Doc Strings are handy for passing a larger piece of text to a step definition.
+
+Q) diff between TDD and BDD?
+-> TDD is known as Test Driven Development.                            BDD is known as Behavior Driven Framework
+   The designing of test cases is the starting point of TDD.           The designing of scenarios is the starting point of BDD
+   TDD requires team members having technical knowledge.               BDD does not require team members with technical knowledge.
+   Focus on Unit Tests	                                               Focus on Understanding Requirements
+   The process starts by writing a test case.	                       The process starts by writing a scenario as per the expected behavior.
+   Some tools which support TDD are: JUnit, TestNG, NUnit, etc.	       Some tools which support BDD are SpecFlow, Cucumber, MSpec, etc.
+   
+Q) What do you understand by regular expressions?
+-> A regular expression is a pattern used to describe a certain amount of text. The most basic regular expression consists of a
+   single literal character.eg- @Given("^user is on home Page$")
+
+Q) What do you understand by test harness in Cucumber?
+-> In Cucumber, the test harness allows for separating responsibility between setting up the context and interacting with the browser,
+   and cleaning up the step definition files. It collects stubs, drivers, and other supporting tools required to automate test execution in testing.
+
+Q) What is the difference between Selenium and Cucumber?
+-> Selenium is a web browser automation tool for web apps, while Cucumber is an automation tool for BDD that can be used with Selenium (or Appium).
+   Selenium is used for automated UI testing, while Cucumber is used for acceptance testing.
+
+Q) What do you understand by cucumber dry run?
+-> Cucumber dry run is used to compile cucumber features files and step definitions. It is run to find any compilation errors. If it finds anyone,
+   it will show when we use dry run.
+
+Q) diffrence between mapDatable and normalDatable? 
+
+- mapDatable(header is specified)->|username|password|
+                                   |admin1  |admin123|
+
+  normalDatable(No header is specified)-> |admin1  |admin123|
+
+#  @Cucumber.Options --
+
+   - DryRun: This option can either set as true or false (default value is false). If it is set as true, it means that Cucumber will only checks that
+     every Step mentioned in the Feature File have corresponding code written in Step Definition file or not. So in case any of the function is missed
+     in the Step Definition for any Step in Feature File, it will give us the message. So If you writing scenarios first and then implementing
+     step definitions then add dryRun = true.
+   - Strict: if strict option is set to false then at execution time if cucumber encounters any undefined/pending steps then cucumber does not fail the
+     execution and undefined steps are skipped and BUILD is SUCCESSFUL. and vice-versa
+   - Monochrome: This option can either set as true or false (default value is false). If it is set as true, it means that the console output for the 
+     Cucumber test are much more readable. And if it is set as false, then the console output is not as readable as it should be
+   - Snippet Style: Cucumber generates code snippets in Underscore style by default. If you want to change the format of cucumber snippets then you can
+      set snippet type in your cucumber options. There are two types of snippets,
+       1- SnippetType.CAMELCASE
+       2- SnippetType.UNDERSCORE
+
+# How to set the Order or Priority of Cucumber Hooks?
+->The very important thing to note here is:
+    @Before(order = int) : This runs in increment order, means value 0 would run first and 1 would be after 0.
+    @After(order = int) : This runs in decrements order, means apposite of @Before. Value 1 would run first and 0 would be after 1.
+
+Q)limitation in TDD and BDD?
+
+1.Disadvantages of Test-Driven Development (TDD)
+
+  Bugs leading to faulty code   : Tests could contain bugs which in turn results in faulty implementation. This can be averted by using the
+                                  right BDD framework, performing detailed code review, and more.
+  Costly Architectural mistakes : If the generated test code is not in line with the desired architecture, it could result in huge losses.
+  Slowness in development       : Creating test cases before code development slows product development.
+  Requires prior experience     : Prior experience with TDD is a must since many teams commit the mistake of not running tests at the Red Stage.
+
+2.Challenges of Behavior-Driven Development (BDD)
+
+  Requires more involvement from all the stakeholders:
+  BDD tools struggle with parallelization	
+  Writing incorrect Gherkin syntax:

@@ -1,0 +1,8 @@
+Object vs datastructure:
+
+-When you add a new object or a class, you apply OOP. When you add new data structures, you use PP. 
+-With procedural programming, it’s easy to add new behaviors but difficult to add new data structures.
+-You need to add new data types-> OOP is the right choice. sometimes you need to add new behaviors-> here a procedural approach is preferable.
+A Java object is a member (also called an instance) of a Java class. Each object has an identity, a behavior and a state. The state of an object is
+stored in fields (variables), while methods (functions) display the object's behavior. Objects are created at runtime from templates, which are also 
+known as classes.
